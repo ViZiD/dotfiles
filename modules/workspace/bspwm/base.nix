@@ -89,6 +89,10 @@ in
           desktop = "^6";
           state = "floating";
         };
+        "Zathura" = {
+          desktop = "^2";
+          state = "floating";
+        };
         "feh" = {
           state = "floating";
           sticky = true;
