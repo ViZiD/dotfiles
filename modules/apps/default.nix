@@ -3,6 +3,7 @@ let
   image = "feh";
   browser = "google-chrome.desktop";
   editor = "nvim";
+  reader = "zathura";
 in
 {
   environment.sessionVariables = {
@@ -23,6 +24,8 @@ in
       "application/rar" = archive;
       "application/7z" = archive;
       "application/*tar" = archive;
+
+      "application/pdf" = reader;
 
       "text/html" = browser;
       "x-scheme-handler/http" = browser;
