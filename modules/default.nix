@@ -21,6 +21,7 @@ let
     ./dev
 
     ./apps
+    ./apps/reading
     ./apps/monitoring
     ./apps/music
     ./apps/fm
@@ -84,6 +85,7 @@ let
 
     dev
     apps
+    reading
     monitoring
     music
     fm
