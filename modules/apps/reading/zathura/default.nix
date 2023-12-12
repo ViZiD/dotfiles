@@ -7,7 +7,6 @@
         selection-clipboard = "clipboard";
         statusbar-h-padding = 0;
         statusbar-v-padding = 0;
-        smooth-scroll = true;
         statusbar-home-tilde = true;
         page-padding = 1;
       };
