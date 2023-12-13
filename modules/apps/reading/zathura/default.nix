@@ -8,7 +8,7 @@
         statusbar-h-padding = 0;
         statusbar-v-padding = 0;
         statusbar-home-tilde = true;
-        page-padding = 1;
+        page-padding = 0;
       };
 
       extraConfig = ''
