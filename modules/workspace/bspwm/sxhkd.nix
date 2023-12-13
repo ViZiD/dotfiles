@@ -22,6 +22,11 @@
         # inc
         "XF86MonBrightnessUp" = "light -A 5";
 
+        # bluetooth headset media key
+        "XF86AudioPlay" = "playerctl play-pause";
+        "XF86AudioPause" = "playerctl play-pause";
+        "XF86AudioNext" = "playerctl next";
+
         # take screenshot
         "Print" = "flameshot gui";
 
