@@ -7,9 +7,9 @@ let
   '';
 
   run_wallpaper = pkgs.writeShellScriptBin "run_wallpaper" ''
-    killall -q feh 
+    killall -q feh
 
-    feh --bg-fill ${../wallpaper/bgg.jpg} 
+    feh --bg-fill ${../wallpaper/bgg.jpg}
   '';
 in
 {
@@ -27,7 +27,7 @@ in
 
     # run bspwm without dm
     home.file.".xinitrc".text = ''
-      xsetroot -cursor_name coffee_mug 
+      xsetroot -cursor_name coffee_mug
 
       exec bspwm
     '';
@@ -90,8 +90,8 @@ in
           state = "floating";
         };
         "Zathura" = {
-          desktop = "^2";
           state = "floating";
+          sticky = true;
         };
         "feh" = {
           state = "floating";
