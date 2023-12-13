@@ -27,6 +27,7 @@ in
 
     # run bspwm without dm
     home.file.".xinitrc".text = ''
+      systemctl --user import-environment DISPLAY XAUTHORITY
       xsetroot -cursor_name coffee_mug
 
       exec bspwm
