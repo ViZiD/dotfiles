@@ -19,7 +19,7 @@
 
     shellAliases = {
       "cat" = "${pkgs.bat}/bin/bat";
-      "ls" = "${pkgs.eza}/bin/eza -alh";
+      "ls" = "${pkgs.eza}/bin/eza -alhH --icons=always";
 
       "gdd" = "${pkgs.git}/bin/git add .";
       "gda" = "${pkgs.git}/bin/git add -A";
@@ -36,16 +36,16 @@
     };
 
     initExtra = ''
-      autoload -Uz promptinit && promptinit         
+      autoload -Uz promptinit && promptinit
       prompt_susecolor_setup(){
-        PS1="%F{green}%n%f@%F{magenta}%m%f:%~/ >" 
-      } 
+        PS1="%F{green}%n%f@%F{magenta}%m%f:%~/ >"
+      }
       prompt_themes+=(susecolor)
-      prompt susecolor                             
+      prompt susecolor
 
       cpr() {
         rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1 "$@"
-      } 
+      }
       mvr() {
         rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1 --remove-source-files "$@"
       }
