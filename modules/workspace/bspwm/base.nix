@@ -91,8 +91,7 @@ in
           state = "floating";
         };
         "Zathura" = {
-          state = "floating";
-          sticky = true;
+          state = "fullscreen";
         };
         "feh" = {
           state = "floating";
