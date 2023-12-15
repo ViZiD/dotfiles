@@ -8,6 +8,7 @@
     bzip2
     zstd
     unrar
+    p7zip
     atool
   ];
 }
