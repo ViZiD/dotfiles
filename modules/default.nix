@@ -31,6 +31,7 @@ let
     ./apps/messaging
     ./apps/editor
     ./apps/web
+    ./apps/electronics
 
     ./apps/security/gpg.nix
 
@@ -94,6 +95,7 @@ let
     web
     messaging
     terminal
+    electronics
 
     gpg
     pass
