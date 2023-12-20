@@ -95,7 +95,7 @@ let
     web
     messaging
     terminal
-    electronics
+    # electronics
 
     gpg
     pass
