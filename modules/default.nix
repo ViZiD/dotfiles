@@ -32,6 +32,7 @@ let
     ./apps/editor
     ./apps/web
     ./apps/electronics
+    ./apps/graphics
 
     ./apps/security/gpg.nix
 
@@ -95,6 +96,7 @@ let
     web
     messaging
     terminal
+    graphics
     # electronics
 
     gpg
