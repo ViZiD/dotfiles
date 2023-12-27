@@ -6,5 +6,6 @@
     ./http.nix
     ./media.nix
     ./screencasting.nix
+    ./misc.nix
   ];
 }
