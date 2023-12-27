@@ -33,6 +33,7 @@ let
     ./apps/web
     ./apps/electronics
     ./apps/graphics
+    ./apps/embedded
 
     ./apps/security/gpg.nix
 
@@ -97,6 +98,7 @@ let
     messaging
     terminal
     graphics
+    embedded
     # electronics
 
     gpg
