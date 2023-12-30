@@ -1,9 +1,10 @@
 { pkgs, ... }:
 
 let
-  # genPkgs = pkgs.callPackage ./packages { inherit inputs; };
-  # extPkgs = with genPkgs; [
-  # ];
+  genPkgs = pkgs.callPackage ./packages { inherit pkgs; };
+  extPkgs = with genPkgs; [
+    webcrack
+  ];
   nixPkgs = with pkgs.nodePackages; [
     # http-server
     # rollup
@@ -23,7 +24,7 @@ in
   home-manager.users.radik = {
     home = {
       packages = with pkgs;
-        [ nodejs_latest yarn ] ++ nixPkgs; /* ++ extPkgs; */
+        [ nodejs_latest yarn ] ++ nixPkgs ++ extPkgs;
     };
   };
 }
