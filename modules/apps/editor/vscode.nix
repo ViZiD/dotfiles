@@ -27,6 +27,7 @@ in
         ms-vscode-remote.remote-ssh
         monokai.theme-monokai-pro-vscode
         editorconfig.editorconfig
+        jyee721.babel-ast-explorer
       ];
 
       userSettings = {
