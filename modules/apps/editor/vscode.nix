@@ -29,6 +29,7 @@ in
         editorconfig.editorconfig
         jyee721.babel-ast-explorer
         arichy.vscode-ast-explorer
+        nicoespeon.abracadabra
       ];
 
       userSettings = {
