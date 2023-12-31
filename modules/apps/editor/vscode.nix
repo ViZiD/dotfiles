@@ -28,6 +28,7 @@ in
         monokai.theme-monokai-pro-vscode
         editorconfig.editorconfig
         jyee721.babel-ast-explorer
+        arichy.vscode-ast-explorer
       ];
 
       userSettings = {
