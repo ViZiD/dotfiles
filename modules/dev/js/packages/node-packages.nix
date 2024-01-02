@@ -883,10 +883,10 @@ in
   webcrack = nodeEnv.buildNodePackage {
     name = "webcrack";
     packageName = "webcrack";
-    version = "2.11.1";
+    version = "2.12.0";
     src = fetchurl {
-      url = "https://registry.npmjs.org/webcrack/-/webcrack-2.11.1.tgz";
-      sha512 = "l/keQ+JqH9abzTRgq7jVWNGqpnvvPoXejol6RGHljAzEKuwRnGMQ1Fk6vaTJL3BAkv73CpdA0G2mdicU8h/Hbg==";
+      url = "https://registry.npmjs.org/webcrack/-/webcrack-2.12.0.tgz";
+      sha512 = "671RPplnb/ZRvX7vXOZrsXyJGo6HWgNB4XZroXgj0gOjSNsH8NDFxaB4cx5hLiPMMwh+6SbNxY41tgNwG6JjBw==";
     };
     dependencies = [
       sources."@ampproject/remapping-2.2.1"
