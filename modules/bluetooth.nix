@@ -13,7 +13,7 @@
   };
 
   home-manager.users.radik =
-    let headphones = "18:B9:6E:07:8F:B7";
+    let headphones = "41:42:17:F0:AB:04";
     in
     {
       programs.zsh.shellAliases = {
