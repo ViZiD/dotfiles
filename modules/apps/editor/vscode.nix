@@ -30,6 +30,7 @@ in
         jyee721.babel-ast-explorer
         arichy.vscode-ast-explorer
         nicoespeon.abracadabra
+        mkhl.direnv
       ];
 
       userSettings = {
