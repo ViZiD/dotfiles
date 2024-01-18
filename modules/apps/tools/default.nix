@@ -7,5 +7,6 @@
     ./media.nix
     ./screencasting.nix
     ./misc.nix
+    ./pentest.nix
   ];
 }
