@@ -14,6 +14,7 @@ let
     ./bluetooth.nix
     ./power.nix
     ./opengl.nix
+    ./android.nix
 
     ./user
     ./user/physlock.nix
@@ -76,6 +77,7 @@ let
     sound
     bluetooth
     opengl
+    android
 
     themes
 
