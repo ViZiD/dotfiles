@@ -14,7 +14,7 @@ with lib;
         init.defaultBranch = "master";
         pull.rebase = true;
         rebase.autoStash = true;
-        http.postBuffer = 1048576000;
+        http.postBuffer = 524288000;
         credential.helper = "store";
       };
       extraConfig.commit.gpgsign = mkIf enableGpg true;
