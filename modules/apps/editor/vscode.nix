@@ -36,9 +36,9 @@ in
       userSettings = {
         "extensions.autoCheckUpdates" = false;
         "extensions.autoUpdate" = false;
-        # "remote.SSH.externalSSH_ASKPASS" = true;
-        # "remote.SSH.enableAgentForwarding" = true;
-        # "remote.SSH.logLevel" = "debug";
+        "remote.SSH.externalSSH_ASKPASS" = true;
+        "remote.SSH.enableAgentForwarding" = true;
+        "remote.SSH.logLevel" = "debug";
         "remote.SSH.showLoginTerminal" = true;
         "prettier.useEditorConfig" = true;
         "emmet.triggerExpansionOnTab" = true;
