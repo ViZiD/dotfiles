@@ -8,5 +8,6 @@
     ./screencasting.nix
     ./misc.nix
     ./pentest.nix
+    ./scm.nix
   ];
 }
