@@ -1,7 +1,7 @@
 {
   services.xserver = {
     enable = true;
-     # Symlink the X server configuration under /etc/X11/xorg.conf
+    # Symlink the X server configuration under /etc/X11/xorg.conf
     exportConfiguration = true;
 
     # Length of time in milliseconds that a key must be
@@ -12,11 +12,12 @@
     # autorepeat-generated keystrokes
     autoRepeatInterval = 40;
 
-    layout = "us,ru";
-    xkbModel = "pc105";
-    xkbVariant = "qwerty";
-
-    xkbOptions = "grp:alt_shift_toggle";
+    xkb = {
+      layout = "us,ru";
+      model = "pc105";
+      variant = "qwerty";
+      options = "grp:alt_shift_toggle";
+    };
 
   };
 }
