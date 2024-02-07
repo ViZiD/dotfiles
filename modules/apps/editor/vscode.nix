@@ -7,7 +7,7 @@ in
     programs.vscode = {
       enable = true;
 
-      mutableExtensionsDir = true;
+      mutableExtensionsDir = false;
       extensions = with extensions.vscode-marketplace; [
         vscodevim.vim
         github.vscode-pull-request-github
