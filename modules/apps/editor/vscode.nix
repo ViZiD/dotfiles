@@ -151,6 +151,13 @@ in
         };
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "${pkgs.nixd}/bin/nixd";
+        "nix.serverSettings" = {
+          "nixd" = {
+            "formatting" = {
+              "command" = "nixpkgs-fmt";
+            };
+          };
+        };
         "[javascript][typescript]" = {
           "editor.codeActionsOnSave" = {
             "source.fixAll" = "explicit";
