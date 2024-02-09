@@ -24,6 +24,7 @@ in
         ms-azuretools.vscode-docker
         ms-vscode-remote.remote-ssh
         monokai.theme-monokai-pro-vscode
+        pkief.material-icon-theme
         editorconfig.editorconfig
         nicoespeon.abracadabra
         mkhl.direnv
@@ -87,7 +88,7 @@ in
         "terminal.integrated.fontSize" = 16;
         "terminal.integrated.fontWeightBold" = "normal";
         "workbench.colorTheme" = "Monokai Classic";
-        "workbench.iconTheme" = "Monokai Classic Icons";
+        "workbench.iconTheme" = "material-icon-theme";
         "security.workspace.trust.untrustedFiles" = "open";
         "[jsonc]" = {
           "editor.formatOnSave" = true;
