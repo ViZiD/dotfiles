@@ -10,8 +10,6 @@ in
       mutableExtensionsDir = false;
       extensions = with extensions.vscode-marketplace; [
         vscodevim.vim
-        github.vscode-pull-request-github
-        eamodio.gitlens
         shd101wyy.markdown-preview-enhanced
         jnoortheen.nix-ide
         phoenixframework.phoenix
@@ -27,8 +25,6 @@ in
         ms-vscode-remote.remote-ssh
         monokai.theme-monokai-pro-vscode
         editorconfig.editorconfig
-        jyee721.babel-ast-explorer
-        arichy.vscode-ast-explorer
         nicoespeon.abracadabra
         mkhl.direnv
       ];
