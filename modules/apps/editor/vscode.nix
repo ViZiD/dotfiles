@@ -59,20 +59,19 @@ in
           "editor.formatOnType" = true;
         };
         "files.eol" = "\n";
-        "workbench.iconTheme" = "Monokai Classic Icons";
         "javascript.suggestionActions.enabled" = true;
         "[javascript]" = {
           "editor.codeActionsOnSave" = {
-            "source.fixAll" = true;
-            "source.fixAll.eslint" = true;
+            "source.fixAll" = "explicit";
+            "source.fixAll.eslint" = "explicit";
           };
           "editor.formatOnSave" = true;
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
         };
         "[typescript]" = {
           "editor.codeActionsOnSave" = {
-            "source.fixAll" = true;
-            "source.fixAll.eslint" = true;
+            "source.fixAll" = "explicit";
+            "source.fixAll.eslint" = "explicit";
           };
           "editor.formatOnSave" = true;
         };
@@ -92,6 +91,7 @@ in
         "terminal.integrated.fontSize" = 16;
         "terminal.integrated.fontWeightBold" = "normal";
         "workbench.colorTheme" = "Monokai Classic";
+        "workbench.iconTheme" = "Monokai Classic Icons";
         "security.workspace.trust.untrustedFiles" = "open";
         "[jsonc]" = {
           "editor.formatOnSave" = true;
