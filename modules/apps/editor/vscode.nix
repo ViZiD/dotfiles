@@ -150,7 +150,7 @@ in
           "editor.defaultFormatter" = "jnoortheen.nix-ide";
         };
         "nix.enableLanguageServer" = true;
-        "nix.serverPath" = "${pkgs.rnix-lsp}/bin/rnix-lsp";
+        "nix.serverPath" = "${pkgs.nixd}/bin/nixd";
         "[javascript][typescript]" = {
           "editor.codeActionsOnSave" = {
             "source.fixAll" = "explicit";
