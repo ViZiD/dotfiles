@@ -149,13 +149,17 @@ in
         };
         "[nix]" = {
           "editor.defaultFormatter" = "jnoortheen.nix-ide";
+          "editor.formatOnSave" = true;
         };
         "nix.enableLanguageServer" = true;
-        "nix.serverPath" = "${pkgs.nixd}/bin/nixd";
+        "nix.serverPath" = "${pkgs.nil}/bin/nil";
         "nix.serverSettings" = {
-          "nixd" = {
+          "nil" = {
+            "diagnostics" = {
+              "ignored" = [ "unused_binding" "unused_with" ];
+            };
             "formatting" = {
-              "command" = "nixpkgs-fmt";
+              "command" = [ "nixpkgs-fmt" ];
             };
           };
         };
