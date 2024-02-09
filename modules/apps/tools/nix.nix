@@ -4,7 +4,6 @@
   environment.systemPackages = with pkgs; [
     cachix
 
-    rnix-lsp
     nixpkgs-fmt
 
     # generators
