@@ -131,6 +131,10 @@ in
         "[yaml]" = {
           "editor.formatOnSave" = true;
         };
+	"[toml]" = {
+	  "editor.defaultFormatter" = "tamasfe.even-better-toml";
+	  "editor.formatOnSave" = true;
+	};
         "git.openRepositoryInParentFolders" = "never";
         "python.pipenvPath" = "${pkgs.pipenv}/bin/pipenv";
         "diffEditor.hideUnchangedRegions.enabled" = true;
