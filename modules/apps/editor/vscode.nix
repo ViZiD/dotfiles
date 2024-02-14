@@ -18,7 +18,7 @@ in
         esbenp.prettier-vscode
         ms-python.python
         ms-python.vscode-pylance
-        be5invis.toml
+	tamasfe.even-better-toml
         redhat.vscode-yaml
         redhat.vscode-xml
         ms-azuretools.vscode-docker
