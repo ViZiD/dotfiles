@@ -4,14 +4,14 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
-    nurpkgs.url = github:nix-community/NUR;
+    nurpkgs.url = "github:nix-community/NUR";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    flake-utils.url = github:gytis-ivaskevicius/flake-utils-plus;
+    flake-utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
 
     home-manager = {
-      url = github:nix-community/home-manager;
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
