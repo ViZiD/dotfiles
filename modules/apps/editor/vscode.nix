@@ -18,7 +18,7 @@ in
         esbenp.prettier-vscode
         ms-python.python
         ms-python.vscode-pylance
-	tamasfe.even-better-toml
+        tamasfe.even-better-toml
         redhat.vscode-yaml
         redhat.vscode-xml
         ms-azuretools.vscode-docker
@@ -131,10 +131,10 @@ in
         "[yaml]" = {
           "editor.formatOnSave" = true;
         };
-	"[toml]" = {
-	  "editor.defaultFormatter" = "tamasfe.even-better-toml";
-	  "editor.formatOnSave" = true;
-	};
+        "[toml]" = {
+          "editor.defaultFormatter" = "tamasfe.even-better-toml";
+          "editor.formatOnSave" = true;
+        };
         "git.openRepositoryInParentFolders" = "never";
         "python.pipenvPath" = "${pkgs.pipenv}/bin/pipenv";
         "diffEditor.hideUnchangedRegions.enabled" = true;
