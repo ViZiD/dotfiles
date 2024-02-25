@@ -2,7 +2,7 @@
 {
   home-manager.users.radik = {
     home.packages = with pkgs; [
-      (python3.withPackages (ps: [ pipenv virtualenv ]))
+      (python312.withPackages (ps: [ pipenv virtualenv pdm ]))
     ];
   };
 }
