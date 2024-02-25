@@ -10,9 +10,7 @@ in
       mutableExtensionsDir = false;
       extensions = with extensions.vscode-marketplace; [
         vscodevim.vim
-        shd101wyy.markdown-preview-enhanced
         jnoortheen.nix-ide
-        phoenixframework.phoenix
         esbenp.prettier-vscode
         ms-python.python
         ms-python.vscode-pylance
@@ -29,6 +27,7 @@ in
       ];
 
       userSettings = {
+        "update.mode" = "none";
         "extensions.autoCheckUpdates" = false;
         "extensions.autoUpdate" = false;
         "remote.SSH.externalSSH_ASKPASS" = true;
@@ -37,18 +36,12 @@ in
         "remote.SSH.showLoginTerminal" = true;
         "prettier.useEditorConfig" = true;
         "emmet.triggerExpansionOnTab" = true;
-        "emmet.includeLanguages" = {
-          "phoenix-heex" = "html";
-          "javascript" = "javascriptreact";
-          "typescript" = "typescriptreact";
-        };
         "editor.codeActionsOnSave" = {
           "source.fixAll.stylelint" = "explicit";
         };
         "[python]" = {
           "editor.formatOnSave" = true;
           "editor.codeActionsOnSave" = {
-            "source.organizeImports.ruff" = "explicit";
             "source.fixAll" = "explicit";
           };
           "editor.formatOnType" = true;
