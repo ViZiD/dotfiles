@@ -14,6 +14,7 @@ in
         esbenp.prettier-vscode
         ms-python.python
         ms-python.vscode-pylance
+        charliermarsh.ruff
         tamasfe.even-better-toml
         redhat.vscode-yaml
         redhat.vscode-xml
@@ -44,8 +45,10 @@ in
           "editor.codeActionsOnSave" = {
             "source.fixAll" = "explicit";
           };
+          "editor.defaultFormatter" = "charliermarsh.ruff";
           "editor.formatOnType" = true;
         };
+        "ruff.path" = [ "${pkgs.ruff}/bin/ruff" ];
         "files.eol" = "\n";
         "javascript.suggestionActions.enabled" = true;
         "[javascript]" = {
