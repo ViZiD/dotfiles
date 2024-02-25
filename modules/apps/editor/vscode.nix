@@ -13,8 +13,6 @@ in
         shd101wyy.markdown-preview-enhanced
         jnoortheen.nix-ide
         phoenixframework.phoenix
-        jakebecker.elixir-ls
-        animus-coop.vscode-elixir-mix-formatter
         esbenp.prettier-vscode
         ms-python.python
         ms-python.vscode-pylance
@@ -140,10 +138,6 @@ in
         "diffEditor.hideUnchangedRegions.enabled" = true;
         "[xml]" = {
           "editor.defaultFormatter" = "redhat.vscode-xml";
-          "editor.formatOnSave" = true;
-        };
-        "[elixir]" = {
-          "editor.defaultFormatter" = "animus-coop.vscode-elixir-mix-formatter";
           "editor.formatOnSave" = true;
         };
         "editor.defaultFormatter" = "EditorConfig.EditorConfig";
