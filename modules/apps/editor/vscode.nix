@@ -26,6 +26,7 @@ in
         nicoespeon.abracadabra
         mkhl.direnv
         github.codespaces
+        ms-vscode-remote.remote-containers
       ];
 
       userSettings = {
@@ -39,33 +40,33 @@ in
         "prettier.useEditorConfig" = true;
         "emmet.triggerExpansionOnTab" = true;
         "editor.codeActionsOnSave" = {
-          "source.fixAll.stylelint" = "explicit";
+          "source.fixAll.stylelint" = "always";
         };
         "[python]" = {
           "editor.formatOnSave" = true;
           "editor.codeActionsOnSave" = {
-            "source.fixAll" = "explicit";
+            "source.fixAll" = "always";
+            "source.organizeImports" = "always";
           };
           "editor.defaultFormatter" = "charliermarsh.ruff";
-          "editor.formatOnType" = true;
         };
         "ruff.path" = [ "${pkgs.ruff}/bin/ruff" ];
         "files.eol" = "\n";
         "javascript.suggestionActions.enabled" = true;
         "[javascript]" = {
-          "editor.codeActionsOnSave" = {
-            "source.fixAll" = "explicit";
-            "source.fixAll.eslint" = "explicit";
-          };
           "editor.formatOnSave" = true;
+          "editor.codeActionsOnSave" = {
+            "source.fixAll" = "always";
+            "source.fixAll.eslint" = "always";
+          };
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
         };
         "[typescript]" = {
-          "editor.codeActionsOnSave" = {
-            "source.fixAll" = "explicit";
-            "source.fixAll.eslint" = "explicit";
-          };
           "editor.formatOnSave" = true;
+          "editor.codeActionsOnSave" = {
+            "source.fixAll" = "always";
+            "source.fixAll.eslint" = "always";
+          };
         };
         "git.autofetch" = true;
         "git.autoRepositoryDetection" = "openEditors";
@@ -160,8 +161,8 @@ in
         };
         "[javascript][typescript]" = {
           "editor.codeActionsOnSave" = {
-            "source.fixAll" = "explicit";
-            "source.fixAll.eslint" = "explicit";
+            "source.fixAll" = "always";
+            "source.fixAll.eslint" = "always";
           };
         };
       };
