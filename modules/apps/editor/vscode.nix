@@ -25,6 +25,7 @@ in
         editorconfig.editorconfig
         nicoespeon.abracadabra
         mkhl.direnv
+        github.codespaces
       ];
 
       userSettings = {
