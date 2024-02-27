@@ -14,6 +14,7 @@ in
         esbenp.prettier-vscode
         ms-python.python
         ms-python.vscode-pylance
+        ms-python.mypy-type-checker
         charliermarsh.ruff
         tamasfe.even-better-toml
         redhat.vscode-yaml
