@@ -133,7 +133,6 @@ in
           "editor.formatOnSave" = true;
         };
         "git.openRepositoryInParentFolders" = "never";
-        "python.pipenvPath" = "${pkgs.pipenv}/bin/pipenv";
         "diffEditor.hideUnchangedRegions.enabled" = true;
         "[xml]" = {
           "editor.defaultFormatter" = "redhat.vscode-xml";
