@@ -115,10 +115,11 @@ in
           "editor.defaultFormatter" = "ms-azuretools.vscode-docker";
         };
         "files.exclude" = {
-          "**/.classpath" = true;
-          "**/.project" = true;
-          "**/.settings" = true;
-          "**/.factorypath" = true;
+          # "**/.classpath" = true;
+          # "**/.project" = true;
+          # "**/.settings" = true;
+          # "**/.factorypath" = true;
+          "**/.mypy_cache" = true;
         };
         "vim.hlsearch" = true;
         "vim.ignorecase" = true;
