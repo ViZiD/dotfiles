@@ -17,8 +17,10 @@
 
     vscode-ext.url = "github:nix-community/nix-vscode-extensions";
 
+    nix-gaming.url = "github:fufexan/nix-gaming";
+
   };
-  outputs = { self, nixpkgs, nurpkgs, nixos-hardware, flake-utils, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, nurpkgs, nixos-hardware, flake-utils, home-manager, nix-gaming, ... }@inputs:
     let
       pkgs = self.pkgs.x86_64-linux.nixpkgs;
       modules = import ./modules { inherit flake-utils; };
@@ -44,8 +46,12 @@
       ]
       ++ base;
 
-      hosts.t440p.modules = [ ./hosts/t440p nixos-hardware.nixosModules.lenovo-thinkpad-t440p ]
-        ++ desktop-bspwm;
+      hosts.t440p.modules = [
+        ./hosts/t440p
+        nixos-hardware.nixosModules.lenovo-thinkpad-t440p
+        nix-gaming.nixosModules.steamCompat
+      ]
+      ++ desktop-bspwm;
 
       outputsBuilder = channels: with channels.nixpkgs;{
         devShell = mkShell {
