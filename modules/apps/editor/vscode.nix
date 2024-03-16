@@ -167,6 +167,10 @@ in
             "source.fixAll.eslint" = "always";
           };
         };
+        "[rust]" = {
+          "editor.defaultFormatter" = "rust-lang.rust-analyzer";
+          "editor.formatOnSave" = true;
+        };
       };
     };
   };
