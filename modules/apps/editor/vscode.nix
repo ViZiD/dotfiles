@@ -28,6 +28,7 @@ in
         mkhl.direnv
         github.codespaces
         ms-vscode-remote.remote-containers
+        rust-lang.rust-analyzer
       ];
 
       userSettings = {
