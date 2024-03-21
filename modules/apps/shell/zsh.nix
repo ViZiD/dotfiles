@@ -21,9 +21,6 @@
       "cat" = "${pkgs.bat}/bin/bat";
       "ls" = "${pkgs.eza}/bin/eza -alhH --icons=always";
 
-      "-g -- -h" = "-h 2>&1 | ${pkgs.bat}/bin/bat --language=help --style=plain";
-      "-g -- --help" = "--help 2>&1 | ${pkgs.bat}/bin/bat --language=help --style=plain";
-
       "gdd" = "${pkgs.git}/bin/git add .";
       "gda" = "${pkgs.git}/bin/git add -A";
       "gcm" = "${pkgs.git}/bin/git commit -m";
