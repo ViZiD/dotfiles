@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, pkgs, lib, ... }:
 let
   enableGpg = true;
   gpgPkg = config.home-manager.users.radik.programs.gpg.package;
@@ -14,7 +14,7 @@ mkIf enableGpg {
     services.gpg-agent = {
       enable = true;
       enableSshSupport = true;
-      pinentryFlavor = "qt";
+      pinentryPackage = pkgs.pinentry-qt;
       defaultCacheTtl = 60;
       maxCacheTtl = 120;
       sshKeys = [
