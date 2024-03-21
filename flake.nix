@@ -49,7 +49,6 @@
       hosts.t440p.modules = [
         ./hosts/t440p
         nixos-hardware.nixosModules.lenovo-thinkpad-t440p
-        nix-gaming.nixosModules.steamCompat
       ]
       ++ desktop-bspwm;
 
