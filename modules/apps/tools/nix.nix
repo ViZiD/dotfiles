@@ -10,6 +10,8 @@
 
     nixpkgs-fmt
 
+    nixpkgs-review
+
     # generators
     nodePackages.node2nix
   ];
