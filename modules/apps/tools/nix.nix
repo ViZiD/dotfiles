@@ -13,6 +13,7 @@
     nixpkgs-review
 
     # generators
+    nix-init
     nodePackages.node2nix
   ];
 }
