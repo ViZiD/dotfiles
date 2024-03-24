@@ -17,6 +17,10 @@ with lib;
         http.postBuffer = 524288000;
         credential.helper = "store";
       };
+      difftastic = {
+        enable = true;
+	background = "dark";
+      };
       extraConfig.commit.gpgsign = mkIf enableGpg true;
       signing = mkIf enableGpg {
         signByDefault = true;
