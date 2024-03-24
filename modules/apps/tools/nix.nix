@@ -14,6 +14,7 @@
 
     # generators
     nix-init
+    nurl
     nodePackages.node2nix
   ];
 }
