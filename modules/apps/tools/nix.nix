@@ -18,10 +18,10 @@ in
       nixpkgs-fmt
 
       nixpkgs-review
-
-      # generators
+      nix-update
       nix-init
       nurl
+
       nodePackages.node2nix
     ];
   };
