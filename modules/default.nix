@@ -35,6 +35,7 @@ let
     ./apps/electronics
     ./apps/graphics
     ./apps/embedded
+    ./apps/office
 
     ./apps/security/gpg.nix
 
@@ -101,6 +102,7 @@ let
     terminal
     graphics
     embedded
+    office
     # electronics
 
     gpg
