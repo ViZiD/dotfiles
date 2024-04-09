@@ -58,7 +58,11 @@
         };
       };
 
+
+      formatter.x86_64-linux = pkgs.nixpkgs-fmt;
+
       overlay = import ./overlays inputs;
 
     };
+
 }

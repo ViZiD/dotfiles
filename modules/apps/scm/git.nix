@@ -19,7 +19,7 @@ with lib;
       };
       difftastic = {
         enable = true;
-	background = "dark";
+        background = "dark";
       };
       extraConfig.commit.gpgsign = mkIf enableGpg true;
       signing = mkIf enableGpg {
