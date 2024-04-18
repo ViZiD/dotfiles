@@ -25,6 +25,7 @@ in
         editorconfig.editorconfig
         mkhl.direnv
         rust-lang.rust-analyzer
+        gleam.gleam
       ];
 
       userSettings = {
