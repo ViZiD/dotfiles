@@ -18,9 +18,7 @@ mkIf enableGpg {
       defaultCacheTtl = 60;
       maxCacheTtl = 120;
       sshKeys = [
-        "C7703403B4FC67BD217F364A62F025EBBFDCEB84"
         "4B4E301406294B81FED02CA5DB6837BB5463F58E"
-        "90B204569E840D26B0744856E6DB5688813BAC91"
       ];
     };
     systemd.user.services.gpg-agent = {
