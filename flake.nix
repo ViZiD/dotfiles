@@ -17,10 +17,8 @@
 
     vscode-ext.url = "github:nix-community/nix-vscode-extensions";
 
-    nix-gaming.url = "github:fufexan/nix-gaming";
-
   };
-  outputs = { self, nixpkgs, nurpkgs, nixos-hardware, flake-utils, home-manager, nix-gaming, ... }@inputs:
+  outputs = { self, nixpkgs, nurpkgs, nixos-hardware, flake-utils, home-manager, ... }@inputs:
     let
       pkgs = self.pkgs.x86_64-linux.nixpkgs;
       modules = import ./modules { inherit flake-utils; };
@@ -57,7 +55,6 @@
           buildInputs = [ git gnumake ];
         };
       };
-
 
       formatter.x86_64-linux = pkgs.nixpkgs-fmt;
 
