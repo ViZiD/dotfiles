@@ -20,14 +20,10 @@ in
         redhat.vscode-yaml
         redhat.vscode-xml
         ms-azuretools.vscode-docker
-        ms-vscode-remote.remote-ssh
         monokai.theme-monokai-pro-vscode
         pkief.material-icon-theme
         editorconfig.editorconfig
-        nicoespeon.abracadabra
         mkhl.direnv
-        github.codespaces
-        ms-vscode-remote.remote-containers
         rust-lang.rust-analyzer
       ];
 
