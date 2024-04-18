@@ -3,8 +3,7 @@ let
   enableGpg = true;
   gpgPkg = config.home-manager.users.radik.programs.gpg.package;
   gpgInitStr = ''
-    GPG_TTY="$(tty)"
-    export GPG_TTY
+    export GPG_TTY="$(tty)"
     ${gpgPkg}/bin/gpg-connect-agent updatestartuptty /bye > /dev/null
   '';
 in
