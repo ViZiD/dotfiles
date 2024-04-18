@@ -11,12 +11,14 @@ in
 with lib;
 mkIf enableGpg {
   home-manager.users.radik = {
-    services.gpg-agent = {
+    services.gpg-agent = rec {
       enable = true;
       enableSshSupport = true;
       pinentryPackage = pkgs.pinentry-qt;
-      defaultCacheTtl = 60;
-      maxCacheTtl = 120;
+      defaultCacheTtl = 60480000;
+      maxCacheTtl = 60480000;
+      defaultCacheTtlSsh = defaultCacheTtl;
+      maxCacheTtlSsh = maxCacheTtl;
       sshKeys = [
         "4B4E301406294B81FED02CA5DB6837BB5463F58E"
       ];
