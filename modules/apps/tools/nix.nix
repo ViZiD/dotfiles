@@ -15,7 +15,7 @@ in
       nil
       nixd
 
-      nixpkgs-fmt
+      nixfmt-rfc-style
 
       nixpkgs-review
       nix-update

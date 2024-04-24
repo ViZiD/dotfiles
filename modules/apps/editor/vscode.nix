@@ -154,7 +154,7 @@ in
               "ignored" = [ "unused_binding" "unused_with" ];
             };
             "formatting" = {
-              "command" = [ "nixpkgs-fmt" ];
+              "command" = [ "nixfmt" ];
             };
           };
         };

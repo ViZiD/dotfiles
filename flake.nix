@@ -56,7 +56,7 @@
         };
       };
 
-      formatter.x86_64-linux = pkgs.nixpkgs-fmt;
+      formatter.x86_64-linux = pkgs.nixfmt-rfc-style;
 
       overlay = import ./overlays inputs;
 
