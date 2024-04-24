@@ -73,7 +73,7 @@ in
         "editor.autoClosingBrackets" = "always";
         "editor.formatOnSave" = true;
         "editor.fontFamily" = "FiraCode Nerd Font";
-        "editor.fontLigatures" = true;
+        "editor.fontLigatures" = false;
         "editor.fontSize" = 14.5;
         "editor.scrollBeyondLastLine" = false;
         "editor.padding.bottom" = 200;
