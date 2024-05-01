@@ -18,6 +18,5 @@
       variant = "qwerty";
       options = "grp:alt_shift_toggle";
     };
-
   };
 }

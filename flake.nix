@@ -16,9 +16,17 @@
     };
 
     vscode-ext.url = "github:nix-community/nix-vscode-extensions";
-
   };
-  outputs = { self, nixpkgs, nurpkgs, nixos-hardware, flake-utils, home-manager, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nurpkgs,
+      nixos-hardware,
+      flake-utils,
+      home-manager,
+      ...
+    }@inputs:
     let
       pkgs = self.pkgs.x86_64-linux.nixpkgs;
       modules = import ./modules { inherit flake-utils; };
@@ -34,32 +42,30 @@
         android_sdk.accept_license = true;
       };
 
-      sharedOverlays = [
-        self.overlay
-      ];
+      sharedOverlays = [ self.overlay ];
 
       hostDefaults.modules = [
         home-manager.nixosModules.home-manager
         nurpkgs.nixosModules.nur
-      ]
-      ++ base;
+      ] ++ base;
 
       hosts.t440p.modules = [
         ./hosts/t440p
         nixos-hardware.nixosModules.lenovo-thinkpad-t440p
-      ]
-      ++ desktop-bspwm;
+      ] ++ desktop-bspwm;
 
-      outputsBuilder = channels: with channels.nixpkgs;{
-        devShell = mkShell {
-          buildInputs = [ git gnumake ];
+      outputsBuilder =
+        channels: with channels.nixpkgs; {
+          devShell = mkShell {
+            buildInputs = [
+              git
+              gnumake
+            ];
+          };
         };
-      };
 
       formatter.x86_64-linux = pkgs.nixfmt-rfc-style;
 
       overlay = import ./overlays inputs;
-
     };
-
 }

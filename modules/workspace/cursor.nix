@@ -1,4 +1,5 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }:
+{
 
   environment.sessionVariables = {
     XCURSOR_PATH = lib.mkForce "/home/radik/.icons";

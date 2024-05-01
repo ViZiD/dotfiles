@@ -1,7 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   home-manager.users.radik = {
-    home.packages = with pkgs; [
-      kicad
-    ];
+    home.packages = with pkgs; [ kicad ];
   };
 }

@@ -1,9 +1,13 @@
 # source https://github.com/balsoft/nixos-config/
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
 let
-  colorType =
-    types.addCheck types.str (x: !isNull (builtins.match "[0-9a-fA-F]{6}" x));
+  colorType = types.addCheck types.str (x: !isNull (builtins.match "[0-9a-fA-F]{6}" x));
   color = mkOption { type = colorType; };
 
   font = {
@@ -11,38 +15,46 @@ let
     size = mkOption { type = types.int; };
   };
 
-  fromYAML = yaml:
-    builtins.fromJSON (builtins.readFile (pkgs.stdenv.mkDerivation {
-      name = "fromYAML";
-      phases = [ "buildPhase" ];
-      buildPhase = "echo '${yaml}' | ${pkgs.yaml2json}/bin/yaml2json > $out";
-    }));
+  fromYAML =
+    yaml:
+    builtins.fromJSON (
+      builtins.readFile (
+        pkgs.stdenv.mkDerivation {
+          name = "fromYAML";
+          phases = [ "buildPhase" ];
+          buildPhase = "echo '${yaml}' | ${pkgs.yaml2json}/bin/yaml2json > $out";
+        }
+      )
+    );
 in
 {
   options = {
     themes = {
-      colors = builtins.listToAttrs (map
-        (name: {
-          inherit name;
-          value = color;
-        }) [
-        "base00"
-        "base01"
-        "base02"
-        "base03"
-        "base04"
-        "base05"
-        "base06"
-        "base07"
-        "base08"
-        "base09"
-        "base0A"
-        "base0B"
-        "base0C"
-        "base0D"
-        "base0E"
-        "base0F"
-      ]);
+      colors = builtins.listToAttrs (
+        map
+          (name: {
+            inherit name;
+            value = color;
+          })
+          [
+            "base00"
+            "base01"
+            "base02"
+            "base03"
+            "base04"
+            "base05"
+            "base06"
+            "base07"
+            "base08"
+            "base09"
+            "base0A"
+            "base0B"
+            "base0C"
+            "base0D"
+            "base0E"
+            "base0F"
+          ]
+      );
       fonts = {
         main = font;
         serif = font;

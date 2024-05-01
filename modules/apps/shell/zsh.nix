@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   environment.sessionVariables.SHELL = "${pkgs.zsh}/bin/zsh";
   environment.pathsToLink = [ "/share/zsh" ];
 
@@ -61,5 +62,3 @@
     '';
   };
 }
-
-

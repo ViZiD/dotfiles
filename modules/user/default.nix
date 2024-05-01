@@ -16,7 +16,10 @@ in
     };
   };
 
-  nix.settings.trusted-users = [ "root" "radik" ];
+  nix.settings.trusted-users = [
+    "root"
+    "radik"
+  ];
 
   security.sudo.wheelNeedsPassword = false;
 

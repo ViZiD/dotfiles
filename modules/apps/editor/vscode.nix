@@ -151,7 +151,10 @@ in
         "nix.serverSettings" = {
           "nil" = {
             "diagnostics" = {
-              "ignored" = [ "unused_binding" "unused_with" ];
+              "ignored" = [
+                "unused_binding"
+                "unused_with"
+              ];
             };
             "formatting" = {
               "command" = [ "nixfmt" ];

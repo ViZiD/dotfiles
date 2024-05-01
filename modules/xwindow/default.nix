@@ -1,5 +1,1 @@
-{
-  imports = [
-    ./xserver/base.nix
-  ];
-}
+{ imports = [ ./xserver/base.nix ]; }

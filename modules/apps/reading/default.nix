@@ -1,5 +1,1 @@
-{
-  imports = [
-    ./zathura
-  ];
-}
+{ imports = [ ./zathura ]; }

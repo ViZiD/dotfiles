@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   enableGpg = true;
   gpgPkg = config.home-manager.users.radik.programs.gpg.package;
@@ -18,9 +23,7 @@ mkIf enableGpg {
       maxCacheTtl = 60480000;
       defaultCacheTtlSsh = defaultCacheTtl;
       maxCacheTtlSsh = maxCacheTtl;
-      sshKeys = [
-        "4B4E301406294B81FED02CA5DB6837BB5463F58E"
-      ];
+      sshKeys = [ "4B4E301406294B81FED02CA5DB6837BB5463F58E" ];
     };
     systemd.user.services.gpg-agent = {
       Service = {

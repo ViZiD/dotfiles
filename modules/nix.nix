@@ -15,7 +15,10 @@
 
     settings = {
       # enable nix flakes
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
 
       # Detect files in the store that have identical contents,
       # and replace them with hard links to a single copy.
@@ -52,5 +55,4 @@
       dates = [ "07:00" ];
     };
   };
-
 }

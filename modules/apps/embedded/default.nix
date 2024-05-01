@@ -1,7 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   home-manager.users.radik = {
-    home.packages = with pkgs; [
-      nmrpflash
-    ];
+    home.packages = with pkgs; [ nmrpflash ];
   };
 }

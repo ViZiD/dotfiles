@@ -9,6 +9,5 @@
       scrollMethod = "twofinger";
       naturalScrolling = true;
     };
-
   };
 }

@@ -9,7 +9,13 @@ with lib;
       enable = true;
       userEmail = "vizid1337@gmail.com";
       userName = "Radik Islamov";
-      ignores = [ "venv" ".env" "node_modules" "shell.nix" ".direnv" ];
+      ignores = [
+        "venv"
+        ".env"
+        "node_modules"
+        "shell.nix"
+        ".direnv"
+      ];
       extraConfig = {
         init.defaultBranch = "master";
         pull.rebase = true;

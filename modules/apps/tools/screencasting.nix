@@ -1,7 +1,5 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    asciinema
-  ];
+  environment.systemPackages = with pkgs; [ asciinema ];
 }

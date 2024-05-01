@@ -11,7 +11,6 @@
     # - (Un)Plugging phone jack etc
     acpid.enable = true;
 
-
     # Enable programs to publish and discover services and
     # hosts running on a local network. For example, a user can
     # plug a computer into a network and have Avahi

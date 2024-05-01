@@ -1,4 +1,5 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, ... }:
+{
   fonts = {
     enableDefaultPackages = true;
 
@@ -9,12 +10,19 @@
       noto-fonts-emoji
       twemoji-color-font
       ibm-plex
-      (nerdfonts.override { fonts = [ "Hack" "VictorMono" "FiraCode" ]; })
+      (nerdfonts.override {
+        fonts = [
+          "Hack"
+          "VictorMono"
+          "FiraCode"
+        ];
+      })
     ];
 
     # source https://github.com/balsoft/nixos-config/
     fontconfig =
-      let fonts = config.themes.fonts;
+      let
+        fonts = config.themes.fonts;
       in
       {
         enable = true;
@@ -22,7 +30,10 @@
           monospace = [ "${fonts.mono.family} ${toString fonts.mono.size}" ];
           sansSerif = [ "${fonts.main.family} ${toString fonts.main.size}" ];
           serif = [ "${fonts.serif.family} ${toString fonts.serif.size}" ];
-          emoji = [ "Noto Color Emoji" "Twitter Color Emoji" ];
+          emoji = [
+            "Noto Color Emoji"
+            "Twitter Color Emoji"
+          ];
         };
       };
   };
