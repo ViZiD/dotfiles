@@ -56,6 +56,7 @@ let
     ./workspace/gnome
 
     ./themes.nix
+    ./zram.nix
   ];
   base = with nixosModules; [
     boot
@@ -107,20 +108,24 @@ let
 
     gpg
     pass
+
+    zram
   ];
 
-  desktop-bspwm = with nixosModules; [
-    bspwm
+  desktop-bspwm =
+    with nixosModules;
+    [
+      bspwm
 
-    xwindow
-    libinput
+      xwindow
+      libinput
 
-    laptopX11
+      laptopX11
 
-    gaming
-  ] ++ desktop;
+      gaming
+    ]
+    ++ desktop;
 in
 {
   inherit nixosModules base desktop-bspwm;
 }
-
