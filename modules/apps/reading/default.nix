@@ -1,1 +1,6 @@
-{ imports = [ ./zathura ]; }
+{
+  imports = [
+    ./zathura
+    ./other.nix
+  ];
+}
