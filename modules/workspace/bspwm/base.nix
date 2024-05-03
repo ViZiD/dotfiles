@@ -105,6 +105,9 @@ in
           follow = false;
           focus = true;
         };
+        "Anki" = {
+          state = "floating";
+        };
       };
     };
   };
