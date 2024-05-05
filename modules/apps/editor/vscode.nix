@@ -29,6 +29,7 @@ in
       ];
 
       userSettings = {
+        "telemetry.telemetryLevel" = "off";
         "update.mode" = "none";
         "extensions.autoCheckUpdates" = false;
         "extensions.autoUpdate" = false;
