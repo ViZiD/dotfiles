@@ -108,6 +108,12 @@ in
         "Anki" = {
           state = "floating";
         };
+        "GoldenDict-ng" = {
+          state = "floating";
+          sticky = true;
+          follow = false;
+          focus = true;
+        };
       };
     };
   };
