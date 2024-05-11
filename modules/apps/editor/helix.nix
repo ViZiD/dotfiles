@@ -3,7 +3,11 @@
   home-manager.users.radik = {
     programs.helix = {
       enable = true;
-      extraPackages = with pkgs; [ nixfmt-rfc-style ];
+      extraPackages = with pkgs; [
+        nixfmt-rfc-style
+        dart
+        java-language-server
+      ];
       settings = {
         theme = "monokai";
         editor = {
