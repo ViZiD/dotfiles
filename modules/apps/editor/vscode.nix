@@ -26,6 +26,7 @@ in
         mkhl.direnv
         rust-lang.rust-analyzer
         gleam.gleam
+        dart-code.flutter
       ];
 
       userSettings = {
