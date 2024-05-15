@@ -14,5 +14,6 @@
   home-manager.users.radik.home.packages = with pkgs; [
     alsa-utils
     playerctl
+    pavucontrol
   ];
 }
