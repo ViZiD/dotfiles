@@ -9,6 +9,7 @@
     alsa.enable = true;
     pulse.enable = true;
     wireplumber.enable = true;
+    jack.enable = true;
   };
   home-manager.users.radik.home.packages = with pkgs; [
     alsa-utils
