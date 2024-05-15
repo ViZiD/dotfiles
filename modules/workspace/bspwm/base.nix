@@ -16,7 +16,7 @@ in
   services.xserver.displayManager.startx.enable = true;
 
   home-manager.users.radik = {
-    home.packages = with pkgs; [
+    home.packages = [
       run_polybar
       run_wallpaper
     ];
@@ -109,6 +109,12 @@ in
           state = "floating";
         };
         "GoldenDict-ng" = {
+          state = "floating";
+          sticky = true;
+          follow = false;
+          focus = true;
+        };
+        "Pavucontrol" = {
           state = "floating";
           sticky = true;
           follow = false;
