@@ -3,6 +3,7 @@
     ./fs.nix
     ./power.nix
     ./boot.nix
+    ./mic-fix.nix
   ];
 
   hardware = {
