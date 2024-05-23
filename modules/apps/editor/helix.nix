@@ -4,6 +4,7 @@
     programs.helix = {
       enable = true;
       extraPackages = with pkgs; [
+        clang-tools
         nixfmt-rfc-style
         dart
         java-language-server
