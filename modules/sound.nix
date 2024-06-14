@@ -15,5 +15,6 @@
     alsa-utils
     playerctl
     pavucontrol
+    alsa-oss
   ];
 }
