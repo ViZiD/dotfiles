@@ -123,6 +123,19 @@ in
         "vim.showcmd" = false;
         "vim.smartcase" = true;
         "vim.useSystemClipboard" = true;
+        "vim.leader" = "<space>";
+        "vim.normalModeKeyBindings" = [
+          {
+            "before" = [
+              "<leader>"
+              "a"
+            ];
+            "commands" = [ "workbench.view.explorer" ];
+          }
+        ];
+        "extensions.experimental.affinity" = {
+          "vscodevim.vim" = 1;
+        };
         "[yaml]" = {
           "editor.formatOnSave" = true;
         };
