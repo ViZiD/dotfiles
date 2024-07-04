@@ -2,6 +2,10 @@
 
 {
   services = {
+    printing = {
+      enable = true;
+      drivers = with pkgs; [ hplipWithPlugin ];
+    };
     # Enable ACPI deamon. When an event occurs, it executes
     # programs to handle the event. These events are triggered
     # by certain actions, such as:
