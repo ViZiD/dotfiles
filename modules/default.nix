@@ -21,6 +21,8 @@ let
 
     ./dev
 
+    ./openwrt
+
     ./apps
     ./apps/reading
     ./apps/monitoring
@@ -71,6 +73,8 @@ let
 
     zsh
     git
+
+    openwrt
   ];
 
   desktop = with nixosModules; [
