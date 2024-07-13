@@ -10,6 +10,7 @@
         java-language-server
         nodePackages.typescript-language-server
         nodePackages.vscode-langservers-extracted
+        gleam
       ];
       settings = {
         theme = "monokai";
@@ -53,6 +54,10 @@
           {
             name = "nix";
             formatter.command = "nixfmt";
+            auto-format = true;
+          }
+          {
+            name = "gleam";
             auto-format = true;
           }
         ];
