@@ -94,6 +94,9 @@ in
         "[json]" = {
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
         };
+        "[javascriptreact]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
         "files.associations" = {
           "*.json" = "json";
           "*.yml" = "yaml";
