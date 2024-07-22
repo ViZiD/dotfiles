@@ -11,6 +11,7 @@
         nodePackages.typescript-language-server
         nodePackages.vscode-langservers-extracted
         gleam
+        python312Packages.python-lsp-server
       ];
       settings = {
         theme = "monokai";
