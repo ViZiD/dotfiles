@@ -2,7 +2,7 @@ let
   archive = "org.gnome.FileRoller";
   image = "feh";
   browser = "google-chrome.desktop";
-  editor = "nvim";
+  editor = "hx";
   reader = "zathura";
 in
 {

@@ -3,6 +3,7 @@
   home-manager.users.radik = {
     programs.helix = {
       enable = true;
+      defaultEditor = true;
       extraPackages = with pkgs; [
         clang-tools
         nixfmt-rfc-style
