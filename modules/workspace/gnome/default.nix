@@ -1,4 +1,4 @@
 { pkgs, ... }:
 {
-  home-manager.users.radik.home.packages = with pkgs; [ gnome.file-roller ];
+  home-manager.users.radik.home.packages = with pkgs; [ file-roller ];
 }
