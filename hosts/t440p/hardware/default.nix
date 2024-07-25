@@ -4,6 +4,7 @@
     ./power.nix
     ./boot.nix
     ./mic-fix.nix
+    ./vap.nix
   ];
 
   hardware = {
