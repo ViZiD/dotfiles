@@ -13,7 +13,7 @@ let
     ./sound.nix
     ./bluetooth.nix
     ./power.nix
-    #./opengl.nix
+    ./opengl.nix
     ./android.nix
 
     ./user
@@ -82,7 +82,7 @@ let
     hardware
     sound
     bluetooth
-    #opengl
+    opengl
     android
 
     themes
