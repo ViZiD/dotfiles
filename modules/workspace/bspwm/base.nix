@@ -77,6 +77,10 @@ in
           desktop = "^2";
           state = "floating";
         };
+        "Brave-browser" = {
+          desktop = "^2";
+          state = "floating";
+        };
         "Code" = {
           desktop = "^3";
           state = "floating";
