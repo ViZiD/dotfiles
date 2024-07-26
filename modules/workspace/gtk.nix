@@ -18,7 +18,8 @@
       };
 
       font = {
-        name = with config.themes.fonts; "${main.family} ${toString main.size}";
+        name = with config.themes.fonts; main.family;
+        size = with config.themes.fonts; main.size;
       };
     };
     home.sessionVariables.GTK_THEME = "amarena";
