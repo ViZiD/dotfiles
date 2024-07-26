@@ -1,7 +1,7 @@
 let
   archive = "org.gnome.FileRoller";
   image = "feh";
-  browser = "google-chrome.desktop";
+  browser = "brave-browser.desktop";
   editor = "hx";
   reader = "zathura";
 in
