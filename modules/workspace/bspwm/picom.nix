@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
   home-manager.users.radik = {
     services.picom = {
@@ -16,5 +17,6 @@
         };
       };
     };
+    systemd.user.services.picom.Install.WantedBy = lib.mkForce [ "xinit-dummy-target.target" ];
   };
 }

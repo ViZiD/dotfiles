@@ -15,6 +15,7 @@ in
 {
   services.xserver.displayManager.startx.enable = true;
 
+  systemd.user.targets."xinit-dummy-target".description = "dummy target for picom:)";
   home-manager.users.radik = {
     home.packages = [
       run_polybar
@@ -28,9 +29,10 @@ in
     # run bspwm without dm
     home.file.".xinitrc".text = ''
       systemctl --user import-environment DISPLAY XAUTHORITY
+      systemctl --no-block --user start xinit-dummy-target.target
       xsetroot -cursor_name coffee_mug
 
-      exec bspwm
+      exec bspwm 
     '';
 
     xsession.windowManager.bspwm = {
