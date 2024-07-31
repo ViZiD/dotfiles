@@ -20,7 +20,10 @@
     # plug a computer into a network and have Avahi
     # automatically advertise the network services running on
     # its machine, facilitating user access to those services
-    avahi.enable = true;
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+    };
 
     # Many GTK-based file managers like Nautilus, Thunar, and PCManFM can browse samba
     # shares thanks to GVFS. GVFS is a dbus daemon which must be running for this to work.
