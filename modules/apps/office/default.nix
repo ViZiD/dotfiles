@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
   home-manager.users.radik = {
-    home.packages = with pkgs; [ libreoffice ];
+    home.packages = with pkgs; [
+      libreoffice
+      kdePackages.skanlite
+    ];
   };
 }
