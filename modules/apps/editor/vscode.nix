@@ -50,22 +50,6 @@ in
         };
         "ruff.path" = [ "${pkgs.ruff}/bin/ruff" ];
         "files.eol" = "\n";
-        "javascript.suggestionActions.enabled" = true;
-        "[javascript]" = {
-          "editor.formatOnSave" = true;
-          "editor.codeActionsOnSave" = {
-            "source.fixAll" = "always";
-            "source.fixAll.eslint" = "always";
-          };
-          "editor.defaultFormatter" = "esbenp.prettier-vscode";
-        };
-        "[typescript]" = {
-          "editor.formatOnSave" = true;
-          "editor.codeActionsOnSave" = {
-            "source.fixAll" = "always";
-            "source.fixAll.eslint" = "always";
-          };
-        };
         "git.autofetch" = true;
         "git.autoRepositoryDetection" = "openEditors";
         "git.enableCommitSigning" = true;
@@ -181,7 +165,11 @@ in
             "source.fixAll" = "always";
             "source.fixAll.eslint" = "always";
           };
+          "editor.formatOnSave" = true;
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
         };
+        "javascript.suggestionActions.enabled" = true;
+        "typescript.suggestionActions.enabled" = true;
         "[rust]" = {
           "editor.defaultFormatter" = "rust-lang.rust-analyzer";
           "editor.formatOnSave" = true;
