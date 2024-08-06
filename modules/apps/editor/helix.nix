@@ -12,7 +12,7 @@
         nodePackages.typescript-language-server
         nodePackages.vscode-langservers-extracted
         gleam
-        python312Packages.python-lsp-server
+        python311Packages.python-lsp-server
       ];
       settings = {
         theme = "monokai";
@@ -60,6 +60,10 @@
           }
           {
             name = "gleam";
+            auto-format = true;
+          }
+          {
+            name = "python";
             auto-format = true;
           }
         ];
