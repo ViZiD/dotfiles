@@ -7,6 +7,7 @@
       inetutils
       tcpdump
       nettools
+      csvlens
     ];
   };
 }
