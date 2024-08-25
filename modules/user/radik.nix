@@ -27,7 +27,7 @@
   ];
 
   createHome = true;
-  initialPassword = "whatever";
+  hashedPassword = "$y$j9T$gNjWUanV5/x8SEzTHU.80.$8.JskQA9.fmDxgAr3I1T78.DKYQmr0gKQEC9yFqKWl6";
   useDefaultShell = true;
   openssh.authorizedKeys.keys = authorizedKeys;
 }

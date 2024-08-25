@@ -6,7 +6,7 @@ let
 in
 {
   users = {
-    mutableUsers = true;
+    mutableUsers = false;
 
     defaultUserShell = pkgs.zsh;
 
