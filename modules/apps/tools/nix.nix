@@ -10,6 +10,7 @@ in
     };
     home.packages = with pkgs; [
       cachix
+      nix-tree
 
       # nix lsp
       nil
