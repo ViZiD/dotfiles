@@ -28,6 +28,7 @@ in
         gleam.gleam
         dart-code.dart-code
         dart-code.flutter
+        psioniq.psi-header
       ];
 
       userSettings = {
@@ -184,6 +185,61 @@ in
           "editor.wordBasedSuggestions" = "off";
         };
         "dart.checkForSdkUpdates" = false;
+        "psi-header.config" = {
+          "author" = "Radik Islamov";
+          "authorEmail" = "vizid1337@gmail.com";
+          "license" = "MIT";
+
+          "forceToTop" = true;
+          "blankLinesAfter" = 1;
+          "spacesBetweenYears" = false;
+          "enforceHeader" = true;
+        };
+        "psi-header.templates" = [
+          {
+            "language" = "*";
+            "template" = [
+              "Copyright (C) <<year>> <<author>> <<<authorEmail>>>"
+              "SPDX-License-Identifier: <<spdxid>>"
+            ];
+          }
+        ];
+        "psi-header.lang-config" = [
+          {
+            "language" = "python";
+            "prefix" = "# ";
+            "end" = "";
+            "begin" = "";
+          }
+          {
+            "language" = "toml";
+            "mapTo" = "python";
+          }
+          {
+            "language" = "yaml";
+            "mapTo" = "python";
+          }
+          {
+            "language" = "shellscript";
+            "mapTo" = "python";
+          }
+          {
+            "language" = "javascript";
+            "begin" = "";
+            "prefix" = " * ";
+            "end" = "";
+          }
+          {
+            "language" = "typescript";
+            "mapTo" = "javascript";
+          }
+          {
+            "language" = "markdown";
+            "begin" = "<!--";
+            "prefix" = "";
+            "end" = "-->";
+          }
+        ];
       };
     };
   };
