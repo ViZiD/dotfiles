@@ -3,10 +3,8 @@
 let
   genPkgs = pkgs.callPackage ./packages { inherit pkgs; };
 
-  extPkgs = with genPkgs // { rush-microsoft = genPkgs."@microsoft/rush"; }; [
-    webcrack
-    rush-microsoft
-  ];
+  extPkgs = with genPkgs; [ webcrack ];
+
   nixPkgs = with pkgs.nodePackages; [
     # http-server
     # rollup
@@ -30,6 +28,7 @@ in
         [
           nodejs_latest
           yarn
+          pnpm
         ]
         ++ nixPkgs
         ++ extPkgs;
