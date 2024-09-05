@@ -29,6 +29,7 @@ in
         dart-code.dart-code
         dart-code.flutter
         psioniq.psi-header
+        sourcegraph.cody-ai
       ];
 
       userSettings = {
