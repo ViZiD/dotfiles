@@ -244,6 +244,16 @@ in
             "prefix" = "";
             "end" = "-->";
           }
+          {
+            "language" = "html";
+            "mapTo" = "markdown";
+          }
+          {
+            "language" = "css";
+            "begin" = "/*";
+            "prefix" = "";
+            "end" = "*/";
+          }
         ];
       };
     };
