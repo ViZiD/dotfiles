@@ -188,7 +188,7 @@ in
         "dart.checkForSdkUpdates" = false;
         "psi-header.config" = {
           "author" = "Radik Islamov";
-          "authorEmail" = "vizid1337@gmail.com";
+          "authorEmail" = "mail@vizqq.cc";
           "license" = "MIT";
 
           "forceToTop" = true;
@@ -222,6 +222,10 @@ in
           }
           {
             "language" = "shellscript";
+            "mapTo" = "python";
+          }
+          {
+            "language" = "nix";
             "mapTo" = "python";
           }
           {
