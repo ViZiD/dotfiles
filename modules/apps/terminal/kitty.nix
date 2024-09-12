@@ -21,6 +21,8 @@
 
       tab_title_max_length = 10;
 
+      window_margin_width = 1;
+
       # shell_integration = "no-cursor";
     };
 
