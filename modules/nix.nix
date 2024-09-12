@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   nix = {
-    package = pkgs.nixVersions.git;
+    package = pkgs.nixVersions.stable;
     # !!!flake-utils-plus custome config!!!
     generateRegistryFromInputs = true;
     generateNixPathFromInputs = true;
