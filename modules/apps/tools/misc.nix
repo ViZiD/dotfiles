@@ -8,6 +8,7 @@
       tcpdump
       nettools
       csvlens
+      ventoy-full
     ];
   };
 }
