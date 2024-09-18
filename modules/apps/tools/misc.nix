@@ -9,6 +9,7 @@
       nettools
       csvlens
       ventoy-full
+      parted
     ];
   };
 }
