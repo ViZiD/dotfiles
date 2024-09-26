@@ -22,7 +22,19 @@ mkIf enableGpg {
     };
     programs.gpg = {
       enable = true;
+      scdaemonSettings = {
+        disable-ccid = true;
+      };
       homedir = "${config.home-manager.users.radik.xdg.dataHome}/gnupg";
     };
   };
+  services = {
+    pcscd.enable = true;
+    udev = {
+      packages = [
+        pkgs.yubikey-personalization
+      ];
+    };
+  };
+  hardware.gpgSmartcards.enable = true;
 }
