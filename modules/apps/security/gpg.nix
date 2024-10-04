@@ -26,6 +26,12 @@ mkIf enableGpg {
         disable-ccid = true;
       };
       homedir = "${config.home-manager.users.radik.xdg.dataHome}/gnupg";
+      publicKeys = [
+        {
+          source = ./pgp.asc;
+          trust = 5;
+        }
+      ];
     };
   };
   services = {
