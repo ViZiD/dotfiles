@@ -18,7 +18,10 @@ mkIf enableGpg {
       maxCacheTtl = 60480000;
       defaultCacheTtlSsh = defaultCacheTtl;
       maxCacheTtlSsh = maxCacheTtl;
-      sshKeys = [ "4B4E301406294B81FED02CA5DB6837BB5463F58E" ];
+      sshKeys = [
+        "4B4E301406294B81FED02CA5DB6837BB5463F58E"
+        "BA59AF6DA2E351C1EF48AAE02F5D0F71AFE4DA6A"
+      ];
     };
     programs.gpg = {
       enable = true;
