@@ -13,7 +13,6 @@ with lib;
         "venv"
         ".env"
         "node_modules"
-        "shell.nix"
         ".direnv"
       ];
       extraConfig = {
