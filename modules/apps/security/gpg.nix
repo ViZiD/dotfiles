@@ -39,11 +39,6 @@ mkIf enableGpg {
   };
   services = {
     pcscd.enable = true;
-    udev = {
-      packages = [
-        pkgs.yubikey-personalization
-      ];
-    };
   };
   hardware.gpgSmartcards.enable = true;
 }
