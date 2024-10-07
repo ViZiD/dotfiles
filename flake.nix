@@ -57,9 +57,10 @@
       outputsBuilder =
         channels: with channels.nixpkgs; {
           devShell = mkShell {
-            buildInputs = [
+            packages = [
               git
               gnumake
+              age-plugin-openpgp-card
             ];
           };
         };
