@@ -61,6 +61,8 @@
               git
               gnumake
               age-plugin-openpgp-card
+              rage
+              openpgp-card-tools
             ];
           };
         };
