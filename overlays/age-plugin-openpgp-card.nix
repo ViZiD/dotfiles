@@ -2,6 +2,7 @@
   lib,
   rustPlatform,
   fetchFromGitHub,
+  fetchpatch,
   pkg-config,
   pcsclite,
 }:
@@ -17,7 +18,15 @@ rustPlatform.buildRustPackage {
     hash = "sha256-WKnwSq4fTqFeXyI8/ysM0U34cN8MK2C9uBYtciw0q1I=";
   };
 
-  cargoHash = "sha256-9DVkscX+FIjwC50YFIwYiWpQzHPs0a7I4utzGAShHpM=";
+  cargoPatches = [
+    (fetchpatch {
+      name = "kdf_fix.patch";
+      url = "https://patch-diff.githubusercontent.com/raw/wiktor-k/age-plugin-openpgp-card/pull/4.patch";
+      hash = "sha256-CbILvjq3D+euKLtz+Ct6XwVEQra/fUUCFF83f53PlH0=";
+    })
+  ];
+
+  cargoHash = "sha256-EL0W8UrcZd7TNwNOXxzGZZQg23DIt6Tzg+hhLEpU3Uo=";
 
   buildInputs = [ pcsclite.dev ];
 
