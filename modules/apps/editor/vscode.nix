@@ -62,6 +62,7 @@ in
         "editor.fontSize" = 14.5;
         "editor.scrollBeyondLastLine" = false;
         "editor.padding.bottom" = 200;
+        "editor.minimap.enabled" = false;
         "terminal.integrated.tabs.enabled" = true;
         "terminal.integrated.defaultLocation" = "editor";
         "terminal.integrated.fontFamily" = "FiraCode Nerd Font Mono";
