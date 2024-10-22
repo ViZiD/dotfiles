@@ -13,19 +13,75 @@
         nodePackages.vscode-langservers-extracted
         gleam
         python311Packages.python-lsp-server
+        emmet-language-server
+        nixd
       ];
+      # themes = {
+      #   c_monokai = {
+      #     inherits = "monokai";
+      #     "ui.virtual.indent-guide" = "#88846F";
+      #   };
+      # };
       settings = {
         theme = "monokai";
         editor = {
+          color-modes = true;
+          cursorline = true;
+          bufferline = "multiple";
+
+          soft-wrap.enable = true;
+
+          auto-save = {
+            focus-lost = true;
+            after-delay.enable = true;
+          };
           cursor-shape = {
             insert = "bar";
+            normal = "block";
+            select = "underline";
+          };
+          lsp = {
+            display-inlay-hints = true;
+            display-messages = true;
+          };
+          # indent-guides = {
+          #   render = true;
+          #   character = "┊";
+          #   skip-levels = 1;
+          # };
+          statusline = {
+            left = [
+              "mode"
+              "file-name"
+              "spinner"
+              "read-only-indicator"
+              "file-modification-indicator"
+            ];
+            right = [
+              "diagnostics"
+              "selections"
+              "register"
+              "file-type"
+              "file-line-ending"
+              "position"
+            ];
+            mode = {
+              normal = "N";
+              insert = "I";
+              select = "S";
+            };
           };
         };
       };
       languages = {
-        language-server.emmet-lsp = with pkgs; {
-          command = "${emmet-language-server}/bin/emmet-language-server";
-          args = [ "--stdio" ];
+        language-server = {
+          emmet-lsp = {
+            command = "emmet-language-server";
+            args = [ "--stdio" ];
+          };
+          nixd = {
+            command = "nixd";
+          };
         };
         language = [
           {
@@ -55,6 +111,7 @@
           }
           {
             name = "nix";
+            language-servers = [ "nixd" ];
             formatter.command = "nixfmt";
             auto-format = true;
           }
