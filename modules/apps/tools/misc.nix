@@ -10,6 +10,7 @@
       csvlens
       ventoy-full
       parted
+      themix-gui
     ];
   };
 }
