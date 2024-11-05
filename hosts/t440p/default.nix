@@ -91,6 +91,7 @@
       gitui.enable = true;
       direnv.enable = true;
       nix-index.enable = true;
+      pass.enable = true;
     };
     shared = {
       quietboot.enable = true;

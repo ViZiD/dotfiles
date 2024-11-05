@@ -6,5 +6,6 @@
     ./gitui.nix
     ./direnv.nix
     ./nix-index.nix
+    ./pass.nix
   ];
 }
