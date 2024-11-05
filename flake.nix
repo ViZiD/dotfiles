@@ -1,74 +1,144 @@
 {
-  description = "ViZiD nixos flake configuration";
+  description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
-    nurpkgs.url = "github:nix-community/NUR";
+    nixpkgs-master.url = "github:nixos/nixpkgs?ref=master";
 
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
-    flake-utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
+    utils.url = "github:numtide/flake-utils";
+
+    agenix.url = "github:ryantm/agenix";
+
+    nixos-hardware.url = "github:NixOS/nixos-hardware?ref=master";
+
+    agenix-rekey = {
+      url = "github:oddlama/agenix-rekey";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    vscode-ext.url = "github:nix-community/nix-vscode-extensions";
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    vscode-ext = {
+      url = "github:nix-community/nix-vscode-extensions";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs-stable";
+    };
+
+    stylix.url = "github:danth/stylix";
+
+    impermanence.url = "github:nix-community/impermanence";
   };
+
   outputs =
     {
       self,
       nixpkgs,
-      nurpkgs,
-      nixos-hardware,
-      flake-utils,
+      utils,
+      agenix,
+      agenix-rekey,
       home-manager,
+      nixos-hardware,
       ...
     }@inputs:
     let
-      pkgs = self.pkgs.x86_64-linux.nixpkgs;
-      modules = import ./modules { inherit flake-utils; };
-    in
-    with modules;
-    flake-utils.lib.mkFlake {
-      inherit self inputs;
+      mkSystem =
+        {
+          hostname,
+          system ? "x86_64-linux",
+          extraArgs ? { },
+          extraModules ? [ ],
+          extraOverlays ? [ ],
+        }:
+        let
+          overlays = [
+            agenix-rekey.overlays.default
+          ] ++ (builtins.attrValues self.overlays) ++ extraOverlays;
 
-      supportedSystems = [ "x86_64-linux" ];
-      channelsConfig = {
-        allowUnfree = true;
-        allowBroken = true;
-        android_sdk.accept_license = true;
+          pkgs = import nixpkgs {
+            inherit system overlays;
+            config.allowUnfree = true;
+          };
+        in
+        nixpkgs.lib.nixosSystem {
+          inherit system pkgs;
+          modules = [
+            ./hosts/${hostname}
+            ./secrets
+            self.nixosModules.default
+            agenix.nixosModules.default
+            agenix-rekey.nixosModules.default
+            home-manager.nixosModules.home-manager
+          ] ++ extraModules;
+
+          specialArgs = {
+            inherit
+              self
+              inputs
+              hostname
+              ;
+          } // extraArgs;
+        };
+    in
+    {
+      nixosConfigurations = {
+        t440p = mkSystem {
+          hostname = "t440p";
+          extraModules = [
+            nixos-hardware.nixosModules.lenovo-thinkpad-t440p
+          ];
+        };
       };
 
-      sharedOverlays = [ self.overlay ];
+      overlays = import ./overlays {
+        inherit inputs;
+        inherit (self) outputs;
+      };
 
-      hostDefaults.modules = [
-        home-manager.nixosModules.home-manager
-        nurpkgs.nixosModules.nur
-      ] ++ base;
+      nixosModules.default = ./modules;
 
-      hosts.t440p.modules = [
-        ./hosts/t440p
-        nixos-hardware.nixosModules.lenovo-thinkpad-t440p
-      ] ++ desktop-bspwm;
-
-      outputsBuilder =
-        channels: with channels.nixpkgs; {
-          devShell = mkShell {
-            packages = [
-              git
-              gnumake
-              age-plugin-openpgp-card
-              rage
-              openpgp-card-tools
-            ];
-          };
+      agenix-rekey = agenix-rekey.configure {
+        userFlake = self;
+        nodes = self.nixosConfigurations;
+        agePackage = p: p.age;
+      };
+    }
+    // utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [
+            agenix-rekey.overlays.default
+          ] ++ (builtins.attrValues self.overlays);
         };
-
-      formatter.x86_64-linux = pkgs.nixfmt-rfc-style;
-
-      overlay = import ./overlays inputs;
-    };
+      in
+      rec {
+        packages = import ./pkgs { inherit pkgs; };
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [
+            age
+            openpgp-card-tools
+            packages.age-plugin-openpgp-card
+            pkgs.agenix-rekey
+          ];
+        };
+        formatter = pkgs.nixfmt-rfc-style;
+      }
+    );
 }

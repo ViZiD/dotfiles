@@ -1,6 +1,0 @@
-{
-  imports = [
-    ./zathura
-    ./other.nix
-  ];
-}
