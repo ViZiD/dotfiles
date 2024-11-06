@@ -8,6 +8,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./mic-fix.nix
   ];
 
   dots = {
