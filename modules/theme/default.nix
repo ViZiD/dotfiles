@@ -18,13 +18,6 @@ in
     fonts.packages = with pkgs; [
       dejavu_fonts
       twemoji-color-font
-      (nerdfonts.override {
-        fonts = [
-          "Hack"
-          "VictorMono"
-          "FiraCode"
-        ];
-      })
     ];
     stylix = {
       enable = true;
@@ -39,18 +32,22 @@ in
       };
       fonts = {
         serif = {
-          package = pkgs.ibm-plex;
-          name = "IBM Plex Sans";
+          package = pkgs.nerdfonts.override {
+            fonts = [
+              "Hack"
+              "VictorMono"
+              "FiraCode"
+              "IBMPlexMono"
+            ];
+          };
+          name = "BlexMono Nerd Font";
         };
 
-        sansSerif = {
-          package = pkgs.ibm-plex;
-          name = "IBM Plex Serif";
-        };
+        sansSerif = config.stylix.fonts.serif;
 
         monospace = {
-          package = pkgs.ibm-plex;
-          name = "IBM Plex Mono";
+          inherit (config.stylix.fonts.serif) package;
+          name = "BlexMono Nerd Font Mono";
         };
 
         emoji = {
