@@ -92,6 +92,7 @@ in
               matches = [
                 { app-id = "^.rave-browser$"; }
                 { app-id = "^kitty$"; }
+                { app-id = "^org\\.telegram\\.desktop$"; }
                 { title = "(?i)Visual\\s+Studio\\s+Code"; }
               ];
               open-maximized = true;
