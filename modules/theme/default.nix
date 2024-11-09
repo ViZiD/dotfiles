@@ -34,8 +34,6 @@ in
         serif = {
           package = pkgs.nerdfonts.override {
             fonts = [
-              "Hack"
-              "VictorMono"
               "FiraCode"
               "IBMPlexMono"
             ];
