@@ -23,13 +23,11 @@ in
       pulse.enable = true;
       wireplumber.enable = true;
       jack.enable = true;
+
     };
     home-manager.users.${user.username} = mkIf user.enable {
       home.packages = with pkgs; [
-        alsa-utils
-        playerctl
         pavucontrol
-        alsa-oss
       ];
     };
   };
