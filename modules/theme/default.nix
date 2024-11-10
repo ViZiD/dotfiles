@@ -35,17 +35,17 @@ in
           package = pkgs.nerdfonts.override {
             fonts = [
               "FiraCode"
-              "IBMPlexMono"
+              "Hack"
             ];
           };
-          name = "BlexMono Nerd Font";
+          name = "Hack Nerd Font";
         };
 
         sansSerif = config.stylix.fonts.serif;
 
         monospace = {
           inherit (config.stylix.fonts.serif) package;
-          name = "BlexMono Nerd Font Mono";
+          name = "Hack Nerd Font Mono";
         };
 
         emoji = {
