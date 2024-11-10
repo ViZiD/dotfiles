@@ -100,7 +100,7 @@
 
   networking.useDHCP = lib.mkDefault true;
 
-  nix.settings.max-jobs = lib.mkDefault 2;
+  nix.settings.max-jobs = lib.mkDefault 4;
 
   services.fwupd.enable = true;
 
