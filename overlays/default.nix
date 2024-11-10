@@ -36,7 +36,22 @@ in
   additions = final: prev: import ../pkgs { pkgs = final; } // { };
 
   # Modifies existing packages
-  modifications = final: prev: { };
+  modifications = final: prev: {
+    # force spotify use xwayland
+    # remove ugly CSD
+    spotify = prev.spotify.overrideAttrs (oldAttrs: {
+      postInstall =
+        oldAttrs.postInstall or ""
+        + ''
+          wrapProgram $out/bin/spotify \
+            --add-flags "--ozone-platform=x11"
+        '';
+      postFixup = ''
+        substituteInPlace $out/share/applications/spotify.desktop \
+          --replace "Exec=spotify %U" "Exec=env NIXOS_OZONE_WL= spotify %U --ozone-platform=x11"
+      '';
+    });
+  };
 
   nix-vscode-extensions = final: prev: {
     nix-vscode-extensions = inputs.vscode-ext.overlays.default final prev;

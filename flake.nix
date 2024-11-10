@@ -40,6 +40,11 @@
       inputs.nixpkgs-stable.follows = "nixpkgs-stable";
     };
 
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     stylix.url = "github:danth/stylix";
 
     impermanence.url = "github:nix-community/impermanence";
