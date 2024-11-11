@@ -18,6 +18,12 @@ let
     typescript
     typescript-language-server
   ];
+  pythonPkgs = with pkgs; [
+    (python312.withPackages (ps: [ virtualenv ]))
+    pdm
+    poetry
+    uv
+  ];
 in
 {
   options.dots.dev.enable = mkEnableOption "Enable dev stuff";
@@ -32,7 +38,8 @@ in
             pnpm
           ]
           ++ nixPkgs
-          ++ extPkgs;
+          ++ extPkgs
+          ++ pythonPkgs;
       };
     };
   };
