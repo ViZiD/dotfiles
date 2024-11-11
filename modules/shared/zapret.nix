@@ -14,6 +14,7 @@ in
       enable = true;
       configureFirewall = false;
       params = [
+        "--dpi-desync-ttl=2" # tls fix
         "--dpi-desync=syndata,fake,split2"
         "--dpi-desync-fooling=md5sig"
         "--dpi-desync-any-protocol"
