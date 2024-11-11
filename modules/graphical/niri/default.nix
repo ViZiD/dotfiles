@@ -34,10 +34,12 @@ in
 
     services.greetd = {
       enable = true;
-      settings = {
-        default_session = {
-          command = "${lib.getExe pkgs.greetd.tuigreet} --time --cmd niri-session";
+      settings = rec {
+        initial_session = {
+          command = "${lib.getExe pkgs.greetd.tuigreet} --remember --asterisks --time --cmd niri-session";
+          user = "greeter";
         };
+        default_session = initial_session;
       };
     };
 
