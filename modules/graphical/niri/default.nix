@@ -135,6 +135,7 @@ in
           layout = {
             gaps = 0;
             always-center-single-column = true;
+            border.width = 1;
           };
           # cursor = {
           #   theme = "Simp1e";
