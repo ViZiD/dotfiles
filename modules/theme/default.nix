@@ -23,7 +23,8 @@ in
       enable = true;
       autoEnable = false;
       image = ./bgg.jpg;
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-hard.yaml";
+      # base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-hard.yaml";
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/standardized-dark.yaml";
       # base16Scheme = ./schemes/template.yaml;
       polarity = "dark";
       cursor = {
