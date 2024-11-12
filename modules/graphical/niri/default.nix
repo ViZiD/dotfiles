@@ -13,7 +13,10 @@ let
   isStylesEnabled = config.dots.styles.enable;
 in
 {
-  imports = [ inputs.niri.nixosModules.niri ];
+  imports = [
+    inputs.niri.nixosModules.niri
+    ./waybar
+  ];
 
   options.dots.graphical.niri.enable = mkEnableOption "Enable niri wm settings";
 
@@ -21,7 +24,10 @@ in
 
     environment.systemPackages = [ pkgs.kdePackages.qtwayland ];
 
-    dots.graphical.wofi.enable = true;
+    dots.graphical = {
+      wofi.enable = true;
+      waybar.enable = true;
+    };
 
     programs.niri = {
       enable = true;
@@ -86,6 +92,11 @@ in
             {
               command = [
                 (getExe pkgs.xwayland-satellite)
+              ];
+            }
+            {
+              command = [
+                (getExe config.home-manager.users.${user.username}.programs.waybar.package)
               ];
             }
           ];
