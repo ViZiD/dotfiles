@@ -17,7 +17,14 @@ in
     home-manager.users.${user.username} = mkIf user.enable {
       programs.password-store = {
         enable = true;
-        package = pkgs.pass-wayland;
+        package = pkgs.pass-wayland.withExtensions (
+          p: with p; [
+            pass-otp
+            pass-audit
+            pass-update
+            pass-genphrase
+          ]
+        );
         settings = {
           PASSWORD_STORE_DIR = "$HOME/.local/share/password-store";
         };

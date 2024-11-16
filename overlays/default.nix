@@ -37,6 +37,11 @@ in
 
   # Modifies existing packages
   modifications = final: prev: {
+    passExtensions = prev.passExtensions // {
+      # https://github.com/tadfisher/pass-otp/pull/173
+      pass-otp = addPatches prev.passExtensions.pass-otp [ ./patches/pass-otp-fix-completion.patch ];
+    };
+
     # force spotify use xwayland
     # remove ugly CSD
     spotify = prev.spotify.overrideAttrs (oldAttrs: {
