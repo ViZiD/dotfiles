@@ -7,5 +7,6 @@
     ./direnv.nix
     ./nix-index.nix
     ./pass.nix
+    ./yazi.nix
   ];
 }
