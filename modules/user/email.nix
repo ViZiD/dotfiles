@@ -31,12 +31,6 @@ let
       create = "maildir";
       expunge = "both";
     };
-    folders = {
-      inbox = "inbox";
-      drafts = "drafts";
-      sent = "sent";
-      trash = "trash";
-    };
   };
 in
 {
@@ -80,18 +74,36 @@ in
               tls.useStartTls = true;
             };
             passwordCommand = "${pkgs.coreutils}/bin/cat ${config.age.secrets."email_vizqq".path}";
+            folders = {
+              inbox = "inbox";
+              drafts = "Drafts";
+              sent = "Sent";
+              trash = "Trash";
+            };
           } // common;
           vizid1337 = {
             address = "vizid1337@gmail.com";
             flavor = "gmail.com";
             userName = "vizid1337@gmail.com";
             passwordCommand = "${pkgs.coreutils}/bin/cat ${config.age.secrets."email_vizid1337".path}";
+            folders = {
+              inbox = "inbox";
+              drafts = "[Gmail]/Drafts";
+              sent = "[Gmail]/Sent Mail";
+              trash = "[Gmail]/Trash";
+            };
           } // common;
           userjs = {
             address = "userjs@ya.ru";
             flavor = "yandex.com";
             userName = "userjs@ya.ru";
             passwordCommand = "${pkgs.coreutils}/bin/cat ${config.age.secrets."email_userjs".path}";
+            folders = {
+              inbox = "Inbox";
+              drafts = "Drafts";
+              sent = "Sent";
+              trash = "Trash";
+            };
           } // common;
         };
       };
