@@ -24,7 +24,6 @@ let
 
   common = {
     inherit (cfg) realName;
-    inherit signature;
     msmtp.enable = true;
     mbsync = {
       enable = true;
@@ -63,6 +62,7 @@ in
         maildirBasePath = cfg.mail.mailDir;
         accounts = {
           vizqq = {
+            inherit signature;
             address = cfg.email;
             primary = true;
             flavor = "plain";
