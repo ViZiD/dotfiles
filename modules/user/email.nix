@@ -26,7 +26,6 @@ let
     inherit (cfg) realName;
     inherit signature;
     msmtp.enable = true;
-    neomutt.enable = true;
     mbsync = {
       enable = true;
       create = "maildir";
@@ -59,14 +58,6 @@ in
 
     home-manager.users.${cfg.username} = mkIf cfg.enable {
       programs = {
-        neomutt = {
-          enable = true;
-          vimKeys = true;
-          sidebar = {
-            enable = true;
-          };
-          editor = "nvim";
-        };
         msmtp.enable = true;
         mbsync.enable = true;
       };
