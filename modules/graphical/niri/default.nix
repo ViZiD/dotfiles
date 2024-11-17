@@ -107,6 +107,7 @@ in
                 { app-id = "^kitty$"; }
                 { app-id = "^Spotify$"; }
                 { app-id = "^org\\.telegram\\.desktop$"; }
+                { app-id = "^vesktop$"; }
                 { title = "(?i)Visual\\s+Studio\\s+Code"; }
               ];
               open-maximized = true;
