@@ -31,6 +31,7 @@ let
       create = "maildir";
       expunge = "both";
     };
+    himalaya.enable = true;
   };
 in
 {
@@ -54,6 +55,9 @@ in
       programs = {
         msmtp.enable = true;
         mbsync.enable = true;
+        himalaya = {
+          enable = true;
+        };
       };
       accounts.email = {
         maildirBasePath = cfg.mail.mailDir;
