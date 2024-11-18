@@ -23,6 +23,7 @@ in
       blacklist = [
         "habr.com"
         "live.com"
+        "microsoftonline.com"
       ];
     };
     networking.firewall.extraCommands = ''
