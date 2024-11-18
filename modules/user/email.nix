@@ -17,7 +17,6 @@ let
     showSignature = "append";
     text = ''
       ${cfg.realName}
-
       https://vizqq.cc
     '';
   };
