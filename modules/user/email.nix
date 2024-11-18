@@ -65,6 +65,9 @@ in
               "pgp-gpg"
             ];
           };
+          settings = {
+            downloads-dir = "${hm.xdg.userDirs.download}";
+          };
         };
       };
       accounts.email = {
