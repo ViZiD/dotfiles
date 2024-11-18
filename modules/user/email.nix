@@ -56,6 +56,16 @@ in
         mbsync.enable = true;
         himalaya = {
           enable = true;
+          package = pkgs.himalaya.override {
+            buildNoDefaultFeatures = true;
+            buildFeatures = [
+              "imap"
+              "maildir"
+              "smtp"
+              "account-sync"
+              "pgp-gpg"
+            ];
+          };
         };
       };
       accounts.email = {
