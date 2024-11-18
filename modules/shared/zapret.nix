@@ -22,6 +22,7 @@ in
       # на некоторых сайтах
       blacklist = [
         "habr.com"
+        "live.com"
       ];
     };
     networking.firewall.extraCommands = ''
