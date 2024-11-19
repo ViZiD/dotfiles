@@ -18,6 +18,7 @@ in
     dots.dev = {
       js.enable = true;
       python.enable = true;
+      elixir.enable = true;
     };
   };
 }
