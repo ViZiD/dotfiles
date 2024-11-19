@@ -50,7 +50,6 @@ in
           redhat.vscode-yaml
           redhat.vscode-xml
           ms-azuretools.vscode-docker
-          # monokai.theme-monokai-pro-vscode
           pkief.material-icon-theme
           editorconfig.editorconfig
           mkhl.direnv
@@ -98,7 +97,6 @@ in
           "terminal.integrated.fontFamily" = mkDefault "FiraCode Nerd Font Mono";
           "terminal.integrated.fontSize" = 16;
           "terminal.integrated.fontWeightBold" = "normal";
-          # "workbench.colorTheme" = "Monokai Classic";
           "workbench.iconTheme" = "material-icon-theme";
           "security.workspace.trust.untrustedFiles" = "open";
           "[jsonc]" = {
