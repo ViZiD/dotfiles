@@ -27,6 +27,7 @@ in
           python311Packages.python-lsp-server
           emmet-language-server
           nixd
+          elixir-ls
         ];
         settings = {
           theme = mkIf (!isStylesEnabled) "monokai";
@@ -85,6 +86,11 @@ in
             };
           };
           language = [
+            {
+              name = "elixir";
+              auto-format = true;
+              language-servers = [ "elixir-ls" ];
+            }
             {
               name = "html";
               roots = [ ".git" ];
