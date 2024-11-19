@@ -22,11 +22,8 @@ in
         extraPackages = with pkgs; [
           clang-tools
           nixfmt-rfc-style
-          dart
-          java-language-server
           nodePackages.typescript-language-server
           nodePackages.vscode-langservers-extracted
-          gleam
           python311Packages.python-lsp-server
           emmet-language-server
           nixd
@@ -128,10 +125,6 @@ in
               name = "nix";
               language-servers = [ "nixd" ];
               formatter.command = "nixfmt";
-              auto-format = true;
-            }
-            {
-              name = "gleam";
               auto-format = true;
             }
             {
