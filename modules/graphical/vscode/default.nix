@@ -55,9 +55,6 @@ in
           editorconfig.editorconfig
           mkhl.direnv
           rust-lang.rust-analyzer
-          gleam.gleam
-          dart-code.dart-code
-          dart-code.flutter
           psioniq.psi-header
           sourcegraph.cody-ai
         ];
