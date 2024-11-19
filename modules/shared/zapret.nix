@@ -24,6 +24,7 @@ in
         "habr.com"
         "live.com"
         "microsoftonline.com"
+        "visualstudio.com"
       ];
     };
     networking.firewall.extraCommands = ''
