@@ -11,6 +11,7 @@ in
   imports = [
     ./python
     ./js
+    ./elixir
   ];
   options.dots.dev.enable = mkEnableOption "Enable dev stuff";
   config = mkIf cfg.enable {
