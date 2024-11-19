@@ -56,6 +56,7 @@ in
           rust-lang.rust-analyzer
           psioniq.psi-header
           sourcegraph.cody-ai
+          pkgs.vscode-extensions.elixir-lsp.vscode-elixir-ls
         ];
 
         userSettings = {
