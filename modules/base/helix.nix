@@ -28,12 +28,6 @@ in
           emmet-language-server
           nixd
         ];
-        # themes = {
-        #   c_monokai = {
-        #     inherits = "monokai";
-        #     "ui.virtual.indent-guide" = "#88846F";
-        #   };
-        # };
         settings = {
           theme = mkIf (!isStylesEnabled) "monokai";
           editor = {
@@ -56,11 +50,6 @@ in
               display-inlay-hints = true;
               display-messages = true;
             };
-            # indent-guides = {
-            #   render = true;
-            #   character = "┊";
-            #   skip-levels = 1;
-            # };
             statusline = {
               left = [
                 "mode"
