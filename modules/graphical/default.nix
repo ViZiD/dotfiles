@@ -20,6 +20,7 @@ in
     ./telegram
     ./spotify
     ./discord
+    ./mpv
   ];
   options.dots.graphical.enable = mkEnableOption "Enable graphical settings";
 
@@ -51,6 +52,7 @@ in
       graphical.telegram.enable = true;
       graphical.spotify.enable = true;
       graphical.discord.enable = true;
+      graphical.mpv.enable = true;
     };
   };
 }

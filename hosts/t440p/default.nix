@@ -79,6 +79,11 @@
         "docker"
         "render"
       ];
+      extraHomeOptions = {
+        programs.mpv.config = lib.mkIf config.dots.graphical.enable {
+          profile = "fast";
+        };
+      };
     };
     dev.enable = true;
     cli = {
