@@ -110,6 +110,9 @@ in
             network = true;
             hwdec = true;
           };
+          webtorrent = {
+            path = "~/downloads";
+          };
         };
       };
       xdg.mimeApps.defaultApplications = {
