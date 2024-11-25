@@ -22,7 +22,7 @@
     "sr_mod"
     "rtsx_pci_sdmmc"
   ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [ "i915" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
@@ -114,7 +114,28 @@
 
   hardware.graphics = {
     enable = true;
-    enable32Bit = true;
+    extraPackages =
+      with pkgs;
+      lib.mkDefault [
+        intel-vaapi-driver
+        intel-compute-runtime
+        libGL
+        intel-ocl
+        vpl-gpu-rt
+        vulkan-loader
+        vulkan-validation-layers
+        vulkan-extension-layer
+        vulkan-tools
+      ];
+    extraPackages32 =
+      with pkgs.pkgsi686Linux;
+      lib.mkDefault [
+        intel-vaapi-driver
+      ];
+  };
+
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = lib.mkForce "i965";
   };
 
   services.thinkfan = {

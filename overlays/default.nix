@@ -37,6 +37,7 @@ in
 
   # Modifies existing packages
   modifications = final: prev: {
+    intel-vaapi-driver = prev.intel-vaapi-driver.override { enableHybridCodec = true; };
     passExtensions = prev.passExtensions // {
       # https://github.com/tadfisher/pass-otp/pull/173
       pass-otp = addPatches prev.passExtensions.pass-otp [ ./patches/pass-otp-fix-completion.patch ];
