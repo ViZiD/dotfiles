@@ -25,6 +25,13 @@
   boot.initrd.kernelModules = [ "i915" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [
+    "nowatchdog"
+    "kernel.nmi_watchdog=0"
+    "msr.allow_writes=on"
+    "snd_hda_codec_hdmi"
+    "snd_hda_intel.power_save=1"
+  ];
 
   # fileSystems."/" = {
   #   device = "/dev/disk/by-uuid/cbe3c413-c8bd-4168-90d3-f7ea592b3c4e";
