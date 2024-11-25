@@ -70,7 +70,7 @@ in
           WHEEL_LEFT = "ignore";
           WHEEL_RIGHT = "ignore";
         };
-        config = {
+        config = rec {
           fullscreen = true;
           screenshot-directory = "~/pictures/mpv";
           osc = false;
@@ -78,6 +78,10 @@ in
           save-position-on-quit = "yes";
           volume = 100;
           volume-max = 200;
+
+          alang = "en,ru";
+          slang = alang;
+          vlang = alang;
 
           audio-file-auto = "fuzzy";
 
