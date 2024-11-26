@@ -83,6 +83,8 @@ in
           slang = alang;
           vlang = alang;
 
+          sub-font = "Roboto Medium";
+
           audio-file-auto = "fuzzy";
 
           ytdl = true;
