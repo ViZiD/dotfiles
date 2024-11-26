@@ -16,6 +16,7 @@ in
 
   config = mkIf cfg.enable {
     fonts.packages = with pkgs; [
+      roboto
       dejavu_fonts
       twemoji-color-font
     ];
