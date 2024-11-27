@@ -14,6 +14,7 @@ in
       enable = true;
       configureFirewall = false;
       params = [
+        "--dpi-desync-repeats=2" # fix youtube
         "--dpi-desync-ttl=3" # fix ssl
         "--dpi-desync=syndata,fake,split2"
         "--dpi-desync-fooling=md5sig"
