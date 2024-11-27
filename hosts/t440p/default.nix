@@ -36,8 +36,6 @@
         parted
 
         # media
-        ffmpeg-full
-        yt-dlp
         asciinema
 
         # android
