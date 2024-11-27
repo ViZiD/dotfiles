@@ -89,13 +89,16 @@ in
           audio-file-auto = "fuzzy";
 
           ytdl = true;
-          ytdl-raw-options =
+          ytdl-format = "bestvideo[height<=1080]+bestaudio/best[height<=1080]/bestvideo*+bestaudio/best";
+          ytdl-raw-options-set =
             let
               options = {
                 write-subs = "";
                 write-auto-subs = "";
                 sub-langs = "en";
                 sub-format = "ass";
+
+                format-sort = "+res:1080";
               };
               options' = mapAttrsToList (n: v: "${n}=${v}") options;
             in
