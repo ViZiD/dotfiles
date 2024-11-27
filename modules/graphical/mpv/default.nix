@@ -20,8 +20,9 @@ in
       ];
     };
     home-manager.users.${user.username} = mkIf user.enable {
-      home.packages = [
-        pkgs.ytfzf
+      home.packages = with pkgs; [
+        master.yt-dlp
+        ytfzf
       ];
       programs.mpv = {
         enable = true;
