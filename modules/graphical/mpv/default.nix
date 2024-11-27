@@ -89,6 +89,17 @@ in
           audio-file-auto = "fuzzy";
 
           ytdl = true;
+          ytdl-raw-options =
+            let
+              options = {
+                write-subs = "";
+                write-auto-subs = "";
+                sub-langs = "en";
+                sub-format = "ass";
+              };
+              options' = mapAttrsToList (n: v: "${n}=${v}") options;
+            in
+            concatStringsSep "," options';
         };
         profiles = {
           "protocol.http".force-window = "immediate";
