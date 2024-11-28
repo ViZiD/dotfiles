@@ -21,6 +21,7 @@ in
     ./spotify
     ./discord
     ./mpv
+    ./youtube
   ];
   options.dots.graphical.enable = mkEnableOption "Enable graphical settings";
 
@@ -53,6 +54,7 @@ in
       graphical.spotify.enable = true;
       graphical.discord.enable = true;
       graphical.mpv.enable = true;
+      graphical.youtube.enable = true;
     };
   };
 }
