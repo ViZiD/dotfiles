@@ -15,10 +15,8 @@ in
 
   config = mkIf cfg.enable {
     dots.shared.persist.user = mkIf isPersistEnabled {
-      files = [
-        ".config/FreeTube/subscription-cache.db"
-        ".config/FreeTube/profiles.db"
-        ".config/FreeTube/playlists.db"
+      directories = [
+        ".config/FreeTube"
       ];
     };
     home-manager.users.${user.username} = mkIf user.enable {
