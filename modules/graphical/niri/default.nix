@@ -109,6 +109,7 @@ in
                 { app-id = "^org\\.telegram\\.desktop$"; }
                 { app-id = "^vesktop$"; }
                 { app-id = "^mpv$"; }
+                { app-id = "^FreeTube$"; }
                 { title = "(?i)Visual\\s+Studio\\s+Code"; }
               ];
               open-maximized = true;
