@@ -68,6 +68,7 @@ in
           WHEEL_RIGHT = "ignore";
         };
         config = rec {
+          fullscreen = true;
           screenshot-directory = "~/pictures/mpv";
           osc = false;
           ignore-path-in-watch-later-config = true;
