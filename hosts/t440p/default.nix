@@ -57,6 +57,8 @@
         unrar
         p7zip
         atool
+
+        usbutils
       ];
       extraGroups = [
         "video"
