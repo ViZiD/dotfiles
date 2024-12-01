@@ -14,6 +14,7 @@ in
   # TODO: add extra options
   options.dots.base.nix = {
     enable = mkEnableOption "Enable base nix settings";
+    autoGC = mkEnableOption "Enable auto GC";
     package = mkOption {
       type = types.package;
       default = pkgs.nixVersions.latest;
@@ -23,6 +24,11 @@ in
   config = mkIf cfg.enable {
     nix = {
       inherit (cfg) package;
+      gc = {
+        automatic = cfg.autoGC;
+        dates = "weekly";
+        options = "--delete-older-than 30d";
+      };
       settings = {
         warn-dirty = false; # i hate this so much...
 
