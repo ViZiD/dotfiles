@@ -19,6 +19,7 @@ in
       roboto
       dejavu_fonts
       twemoji-color-font
+      nerd-fonts.fira-code
     ];
     stylix = {
       enable = true;
@@ -35,12 +36,7 @@ in
       };
       fonts = {
         serif = {
-          package = pkgs.nerdfonts.override {
-            fonts = [
-              "FiraCode"
-              "Hack"
-            ];
-          };
+          package = pkgs.nerd-fonts.hack;
           name = "Hack Nerd Font";
         };
 
