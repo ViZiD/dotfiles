@@ -85,6 +85,7 @@
         };
       };
     };
+    base.nix.autoGC = true;
     dev.enable = true;
     cli = {
       gpg = {
