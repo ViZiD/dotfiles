@@ -16,7 +16,7 @@ in
     enable = mkEnableOption "Enable base nix settings";
     package = mkOption {
       type = types.package;
-      default = pkgs.lix;
+      default = pkgs.nixVersions.latest;
     };
   };
 
