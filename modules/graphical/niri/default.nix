@@ -151,12 +151,9 @@ in
             always-center-single-column = true;
             border.width = 1;
           };
-          # cursor = {
-          #   theme = "Simp1e";
-          #   size = 16;
-          #   # not available in stable :(
-          #   # hide-on-key-press = true;
-          # };
+          cursor = {
+            hide-on-key-press = true;
+          };
           binds = defaultKeyBind // {
             "Mod+W".action.close-window = { };
             "Mod+Return".action.spawn = "${config.dots.graphical.terminal.terminalName}";
