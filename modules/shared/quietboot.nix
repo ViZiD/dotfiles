@@ -12,7 +12,6 @@ in
 
   config = mkIf cfg.enable {
     console.earlySetup = false;
-    # console.useXkbConfig = true;
 
     boot = {
       loader.timeout = 0;
