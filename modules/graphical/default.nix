@@ -14,7 +14,7 @@ in
   imports = [
     ./terminal
     ./vscode
-    ./brave
+    ./browsers
     ./niri
     ./wofi
     ./telegram
@@ -48,7 +48,7 @@ in
     dots = {
       graphical.terminal.enable = true;
       graphical.vscode.enable = true;
-      graphical.brave.enable = true;
+      graphical.browsers.enable = true;
       graphical.niri.enable = true;
       graphical.telegram.enable = true;
       graphical.spotify.enable = true;

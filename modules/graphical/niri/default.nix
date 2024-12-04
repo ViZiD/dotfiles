@@ -103,7 +103,7 @@ in
           window-rules = [
             {
               matches = [
-                { app-id = "^.rave-browser$"; }
+                { app-id = "^firefox$"; }
                 { app-id = "^kitty$"; }
                 { app-id = "^Spotify$"; }
                 { app-id = "^org\\.telegram\\.desktop$"; }
