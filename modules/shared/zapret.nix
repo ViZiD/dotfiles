@@ -22,6 +22,9 @@ in
       udpPorts = [
         "50000:50099"
       ];
+      blacklist = [
+        "ru-board.com"
+      ];
       params = [
         "--dpi-desync-repeats=2" # fix youtube
         "--dpi-desync-ttl=3" # fix ssl
