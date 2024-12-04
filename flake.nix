@@ -48,6 +48,8 @@
     stylix.url = "github:danth/stylix";
 
     impermanence.url = "github:nix-community/impermanence";
+
+    nur.url = "github:nix-community/NUR";
   };
 
   outputs =
@@ -73,6 +75,7 @@
         let
           overlays = [
             agenix-rekey.overlays.default
+            inputs.nur.overlay
           ] ++ (builtins.attrValues self.overlays) ++ extraOverlays;
 
           pkgs = import nixpkgs {
