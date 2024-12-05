@@ -131,5 +131,14 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = lib.mkDefault hostname;
+  networking = {
+    hostName = lib.mkDefault hostname;
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [
+        8080
+        80
+      ];
+    };
+  };
 }
