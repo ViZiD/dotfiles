@@ -9,6 +9,7 @@ let
   cfg = config.dots.shared.bluetooth;
   user = config.dots.user;
   isPersistEnabled = config.dots.shared.persist.enable;
+
   headphones = "18:AA:0F:C9:D0:29";
 in
 {
@@ -20,6 +21,7 @@ in
       ];
     };
 
+    services.blueman.enable = true;
     hardware.bluetooth = {
       enable = true;
       package = pkgs.bluez;
@@ -31,8 +33,10 @@ in
         };
       };
     };
-    home-manager.users.${user.username} = {
-      programs.zsh.shellAliases = mkIf (user.enable && config.dots.base.zsh.enable) {
+    home-manager.users.${user.username} = mkIf user.enable {
+      services.blueman-applet.enable = true;
+
+      programs.zsh.shellAliases = mkIf config.dots.base.zsh.enable {
         "hpc" = "bluetoothctl connect ${headphones}";
         "hpd" = "bluetoothctl disconnect ${headphones}";
       };
