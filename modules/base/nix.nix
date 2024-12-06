@@ -45,7 +45,7 @@ in
         ];
 
         trusted-public-keys = [
-          "vizqq.cachix.org-1:ISG8APk0+grmLJkB7KgWJ6L/bmF2Uu2f8L0uJuGsKoI="
+          "vizqq.cachix.org-1:5BPw8jRDFrVEuN3mTiG7mdC6Cezeid4n5KTj5xiLX/s="
           "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
           "numtide.cachix.org-1:2ps1kLBUWjxIneOy1Ik6cQjb41X0iXVXeHigGmycPPE="
           "picokeys-nix.cachix.org-1:mJT1GjmwrXB+eiBDAsXYc3vHrwz0Wj/Vh6Do5YDvS+o="
