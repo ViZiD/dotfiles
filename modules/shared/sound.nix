@@ -26,6 +26,8 @@ in
 
     };
     home-manager.users.${user.username} = mkIf user.enable {
+      services.playerctld.enable = true;
+      services.mpris-proxy.enable = true;
       home.packages = with pkgs; [
         pavucontrol
       ];
