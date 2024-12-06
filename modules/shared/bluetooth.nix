@@ -7,6 +7,8 @@
 with lib;
 let
   cfg = config.dots.shared.bluetooth;
+  user = config.dots.user;
+  headphones = "18:AA:0F:C9:D0:29";
 in
 {
   options.dots.shared.bluetooth.enable = mkEnableOption "Enable bluetooth support";
@@ -20,6 +22,12 @@ in
           Enable = "Source,Sink,Media,Socket";
           Experimental = true;
         };
+      };
+    };
+    home-manager.users.${user.username} = {
+      programs.zsh.shellAliases = mkIf (user.enable && config.dots.base.zsh.enable) {
+        "hpc" = "bluetoothctl connect ${headphones}";
+        "hpd" = "bluetoothctl disconnect ${headphones}";
       };
     };
   };
