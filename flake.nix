@@ -133,16 +133,17 @@
           inherit system;
           overlays = [
             agenix-rekey.overlays.default
+            inputs.nur.overlay
           ] ++ (builtins.attrValues self.overlays);
         };
       in
-      rec {
+      {
         packages = import ./pkgs { inherit pkgs; };
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             age
             openpgp-card-tools
-            packages.age-plugin-openpgp-card
+            nur.repos.vizqq.age-plugin-openpgp-card
             pkgs.agenix-rekey
           ];
         };

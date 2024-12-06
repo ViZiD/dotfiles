@@ -33,7 +33,7 @@ in
       ];
       storageMode = "local";
       localStorageDir = "${self}/secrets/rekeyed/${config.networking.hostName}";
-      agePlugins = with pkgs; [
+      agePlugins = with pkgs.nur.repos.vizqq; [
         age-plugin-openpgp-card
       ];
 
