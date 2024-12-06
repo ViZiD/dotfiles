@@ -85,7 +85,10 @@
         };
       };
     };
-    base.nix.autoGC = true;
+    base.nix = {
+      package = pkgs.lix;
+      autoGC = true;
+    };
     dev.enable = true;
     cli = {
       gpg = {
