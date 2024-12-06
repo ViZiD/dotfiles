@@ -21,6 +21,7 @@ in
     dots.shared.persist.user = mkIf isPersistEnabled {
       directories = [
         ".config/Code"
+        ".config/Cody-nodejs" # cody ai
       ];
     };
 
