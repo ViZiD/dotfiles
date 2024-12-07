@@ -129,6 +129,7 @@ in
                 { app-id = "^\.blueman-adapters-wrapped$"; }
                 { app-id = "^\.blueman-applet-wrapped$"; }
                 { app-id = "^\.blueman-manager-wrapped$"; }
+                { app-id = "^org\.gnupg\.pinentry-qt$"; }
               ];
               geometry-corner-radius = {
                 bottom-left = 12.0;
