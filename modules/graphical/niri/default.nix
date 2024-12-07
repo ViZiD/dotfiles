@@ -122,12 +122,22 @@ in
               ];
               block-out-from = "screencast";
             }
-            # {
-            #   matches = [
-            #     { app-id = "^org\\.telegram\\.desktop$"; }
-            #   ];
-            #   border.enable = false;
-            # }
+            {
+              matches = [
+                { app-id = "^\.blueman-services-wrapped$"; }
+                { app-id = "^\.blueman-sendto-wrapped$"; }
+                { app-id = "^\.blueman-adapters-wrapped$"; }
+                { app-id = "^\.blueman-applet-wrapped$"; }
+                { app-id = "^\.blueman-manager-wrapped$"; }
+              ];
+              geometry-corner-radius = {
+                bottom-left = 12.0;
+                bottom-right = 12.0;
+                top-left = 12.0;
+                top-right = 12.0;
+              };
+              clip-to-geometry = true;
+            }
           ];
           input = {
             keyboard = {
