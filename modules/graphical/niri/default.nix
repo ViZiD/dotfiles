@@ -139,6 +139,7 @@ in
               clip-to-geometry = true;
             }
           ];
+          prefer-no-csd = true;
           input = {
             keyboard = {
               xkb = {
