@@ -36,6 +36,8 @@ in
 
         substituters = [
           "https://nix-community.cachix.org"
+          "https://vizqq.cachix.org"
+          "https://picokeys-nix.cachix.org"
         ];
 
         trusted-substituters = [
