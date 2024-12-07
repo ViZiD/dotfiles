@@ -1,8 +1,6 @@
 {
   config,
   lib,
-  pkgs,
-  inputs,
   ...
 }:
 with lib;
@@ -10,8 +8,6 @@ let
   cfg = config.dots.shared.zapret;
 in
 {
-  disabledModules = [ "services/networking/zapret.nix" ];
-  imports = [ "${inputs.nixpkgs-master}/nixos/modules/services/networking/zapret.nix" ];
 
   options.dots.shared.zapret.enable = mkEnableOption "Enable zapret dpi bypass";
   config = mkIf cfg.enable {
