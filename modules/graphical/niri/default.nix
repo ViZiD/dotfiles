@@ -131,6 +131,7 @@ in
                 { app-id = "^\.blueman-manager-wrapped$"; }
                 { app-id = "^org\.gnupg\.pinentry-qt$"; }
                 { app-id = "^wpa_gui$"; }
+                { app-id = "^org\.pulseaudio\.pavucontrol$"; }
               ];
               geometry-corner-radius = {
                 bottom-left = 12.0;
