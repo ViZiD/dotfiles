@@ -130,6 +130,7 @@ in
                 { app-id = "^\.blueman-applet-wrapped$"; }
                 { app-id = "^\.blueman-manager-wrapped$"; }
                 { app-id = "^org\.gnupg\.pinentry-qt$"; }
+                { app-id = "^wpa_gui$"; }
               ];
               geometry-corner-radius = {
                 bottom-left = 12.0;
