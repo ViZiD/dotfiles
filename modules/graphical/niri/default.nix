@@ -106,7 +106,7 @@ in
                 { app-id = "^firefox$"; }
                 { app-id = "^kitty$"; }
                 { app-id = "^Spotify$"; }
-                { app-id = "^org\\.telegram\\.desktop$"; }
+                { app-id = "^org\.telegram\.desktop$"; }
                 { app-id = "^vesktop$"; }
                 { app-id = "^mpv$"; }
                 { app-id = "^FreeTube$"; }
@@ -117,8 +117,8 @@ in
             }
             {
               matches = [
-                { app-id = "^org\\.gnupg\\.pinentry-qt$"; }
-                { app-id = "^org\\.telegram\\.desktop$"; }
+                { app-id = "^org\.gnupg\.pinentry-qt$"; }
+                { app-id = "^org\.telegram\.desktop$"; }
               ];
               block-out-from = "screencast";
             }
