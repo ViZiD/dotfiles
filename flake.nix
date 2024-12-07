@@ -75,7 +75,7 @@
         let
           overlays = [
             agenix-rekey.overlays.default
-            inputs.nur.overlay
+            inputs.nur.overlays.default
           ] ++ (builtins.attrValues self.overlays) ++ extraOverlays;
 
           pkgs = import nixpkgs {
@@ -133,7 +133,7 @@
           inherit system;
           overlays = [
             agenix-rekey.overlays.default
-            inputs.nur.overlay
+            inputs.nur.overlays.default
           ] ++ (builtins.attrValues self.overlays);
         };
       in
