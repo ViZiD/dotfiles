@@ -13,20 +13,23 @@ in
   config = mkIf cfg.enable {
     services.zapret = {
       enable = true;
-      httpSupport = false;
       udpSupport = true;
       udpPorts = [
         "50000:50099"
+        "443"
+        "80"
       ];
-      blacklist = [
-        "ru-board.com"
-      ];
+      # blacklist = [
+      #   "ru-board.com"
+      # ];
       params = [
-        "--dpi-desync-repeats=2" # fix youtube
-        "--dpi-desync-ttl=3" # fix ssl
-        "--dpi-desync=syndata,fake,split2"
-        "--dpi-desync-fooling=md5sig"
+        "--filter-udp=443,50000-50099"
+        "--dpi-desync=fake"
         "--dpi-desync-any-protocol"
+        "--new"
+        "--filter-tcp=443,80"
+        "--dpi-desync=fake,multidisorder"
+        "--dpi-desync-ttl=3"
       ];
     };
   };
