@@ -23,7 +23,6 @@ in
     home-manager.users.${user.username} = mkIf user.enable {
       stylix.targets = mkIf isStylesEnabled { firefox.enable = true; };
       home.packages = with pkgs; [
-        ungoogled-chromium
       ];
       programs.firefox = {
         enable = true;
