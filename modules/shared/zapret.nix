@@ -23,7 +23,7 @@ in
       #   "ru-board.com"
       # ];
       params = [
-        "--filter-udp=443,50000-50099"
+        "--filter-udp=50000-50099"
         "--dpi-desync=fake"
         "--dpi-desync-any-protocol"
         "--new"
