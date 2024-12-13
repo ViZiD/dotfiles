@@ -6,7 +6,7 @@
 }:
 with lib;
 let
-  cfg = config.dots.dev;
+  cfg = config.dots.dev.elixir;
   user = config.dots.user;
 in
 {
