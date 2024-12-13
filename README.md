@@ -2,6 +2,9 @@
 
 ![Я настроил!!!](/assets/bgg.jpg)
 
-### Спасибо
+### Thanks
 * [balsoft/nixos-config](https://github.com/balsoft/nixos-config)
 * [vyorkin/nixos-config](https://github.com/vyorkin/nixos-config)
+* [etu/nixconfig](https://github.com/etu/nixconfig)
+* [TheMaxMur/NixOS-Configuration](https://github.com/TheMaxMur/NixOS-Configuration)
+* [Misterio77/nix-config](https://github.com/Misterio77/nix-config)
