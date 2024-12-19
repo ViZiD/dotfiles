@@ -21,7 +21,6 @@ in
     dots.shared.persist.user = mkIf isPersistEnabled {
       directories = [
         ".config/Code"
-        ".config/Cody-nodejs" # cody ai
       ];
     };
 
@@ -56,7 +55,6 @@ in
           mkhl.direnv
           rust-lang.rust-analyzer
           psioniq.psi-header
-          sourcegraph.cody-ai
           pkgs.vscode-extensions.elixir-lsp.vscode-elixir-ls
         ];
 
