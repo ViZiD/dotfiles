@@ -70,6 +70,10 @@ in
         rekeyFile = ./socials/mistral.age;
         owner = username;
       };
+      codestral = {
+        rekeyFile = ./socials/codestral.age;
+        owner = username;
+      };
     };
   };
 }
