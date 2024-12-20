@@ -205,16 +205,6 @@ in
             "editor.defaultFormatter" = "rust-lang.rust-analyzer";
             "editor.formatOnSave" = true;
           };
-          "[dart]" = {
-            "editor.formatOnSave" = true;
-            "editor.formatOnType" = true;
-            "editor.rulers" = [ 80 ];
-            "editor.selectionHighlight" = false;
-            "editor.suggestSelection" = "first";
-            "editor.tabCompletion" = "onlySnippets";
-            "editor.wordBasedSuggestions" = "off";
-          };
-          "dart.checkForSdkUpdates" = false;
           "psi-header.config" = {
             "author" = "Radik Islamov";
             "authorEmail" = "mail@vizqq.cc";
