@@ -21,6 +21,7 @@ in
     dots.shared.persist.user = mkIf isPersistEnabled {
       directories = [
         ".config/Code"
+        ".continue"
       ];
     };
 
@@ -29,6 +30,78 @@ in
       stylix.targets = mkIf isStylesEnabled {
         vscode.enable = true;
       };
+
+      home.file.".continue/config.ts".source = ./continue/config.ts;
+
+      home.file.".continue/config.json".text = ''
+        {
+          "models": [
+            {
+              "title": "Mistral Large",
+              "provider": "mistral",
+              "model": "mistral-large-latest",
+              "apiKey": "$ cat ${config.age.secrets.mistral.path}"
+            }
+          ],
+          "tabAutocompleteModel": {
+            "title": "Codestral",
+            "provider": "mistral",
+            "model": "codestral-latest",
+            "apiKey": "$ cat ${config.age.secrets.codestral.path}",
+            "apiBase": "https://codestral.mistral.ai/v1"
+          },
+          "embeddingsProvider": {
+            "provider": "mistral",
+            "model": "mistral-embed",
+            "apiKey": "$ cat ${config.age.secrets.mistral.path}",
+            "apiBase": "https://api.mistral.ai/v1"
+          },
+          "contextProviders": [
+            {
+              "name": "code",
+              "params": {}
+            },
+            {
+              "name": "docs",
+              "params": {}
+            },
+            {
+              "name": "diff",
+              "params": {}
+            },
+            {
+              "name": "terminal",
+              "params": {}
+            },
+            {
+              "name": "problems",
+              "params": {}
+            },
+            {
+              "name": "folder",
+              "params": {}
+            },
+            {
+              "name": "codebase",
+              "params": {}
+            }
+          ],
+          "slashCommands": [
+            {
+              "name": "share",
+              "description": "Export the current chat session to markdown"
+            },
+            {
+              "name": "cmd",
+              "description": "Generate a shell command"
+            },
+            {
+              "name": "commit",
+              "description": "Generate a git commit message"
+            }
+          ]
+        }
+      '';
 
       programs.vscode = {
         enable = true;
@@ -56,6 +129,7 @@ in
           rust-lang.rust-analyzer
           psioniq.psi-header
           pkgs.vscode-extensions.elixir-lsp.vscode-elixir-ls
+          continue.continue
         ];
 
         userSettings = {
