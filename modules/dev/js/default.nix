@@ -28,6 +28,7 @@ in
           nodejs_latest
           yarn
           pnpm
+          node2nix
         ]
         ++ nixPkgs
         ++ extPkgs;
