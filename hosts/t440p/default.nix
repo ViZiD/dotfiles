@@ -78,6 +78,7 @@
         "vboxusers"
         "docker"
         "render"
+        "wireshark"
       ];
       extraHomeOptions = {
         programs.mpv.config = lib.mkIf config.dots.graphical.enable {
@@ -123,6 +124,11 @@
     };
     graphical.enable = true;
     styles.enable = true;
+  };
+
+  programs.wireshark = {
+    enable = true;
+    package = pkgs.wireshark;
   };
 
   age = {
