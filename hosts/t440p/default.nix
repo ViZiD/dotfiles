@@ -46,6 +46,8 @@
         # mitm
         mitmproxy
         frida-tools
+
+        ncftp
       ];
       systemPackages = with pkgs; [
         # compression
@@ -59,6 +61,8 @@
         atool
 
         usbutils
+
+        nmap
       ];
       extraGroups = [
         "video"
