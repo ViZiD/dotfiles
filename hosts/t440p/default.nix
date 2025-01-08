@@ -63,6 +63,8 @@
         usbutils
 
         nmap
+
+        ntfs3g
       ];
       extraGroups = [
         "video"
