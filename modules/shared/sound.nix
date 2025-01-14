@@ -13,8 +13,6 @@ in
   options.dots.shared.sound.enable = mkEnableOption "Enable sound support";
 
   config = mkIf cfg.enable {
-    hardware.pulseaudio.enable = lib.mkForce false;
-
     security.rtkit.enable = true;
 
     services.pipewire = {

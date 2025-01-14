@@ -55,16 +55,7 @@ in
         mbsync.enable = true;
         himalaya = {
           enable = true;
-          package = pkgs.himalaya.override {
-            buildNoDefaultFeatures = true;
-            buildFeatures = [
-              "imap"
-              "maildir"
-              "smtp"
-              "account-sync"
-              "pgp-gpg"
-            ];
-          };
+          package = pkgs.himalaya;
           settings = {
             downloads-dir = "${hm.xdg.userDirs.download}";
           };
