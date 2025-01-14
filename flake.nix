@@ -122,7 +122,7 @@
 
       agenix-rekey = agenix-rekey.configure {
         userFlake = self;
-        nodes = self.nixosConfigurations;
+        nixosConfigurations = self.nixosConfigurations;
         agePackage = p: p.age;
       };
     }
