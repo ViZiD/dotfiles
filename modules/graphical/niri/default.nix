@@ -139,6 +139,7 @@ in
                 top-left = 12.0;
                 top-right = 12.0;
               };
+              open-floating = true;
               clip-to-geometry = true;
             }
           ];
