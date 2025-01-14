@@ -9,7 +9,6 @@
     ./wireless.nix
     ./persist.nix
     ./printing.nix
-    ./wireguard.nix
     ./zapret.nix
   ];
 }

@@ -120,7 +120,6 @@
       bluetooth.enable = true;
       printing.enable = true;
       zapret.enable = true;
-      # wireguard.enable = true;
       persist = {
         enable = true;
         user = {

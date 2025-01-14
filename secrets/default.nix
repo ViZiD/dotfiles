@@ -47,9 +47,6 @@ in
       wireless = {
         rekeyFile = ./common/wireless.age;
       };
-      wireguard_nlpg = {
-        rekeyFile = ./wireguard/nlpg.age;
-      };
       email_vizqq = {
         rekeyFile = ./email/privatemail.age;
         owner = username;
