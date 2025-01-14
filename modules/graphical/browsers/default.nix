@@ -103,6 +103,7 @@ in
             sponsorblock
             pkgs.nur.repos.rycee.firefox-addons."7tv"
             vimium
+            translate-web-pages
           ];
         };
       };
