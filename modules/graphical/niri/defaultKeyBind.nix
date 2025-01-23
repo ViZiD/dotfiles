@@ -261,4 +261,8 @@
   # Powers off the monitors. To turn them back on, do any input like
   # moving the mouse or pressing any other key.
   "Mod+Shift+P".action.power-off-monitors = { };
+
+  # Move the focused window between the floating and the tiling layout.
+  "Mod+V".action.toggle-window-floating = { };
+  "Mod+Shift+V".action.switch-focus-between-floating-and-tiling = { };
 }
