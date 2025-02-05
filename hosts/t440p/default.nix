@@ -146,6 +146,17 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking = {
+    interfaces = {
+      enp0s25 = {
+        useDHCP = true;
+        # ipv4.addresses = [
+        #   {
+        #     address = "192.168.88.2";
+        #     prefixLength = 24;
+        #   }
+        # ];
+      };
+    };
     hostName = lib.mkDefault hostname;
     firewall = {
       enable = true;
