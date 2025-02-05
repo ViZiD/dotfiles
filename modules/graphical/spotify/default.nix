@@ -37,9 +37,9 @@ in
           spotifyLaunchFlags = "--enable-features=WaylandWindowDecorations";
         };
         ncspot = {
-          enable = true;
+          enable = false;
           # wait merge in stable
-          package = pkgs.master.ncspot;
+          package = pkgs.ncspot;
           settings = {
             username_cmd = "echo vizidd@gmail.com";
             device_name = config.networking.hostName;
