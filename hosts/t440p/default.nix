@@ -37,6 +37,7 @@
 
         # media
         asciinema
+        inkscape
 
         # android
         apkleaks
