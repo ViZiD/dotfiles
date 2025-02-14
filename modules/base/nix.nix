@@ -35,9 +35,13 @@ in
         auto-optimise-store = true;
 
         substituters = [
+          "https://cache.nixos.org"
           "https://nix-community.cachix.org"
           "https://vizqq.cachix.org"
           "https://picokeys-nix.cachix.org"
+
+          # proxy
+          "https://ncproxy.vizqq.cc"
         ];
 
         trusted-substituters = [
