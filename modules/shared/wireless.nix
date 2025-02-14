@@ -27,14 +27,9 @@ in
         enable = true;
         group = "network";
       };
-      extraConfig = ''
-        update_config=1
-      '';
     };
 
     users.groups.network = { };
-
-    systemd.services.wpa_supplicant.preStart = "touch /etc/wpa_supplicant.conf";
 
     home-manager.users.${user.username}.home.packages = mkIf (isDesktop && user.enable) [
       pkgs.wpa_supplicant_gui
