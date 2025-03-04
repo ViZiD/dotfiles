@@ -56,7 +56,7 @@ in
     dots = {
       graphical.terminal.enable = true;
       graphical.vscode.enable = true;
-      graphical.browsers.enable = true;
+      graphical.browser.enable = true;
       graphical.niri.enable = true;
       graphical.telegram.enable = true;
       graphical.spotify.enable = true;

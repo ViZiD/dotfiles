@@ -6,113 +6,65 @@
 }:
 with lib;
 let
-  cfg = config.dots.graphical.browsers;
+  cfg = config.dots.graphical.browser;
   user = config.dots.user;
   isStylesEnabled = config.dots.styles.enable;
   isPersistEnabled = config.dots.shared.persist.enable;
+
+  browser = [ "chromium.desktop" ];
+  associations = {
+    "text/html" = browser;
+    "x-scheme-handler/http" = browser;
+    "x-scheme-handler/https" = browser;
+    "x-scheme-handler/ftp" = browser;
+    "x-scheme-handler/chrome" = browser;
+    "x-scheme-handler/about" = browser;
+    "x-scheme-handler/unknown" = browser;
+    "application/x-extension-htm" = browser;
+    "application/x-extension-html" = browser;
+    "application/x-extension-shtml" = browser;
+    "application/xhtml+xml" = browser;
+    "application/x-extension-xhtml" = browser;
+    "application/x-extension-xht" = browser;
+  };
 in
 {
-  options.dots.graphical.browsers.enable = mkEnableOption "Enable browsers packages";
+  options.dots.graphical.browser.enable = mkEnableOption "Enable browser";
 
   config = mkIf cfg.enable {
     dots.shared.persist.user = mkIf (user.enable && isPersistEnabled) {
       directories = [
-        ".mozilla"
+        ".config/chromium"
       ];
     };
     home-manager.users.${user.username} = mkIf user.enable {
       stylix.targets = mkIf isStylesEnabled { firefox.enable = true; };
-      home.packages = with pkgs; [
-      ];
-      programs.firefox = {
-        enable = true;
-        profiles.default = {
-          settings = {
-            # make browser more pindosian
-            distribution.searchplugins.defaultLocale = "en-US";
-            browser.search.countryCode = "US";
-            browser.search.region = "US";
-            general.useragent.locale = "en-US";
-            general.smoothScroll = false;
-
-            extensions.autoDisableScopes = 0;
-            extensions.update.enabled = false;
-            extensions.systemAddon.update.enabled = false;
-          };
-          search = {
-            engines = {
-              "Nix" = {
-                urls = [
-                  {
-                    template = "https://mynixos.com/search";
-                    params = [
-                      {
-                        name = "q";
-                        value = "{searchTerms}";
-                      }
-                    ];
-                  }
-                ];
-
-                icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                definedAliases = [ "@nix" ];
-              };
-              "Github" = {
-                urls = [
-                  {
-                    template = "https://github.com/search";
-                    params = [
-                      {
-                        name = "type";
-                        value = "repositories";
-                      }
-                      {
-                        name = "q";
-                        value = "{searchTerms}";
-                      }
-                    ];
-                  }
-                ];
-
-                definedAliases = [ "@gh" ];
-              };
-              "Github User" = {
-                urls = [
-                  {
-                    template = "https://github.com/search";
-                    params = [
-                      {
-                        name = "type";
-                        value = "users";
-                      }
-                      {
-                        name = "q";
-                        value = "{searchTerms}";
-                      }
-                    ];
-                  }
-                ];
-
-                definedAliases = [ "@ghu" ];
-              };
-            };
-            force = true;
-          };
-          extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-            ublock-origin
-            sponsorblock
-            pkgs.nur.repos.rycee.firefox-addons."7tv"
-            vimium
-            translate-web-pages
+      programs = {
+        chromium = {
+          enable = true;
+          package = pkgs.chromium;
+          extensions = [
+            { id = "mgijmajocgfcbeboacabfgobmjgjcoja"; } # Google Dictionary
+            { id = "bgnkhhnnamicmpeenaelnjfhikgbkllg"; } # AdGuard AdBlocker
+            { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; } # SponsorBlock
+            { id = "ammjkodgmmoknidbanneddgankgfejfh"; } # 7TV
+            { id = "bhlhnicpbhignbdhedgjhgdocnmhomnp"; } # ColorZilla
+            { id = "cofdbpoegempjloogbagkncekinflcnj"; } # DeepL
+            { id = "ghbmnnjooekpmoecnnnilnnbdlolhkhi"; } # Google Docs Offline
+            { id = "mmioliijnhnoblpgimnlajmefafdfilb"; } # Shazam
+            { id = "hfjbmagddngcpeloejdejnfgbamkjaeg"; } # Vimium
+            { id = "abpdnfjocnmdomablahdcfnoggeeiedb"; } # Save All Resources
+          ];
+          commandLineArgs = [
+            "--disable-features=WebRtcAllowInputVolumeAdjustment"
+            # use the plain text store
+            # "--password-store=basic"
           ];
         };
       };
-      xdg.mimeApps.defaultApplications = {
-        "text/html" = "firefox.desktop";
-        "x-scheme-handler/http" = "firefox.desktop";
-        "x-scheme-handler/https" = "firefox.desktop";
-        "x-scheme-handler/about" = "firefox.desktop";
-        "x-scheme-handler/unknown" = "firefox.desktop";
+      xdg.mimeApps = {
+        defaultApplications = associations;
+        associations.added = associations;
       };
     };
   };
