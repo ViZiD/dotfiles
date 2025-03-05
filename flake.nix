@@ -10,7 +10,7 @@
 
     utils.url = "github:numtide/flake-utils";
 
-    agenix.url = "github:ryantm/agenix";
+    agenix.url = "github:yaxitech/ragenix";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware?ref=master";
 
@@ -73,10 +73,13 @@
           extraOverlays ? [ ],
         }:
         let
-          overlays = [
-            agenix-rekey.overlays.default
-            inputs.nur.overlays.default
-          ] ++ (builtins.attrValues self.overlays) ++ extraOverlays;
+          overlays =
+            [
+              agenix-rekey.overlays.default
+              inputs.nur.overlays.default
+            ]
+            ++ (builtins.attrValues self.overlays)
+            ++ extraOverlays;
 
           pkgs = import nixpkgs {
             inherit system overlays;
