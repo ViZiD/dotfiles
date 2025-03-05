@@ -46,6 +46,7 @@ in
           extensions = [
             { id = "mgijmajocgfcbeboacabfgobmjgjcoja"; } # Google Dictionary
             { id = "bgnkhhnnamicmpeenaelnjfhikgbkllg"; } # AdGuard AdBlocker
+            { id = "neibhohkbmfjninidnaoacabkjonbahn"; } # Hide Google AI Overviews
             { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; } # SponsorBlock
             { id = "ammjkodgmmoknidbanneddgankgfejfh"; } # 7TV
             { id = "bhlhnicpbhignbdhedgjhgdocnmhomnp"; } # ColorZilla
