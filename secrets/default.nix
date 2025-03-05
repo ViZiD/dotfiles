@@ -63,14 +63,6 @@ in
         rekeyFile = ./socials/spotify.age;
         owner = username;
       };
-      mistral = {
-        rekeyFile = ./socials/mistral.age;
-        owner = username;
-      };
-      codestral = {
-        rekeyFile = ./socials/codestral.age;
-        owner = username;
-      };
     };
   };
 }
