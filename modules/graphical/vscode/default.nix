@@ -32,11 +32,12 @@ in
 
       programs.vscode = {
         enable = true;
-        package = (
-          pkgs.vscode.override {
-            commandLineArgs = "--disable-gpu";
-          }
-        );
+        # package = (
+        #   pkgs.vscode.override {
+        #     commandLineArgs = "--disable-gpu";
+        #   }
+        # );
+        package = pkgs.vscode;
         mutableExtensionsDir = false;
         extensions = with extensions.vscode-marketplace; [
           vscodevim.vim
