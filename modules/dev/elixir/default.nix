@@ -15,7 +15,7 @@ in
     home-manager.users.${user.username} = mkIf user.enable {
       home.packages = with pkgs; [
         elixir
-        gigalixir
+        # gigalixir # FIXME: broken rollbar package
       ];
     };
   };
