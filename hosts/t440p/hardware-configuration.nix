@@ -8,13 +8,23 @@
   modulesPath,
   ...
 }:
+let
+  qca9377_firmware = pkgs.callPackage ./qca9377_firmware.nix { };
+in
 
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
+  hardware.firmware = [ qca9377_firmware ];
+
+  # boot.blacklistedKernelModules = [
+  #   "ath10k_pci"
+  # ];
+
   boot.initrd.availableKernelModules = [
+    "ath10k_pci"
     "xhci_pci"
     "ehci_pci"
     "ahci"
