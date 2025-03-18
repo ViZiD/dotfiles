@@ -125,6 +125,22 @@ in
             }
             {
               matches = [
+                { app-id = "^org.gnome.FileRoller$"; }
+              ];
+
+              min-width = 800;
+
+              geometry-corner-radius = {
+                bottom-left = 12.0;
+                bottom-right = 12.0;
+                top-left = 12.0;
+                top-right = 12.0;
+              };
+              open-floating = true;
+              clip-to-geometry = true;
+            }
+            {
+              matches = [
                 { app-id = "^\.blueman-services-wrapped$"; }
                 { app-id = "^\.blueman-sendto-wrapped$"; }
                 { app-id = "^\.blueman-adapters-wrapped$"; }
