@@ -22,6 +22,7 @@ in
     ./discord
     ./mpv
     ./youtube
+    ./reading
   ];
   options.dots.graphical.enable = mkEnableOption "Enable graphical settings";
 
@@ -64,6 +65,7 @@ in
       graphical.discord.enable = true;
       graphical.mpv.enable = true;
       graphical.youtube.enable = true;
+      graphical.reading.enable = true;
     };
   };
 }
