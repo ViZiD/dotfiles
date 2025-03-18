@@ -110,6 +110,7 @@ in
                 { app-id = "^vesktop$"; }
                 { app-id = "^mpv$"; }
                 { app-id = "^FreeTube$"; }
+                { app-id = "^org.pwmt.zathura$"; }
                 { title = "(?i)Visual\\s+Studio\\s+Code"; }
               ];
               open-maximized = true;
