@@ -23,6 +23,7 @@ in
     ./mpv
     ./youtube
     ./reading
+    ./tools
   ];
   options.dots.graphical.enable = mkEnableOption "Enable graphical settings";
 
@@ -66,6 +67,7 @@ in
       graphical.mpv.enable = true;
       graphical.youtube.enable = true;
       graphical.reading.enable = true;
+      graphical.tools.enable = true;
     };
   };
 }
