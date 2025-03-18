@@ -15,10 +15,6 @@ in
   options.dots.graphical.telegram.enable = mkEnableOption "Enable telegram messenger";
 
   config = mkIf cfg.enable {
-    dots.user.userPackages = [
-      pkgs.telegram-desktop
-    ];
-
     home-manager.users.${user.username} = mkIf user.enable {
       xdg.mimeApps = rec {
         defaultApplications = {
@@ -26,6 +22,9 @@ in
         };
         associations.added = defaultApplications;
       };
+      home.packages = [
+        pkgs.telegram-desktop
+      ];
     };
 
     dots.shared.persist.user = mkIf isPersistEnabled {
