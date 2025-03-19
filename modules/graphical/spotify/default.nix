@@ -36,21 +36,9 @@ in
           ];
           spotifyLaunchFlags = "--enable-features=WaylandWindowDecorations";
         };
-        ncspot = {
-          enable = false;
-          # wait merge in stable
-          package = pkgs.ncspot;
-          settings = {
-            username_cmd = "echo vizidd@gmail.com";
-            device_name = config.networking.hostName;
-            password_cmd = "${pkgs.coreutils}/bin/cat ${config.age.secrets."spotify".path}";
-          };
-        };
-
       };
       stylix.targets = mkIf isStylesEnabled {
         spicetify.enable = true;
-        ncspot.enable = true;
       };
     };
   };
