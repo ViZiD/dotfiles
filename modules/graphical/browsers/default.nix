@@ -8,7 +8,6 @@ with lib;
 let
   cfg = config.dots.graphical.browser;
   user = config.dots.user;
-  isStylesEnabled = config.dots.styles.enable;
   isPersistEnabled = config.dots.shared.persist.enable;
 
   browser = [ "chromium.desktop" ];
@@ -38,7 +37,6 @@ in
       ];
     };
     home-manager.users.${user.username} = mkIf user.enable {
-      stylix.targets = mkIf isStylesEnabled { firefox.enable = true; };
       programs = {
         chromium = {
           enable = true;
@@ -59,8 +57,6 @@ in
           ];
           commandLineArgs = [
             "--disable-features=WebRtcAllowInputVolumeAdjustment"
-            # use the plain text store
-            # "--password-store=basic"
           ];
         };
       };
