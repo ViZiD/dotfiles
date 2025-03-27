@@ -47,6 +47,7 @@ in
             { id = "neibhohkbmfjninidnaoacabkjonbahn"; } # Hide Google AI Overviews
             { id = "ldpochfccmkkmhdbclfhpagapcfdljkj"; } # Decentraleyes
             { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; } # SponsorBlock
+            { id = "doojmbjmlfjjnbmnoijecmcbfeoakpjm"; } # NoScript
             { id = "ammjkodgmmoknidbanneddgankgfejfh"; } # 7TV
             { id = "bhlhnicpbhignbdhedgjhgdocnmhomnp"; } # ColorZilla
             { id = "cofdbpoegempjloogbagkncekinflcnj"; } # DeepL
