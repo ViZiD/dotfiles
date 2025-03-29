@@ -35,22 +35,21 @@ in
             color-modes = true;
             cursorline = true;
             bufferline = "multiple";
+            auto-info = true;
 
             soft-wrap.enable = true;
 
-            auto-save = {
-              focus-lost = true;
-              after-delay.enable = true;
-            };
             cursor-shape = {
               insert = "bar";
               normal = "block";
               select = "underline";
             };
+
             lsp = {
               display-inlay-hints = true;
               display-messages = true;
             };
+
             statusline = {
               left = [
                 "mode"
@@ -59,11 +58,16 @@ in
                 "read-only-indicator"
                 "file-modification-indicator"
               ];
+              center = [
+                "version-control"
+                "file-name"
+              ];
               right = [
                 "diagnostics"
                 "selections"
                 "register"
                 "file-type"
+                "file-encoding"
                 "file-line-ending"
                 "position"
               ];
