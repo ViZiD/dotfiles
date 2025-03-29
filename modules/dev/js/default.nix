@@ -22,10 +22,12 @@ in
     home-manager.users.${user.username} = mkIf user.enable {
       home.packages =
         with pkgs;
+        with pkgs.nur.repos.vizqq;
         [
           nodejs_latest
           yarn
           pnpm
+          webcrack
         ]
         ++ nixPkgs;
     };
