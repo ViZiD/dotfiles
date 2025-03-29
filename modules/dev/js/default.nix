@@ -9,8 +9,6 @@ let
   cfg = config.dots.dev;
   user = config.dots.user;
 
-  genPkgs = pkgs.callPackage ./packages { inherit pkgs; };
-  extPkgs = with genPkgs; [ webcrack ];
   nixPkgs = with pkgs.nodePackages; [
     eslint_d
     prettier
@@ -28,10 +26,8 @@ in
           nodejs_latest
           yarn
           pnpm
-          node2nix
         ]
-        ++ nixPkgs
-        ++ extPkgs;
+        ++ nixPkgs;
     };
   };
 }
