@@ -62,7 +62,7 @@ in
           expireDuplicatesFirst = true;
           extended = true;
           ignoreAllDups = true;
-          size = 10000;
+          size = 100000000;
           save = size;
           path = "$HOME/.local/share/zsh/history";
         };
