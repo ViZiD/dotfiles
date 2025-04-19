@@ -63,10 +63,6 @@ in
         rekeyFile = ./email/userjs.age;
         owner = username;
       };
-      spotify = {
-        rekeyFile = ./socials/spotify.age;
-        owner = username;
-      };
     };
   };
 }
