@@ -67,7 +67,7 @@ in
           path = "$HOME/.local/share/zsh/history";
         };
 
-        initExtra = ''
+        initContent = ''
           setopt prompt_subst
           autoload -Uz vcs_info add-zsh-hook
 

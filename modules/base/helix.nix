@@ -24,7 +24,7 @@ in
           nixfmt-rfc-style
           nodePackages.typescript-language-server
           nodePackages.vscode-langservers-extracted
-          python311Packages.python-lsp-server
+          python312Packages.python-lsp-server
           emmet-language-server
           nixd
           elixir-ls
