@@ -119,7 +119,7 @@
       android.enable = true;
       bluetooth.enable = true;
       printing.enable = true;
-      zapret.enable = true;
+      zapret.enable = false;
       persist = {
         enable = true;
         user = {
