@@ -2,16 +2,19 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 with lib;
 let
+  hmLib = inputs.home-manager.lib;
   cfg = config.dots.graphical.tools;
   user = config.dots.user;
   # isStylesEnabled = config.dots.styles.enable;
   isPersistEnabled = config.dots.shared.persist.enable;
 
   associations = {
+    "inode/directory" = "nemo.desktop";
     "application/zip" = "org.gnome.FileRoller";
     "application/rar" = "org.gnome.FileRoller";
     "application/7z" = "org.gnome.FileRoller";
@@ -53,9 +56,29 @@ in
     home-manager.users.${user.username} = mkIf user.enable {
       # stylix.targets = mkIf isStylesEnabled { };
       home.packages = with pkgs; [
+        (nemo-with-extensions.override { extensions = [ nemo-fileroller ]; })
         file-roller
         swayimg
       ];
+
+      dconf.settings = {
+        "org/nemo/preferences" = {
+          default-folder-viewer = "list-view";
+          show-hidden-files = true;
+          start-with-dual-pane = true;
+          date-format-monospace = true;
+          thumbnail-limit = hmLib.hm.gvariant.mkUint64 (100 * 1024 * 1024);
+        };
+        "org/nemo/window-state" = {
+          sidebar-bookmark-breakpoint = 0;
+          sidebar-width = 180;
+        };
+        "org/nemo/preferences/menu-config" = {
+          selection-menu-make-link = true;
+          selection-menu-copy-to = true;
+          selection-menu-move-to = true;
+        };
+      };
 
       xdg = {
         configFile."swayimg/config".source = ./swayimgrc;

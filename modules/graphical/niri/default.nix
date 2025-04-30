@@ -34,7 +34,12 @@ in
       package = pkgs.niri;
     };
 
-    xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    xdg.portal = {
+      config.common = {
+        "org.freedesktop.impl.portal.FileChooser" = "gtk";
+      };
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    };
 
     niri-flake.cache.enable = false;
 
@@ -100,72 +105,73 @@ in
               ];
             }
           ];
-          window-rules = [
-            {
-              matches = [
-                { app-id = "^chromium-browser$"; }
-                { app-id = "^kitty$"; }
-                { app-id = "^Spotify$"; }
-                { app-id = "^org\.telegram\.desktop$"; }
-                { app-id = "^vesktop$"; }
-                { app-id = "^mpv$"; }
-                { app-id = "^FreeTube$"; }
-                { title = "(?i)Visual\\s+Studio\\s+Code"; }
-              ];
-              open-maximized = true;
-              border.enable = false;
-            }
-            {
-              matches = [
-                { app-id = "^org\.gnupg\.pinentry-qt$"; }
-                { app-id = "^org\.telegram\.desktop$"; }
-              ];
-              block-out-from = "screencast";
-            }
-            {
-              matches = [
-                { app-id = "^org.pwmt.zathura$"; }
-              ];
-              open-fullscreen = true;
-              border.enable = false;
-            }
-            {
-              matches = [
-                { app-id = "^org.gnome.FileRoller$"; }
-              ];
-
-              min-width = 800;
-
+          window-rules =
+            let
               geometry-corner-radius = {
                 bottom-left = 12.0;
                 bottom-right = 12.0;
                 top-left = 12.0;
                 top-right = 12.0;
               };
-              open-floating = true;
-              clip-to-geometry = true;
-            }
-            {
-              matches = [
-                { app-id = "^\.blueman-services-wrapped$"; }
-                { app-id = "^\.blueman-sendto-wrapped$"; }
-                { app-id = "^\.blueman-adapters-wrapped$"; }
-                { app-id = "^\.blueman-applet-wrapped$"; }
-                { app-id = "^\.blueman-manager-wrapped$"; }
-                { app-id = "^org\.gnupg\.pinentry-qt$"; }
-                { app-id = "^wpa_gui$"; }
-                { app-id = "^org\.pulseaudio\.pavucontrol$"; }
-              ];
-              geometry-corner-radius = {
-                bottom-left = 12.0;
-                bottom-right = 12.0;
-                top-left = 12.0;
-                top-right = 12.0;
-              };
-              open-floating = true;
-              clip-to-geometry = true;
-            }
-          ];
+            in
+            [
+              {
+                matches = [
+                  { is-floating = true; }
+                ];
+                inherit geometry-corner-radius;
+                clip-to-geometry = true;
+              }
+              {
+                matches = [
+                  { app-id = "^chromium-browser$"; }
+                  { app-id = "^kitty$"; }
+                  { app-id = "^Spotify$"; }
+                  { app-id = "^org\.telegram\.desktop$"; }
+                  { app-id = "^vesktop$"; }
+                  { app-id = "^mpv$"; }
+                  { title = "(?i)Visual\\s+Studio\\s+Code"; }
+                ];
+                open-maximized = true;
+                border.enable = false;
+              }
+              {
+                matches = [
+                  { app-id = "^org\.gnupg\.pinentry-qt$"; }
+                  { app-id = "^org\.telegram\.desktop$"; }
+                ];
+                block-out-from = "screencast";
+              }
+              {
+                matches = [
+                  { app-id = "^org.pwmt.zathura$"; }
+                ];
+                open-fullscreen = true;
+                border.enable = false;
+              }
+              {
+                matches = [
+                  { app-id = "^org.gnome.FileRoller$"; }
+                ];
+
+                min-width = 800;
+                open-floating = true;
+              }
+              {
+                matches = [
+                  { app-id = "^\.blueman-services-wrapped$"; }
+                  { app-id = "^\.blueman-sendto-wrapped$"; }
+                  { app-id = "^\.blueman-adapters-wrapped$"; }
+                  { app-id = "^\.blueman-applet-wrapped$"; }
+                  { app-id = "^\.blueman-manager-wrapped$"; }
+                  { app-id = "^org\.gnupg\.pinentry-qt$"; }
+                  { app-id = "^wpa_gui$"; }
+                  { app-id = "^org\.pulseaudio\.pavucontrol$"; }
+                ];
+
+                open-floating = true;
+              }
+            ];
           prefer-no-csd = true;
           input = {
             keyboard = {
