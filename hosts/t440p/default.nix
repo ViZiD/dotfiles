@@ -149,12 +149,16 @@
     interfaces = {
       enp0s25 = {
         useDHCP = true;
-        # ipv4.addresses = [
-        #   {
-        #     address = "192.168.88.2";
-        #     prefixLength = 24;
-        #   }
-        # ];
+        ipv4.addresses = [
+          {
+            address = "192.168.88.2";
+            prefixLength = 24;
+          }
+          {
+            address = "192.168.1.2";
+            prefixLength = 24;
+          }
+        ];
       };
     };
     hostName = lib.mkDefault hostname;
