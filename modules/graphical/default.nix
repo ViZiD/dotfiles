@@ -16,7 +16,6 @@ in
     ./vscode
     ./browsers
     ./niri
-    ./wofi
     ./telegram
     ./spotify
     ./discord

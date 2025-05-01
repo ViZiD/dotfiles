@@ -10,7 +10,7 @@ let
   hmLib = inputs.home-manager.lib;
   cfg = config.dots.graphical.tools;
   user = config.dots.user;
-  # isStylesEnabled = config.dots.styles.enable;
+  isStylesEnabled = config.dots.styles.enable;
   isPersistEnabled = config.dots.shared.persist.enable;
 
   associations = {
@@ -54,7 +54,21 @@ in
       ];
     };
     home-manager.users.${user.username} = mkIf user.enable {
-      # stylix.targets = mkIf isStylesEnabled { };
+      stylix.targets = mkIf isStylesEnabled {
+        fuzzel.enable = true;
+      };
+
+      programs.fuzzel = {
+        enable = true;
+        settings = {
+          main = {
+            terminal = "${pkgs.kitty}/bin/kitty";
+            width = 50;
+            layer = "overlay";
+          };
+        };
+      };
+
       home.packages = with pkgs; [
         (nemo-with-extensions.override { extensions = [ nemo-fileroller ]; })
         file-roller
