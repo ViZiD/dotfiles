@@ -177,7 +177,14 @@ in
                   { namespace = "^launcher$"; }
                 ];
                 opacity = 0.95;
-                inherit geometry-corner-radius;
+              }
+              {
+                matches = [
+                  {
+                    namespace = "^notifications$";
+                  }
+                ];
+                block-out-from = "screencast";
               }
             ];
             prefer-no-csd = true;

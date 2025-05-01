@@ -56,6 +56,7 @@ in
     home-manager.users.${user.username} = mkIf user.enable {
       stylix.targets = mkIf isStylesEnabled {
         fuzzel.enable = true;
+        mako.enable = true;
       };
 
       programs.fuzzel = {
@@ -67,6 +68,14 @@ in
             layer = "overlay";
           };
         };
+      };
+
+      services.mako = {
+        enable = true;
+        borderRadius = 12;
+        defaultTimeout = 5000;
+        ignoreTimeout = true;
+        height = 150;
       };
 
       home.packages = with pkgs; [
