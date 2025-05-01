@@ -57,6 +57,8 @@ in
       type = types.listOf types.str;
       default = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAxADjBmQT2x1NTfq9rjhgQgOA6RikfWWiznVpo5RH1e"
+        "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAICLZvM/YnF0MUlamOWa+unGn5ITHoaXnX7r1uEo1Y2qFAAAAC3NzaDpkZWZhdWx0"
+        "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIMkQsDN5eNzZ30KRAQULJ1O/ohIRh74DClr/dBt7U+PhAAAACnNzaDpiYWNrdXA="
       ];
     };
     userPackages = mkOption {
