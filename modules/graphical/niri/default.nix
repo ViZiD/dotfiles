@@ -70,11 +70,15 @@ in
       programs.niri = {
         settings =
           let
-            geometry-corner-radius = {
-              bottom-left = 12.0;
-              bottom-right = 12.0;
-              top-left = 12.0;
-              top-right = 12.0;
+            floating-config = {
+              geometry-corner-radius = {
+                bottom-left = 12.0;
+                bottom-right = 12.0;
+                top-left = 12.0;
+                top-right = 12.0;
+              };
+              default-column-width.proportion = 0.9;
+              default-window-height.proportion = 0.9;
             };
           in
           {
@@ -112,13 +116,18 @@ in
                   (getExe config.home-manager.users.${user.username}.programs.waybar.package)
                 ];
               }
+              {
+                command = [
+                  (getExe pkgs.kitty)
+                ];
+              }
             ];
             window-rules = [
               {
                 matches = [
                   { is-floating = true; }
                 ];
-                inherit geometry-corner-radius;
+                inherit (floating-config) geometry-corner-radius;
                 clip-to-geometry = true;
               }
               {
@@ -152,8 +161,7 @@ in
                 matches = [
                   { app-id = "^org.gnome.FileRoller$"; }
                 ];
-
-                min-width = 800;
+                inherit (floating-config) default-column-width default-window-height;
                 open-floating = true;
               }
               {
@@ -167,8 +175,21 @@ in
                   { app-id = "^wpa_gui$"; }
                   { app-id = "^org\.pulseaudio\.pavucontrol$"; }
                 ];
-
+                inherit (floating-config) default-column-width default-window-height;
                 open-floating = true;
+              }
+              {
+                matches = [
+                  {
+                    app-id = "^xdg-desktop-portal-gtk$";
+                    title = "^Open.Files$";
+                  }
+                  {
+                    app-id = "^\.telegram-desktop-wrapped$";
+                    title = "^Choose.Files$";
+                  }
+                ];
+                inherit (floating-config) default-column-width default-window-height;
               }
             ];
             layer-rules = [
