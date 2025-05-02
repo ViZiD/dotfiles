@@ -80,11 +80,20 @@ in
 
       home.packages = with pkgs; [
         (nemo-with-extensions.override { extensions = [ nemo-fileroller ]; })
+        webp-pixbuf-loader # for webp thumbnails
+        xdg-terminal-exec
         file-roller
         swayimg
       ];
 
       dconf.settings = {
+        # fix open in terminal
+        "org/gnome/desktop/applications/terminal" = {
+          exec = getExe pkgs.xdg-terminal-exec;
+        };
+        "org/cinnamon/desktop/applications/terminal" = {
+          exec = getExe pkgs.xdg-terminal-exec;
+        };
         "org/nemo/preferences" = {
           default-folder-viewer = "list-view";
           show-hidden-files = true;
