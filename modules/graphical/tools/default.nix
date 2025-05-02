@@ -75,7 +75,6 @@ in
         borderRadius = 12;
         defaultTimeout = 5000;
         ignoreTimeout = true;
-        height = 150;
       };
 
       home.packages = with pkgs; [
