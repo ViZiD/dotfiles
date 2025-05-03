@@ -182,7 +182,7 @@ in
                 matches = [
                   {
                     app-id = "^xdg-desktop-portal-gtk$";
-                    title = "^Open.Files$";
+                    title = "^Open.File.?$";
                   }
                   {
                     app-id = "^\.telegram-desktop-wrapped$";
