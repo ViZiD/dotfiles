@@ -18,6 +18,7 @@ in
     ./helix.nix
     ./vim.nix
     ./htop.nix
+    ./ssh.nix
   ];
 
   options.dots = {
@@ -35,6 +36,7 @@ in
       helix.enable = true;
       vim.enable = true;
       htop.enable = true;
+      ssh.enable = true;
     };
 
     dots.shared.persist = mkIf isPersistEnabled {
@@ -45,11 +47,6 @@ in
       };
       user = mkIf user.enable {
         directories = [
-          # ".ssh"
-          {
-            directory = ".ssh";
-            mode = "0700";
-          }
           ".cache"
         ];
       };

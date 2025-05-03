@@ -11,14 +11,6 @@ let
   basePath = if persist.enable then "${persist.persistRoot}/etc/ssh" else "/etc/ssh";
 in
 {
-  dots.shared.persist.system = lib.mkIf persist.enable {
-    files = [
-      "/etc/ssh/id_rsa"
-      "/etc/ssh/id_rsa.pub"
-      "/etc/ssh/id_ed25519"
-      "/etc/ssh/id_ed25519.pub"
-    ];
-  };
   age = {
     identityPaths = [
       "${basePath}/id_rsa"
