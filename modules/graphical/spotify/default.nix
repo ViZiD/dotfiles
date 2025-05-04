@@ -28,6 +28,9 @@ in
       imports = [ inputs.spicetify-nix.homeManagerModules.default ];
 
       programs = {
+        spotify-player = {
+          enable = true;
+        };
         spicetify = {
           enable = true;
           enabledExtensions = with spicePkgs.extensions; [
@@ -39,6 +42,7 @@ in
       };
       stylix.targets = mkIf isStylesEnabled {
         spicetify.enable = true;
+        spotify-player.enable = true;
       };
     };
   };
