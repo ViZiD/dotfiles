@@ -23,20 +23,20 @@ in
           age-plugin-openpgp-card
           gopass
         ];
-      programs.password-store = {
-        enable = true;
-        package = pkgs.pass-wayland.withExtensions (
-          p: with p; [
-            pass-otp
-            pass-audit
-            pass-update
-            pass-genphrase
-          ]
-        );
-        settings = {
-          PASSWORD_STORE_DIR = "$HOME/.local/share/password-store";
-        };
-      };
+      # programs.password-store = {
+      #   enable = true;
+      #   package = pkgs.pass-wayland.withExtensions (
+      #     p: with p; [
+      #       pass-otp
+      #       pass-audit
+      #       pass-update
+      #       pass-genphrase
+      #     ]
+      #   );
+      #   settings = {
+      #     PASSWORD_STORE_DIR = "$HOME/.local/share/password-store";
+      #   };
+      # };
     };
     dots.shared.persist.user = mkIf isPersistEnabled {
       directories = [
