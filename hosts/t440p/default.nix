@@ -121,6 +121,7 @@
       printing.enable = true;
       zapret.enable = false;
       vpn.enable = true;
+      doh.enable = true;
       persist = {
         enable = true;
         user = {

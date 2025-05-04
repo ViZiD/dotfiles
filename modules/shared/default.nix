@@ -11,5 +11,6 @@
     ./printing.nix
     ./zapret.nix
     ./vpn.nix
+    ./doh.nix
   ];
 }
