@@ -39,6 +39,7 @@ in
       wireless = {
         rekeyFile = ./common/wireless.age;
       };
+      vpn.rekeyFile = ./vpn/nl4t.age;
       email_vizqq = {
         rekeyFile = ./email/privatemail.age;
         owner = username;
