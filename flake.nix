@@ -143,9 +143,9 @@
         packages = import ./pkgs { inherit pkgs; };
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
-            rage
+            age
             openpgp-card-tools
-            age-plugin-fido2-hmac
+            nur.repos.vizqq.age-plugin-openpgp-card
             pkgs.agenix-rekey
           ];
         };

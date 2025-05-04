@@ -19,18 +19,14 @@ in
     rekey = {
       masterIdentities = [
         {
-          identity = "${self}/secrets/identities/default.hmac";
-          pubkey = "age132r4gm5v8cay0whlysvrlygjhcv7dew6sx6ursv9vx0000jvzu4qkjcahj";
-        }
-        {
-          identity = "${self}/secrets/identities/second.hmac";
-          pubkey = "age12d5ysuhhd3trx3fhw6s85crfsf5l8x3yg4hetgsj0tweawkvrurqx9fhrv";
+          identity = "${self}/secrets/identities/master.pub";
+          pubkey = "age1aft8jxhvmv4cunzc7gxywpd7j0wf90gk79qmha9lmg3v9zc4ypmssxhn8x";
         }
       ];
       storageMode = "local";
       localStorageDir = "${self}/secrets/rekeyed/${config.networking.hostName}";
-      agePlugins = [
-        pkgs.age-plugin-fido2-hmac
+      agePlugins = with pkgs.nur.repos.vizqq; [
+        age-plugin-openpgp-card
       ];
 
     };
