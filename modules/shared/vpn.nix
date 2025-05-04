@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 with lib;
@@ -12,9 +11,15 @@ in
   options.dots.shared.vpn.enable = mkEnableOption "Enable vpn config";
   config = mkIf cfg.enable {
     services.openvpn.servers = {
-      nl4 = {
+      nl4tcp = {
         config = ''
-          config ${config.age.secrets.vpn.path}
+          config ${config.age.secrets.vpn_tcp.path}
+        '';
+        autoStart = false;
+      };
+      nl4udp = {
+        config = ''
+          config ${config.age.secrets.vpn_udp.path}
         '';
         autoStart = false;
       };
