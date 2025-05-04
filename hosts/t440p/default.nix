@@ -120,6 +120,7 @@
       bluetooth.enable = true;
       printing.enable = true;
       zapret.enable = false;
+      vpn.enable = true;
       persist = {
         enable = true;
         user = {

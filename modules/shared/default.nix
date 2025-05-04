@@ -10,5 +10,6 @@
     ./persist.nix
     ./printing.nix
     ./zapret.nix
+    ./vpn.nix
   ];
 }
