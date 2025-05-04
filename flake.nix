@@ -143,7 +143,7 @@
         packages = import ./pkgs { inherit pkgs; };
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
-            age
+            rage
             openpgp-card-tools
             nur.repos.vizqq.age-plugin-openpgp-card
             pkgs.agenix-rekey

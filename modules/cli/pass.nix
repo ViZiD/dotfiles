@@ -15,6 +15,14 @@ in
 
   config = mkIf cfg.enable {
     home-manager.users.${user.username} = mkIf user.enable {
+      home.packages =
+        with pkgs;
+        with pkgs.nur.repos.vizqq;
+        [
+          age-plugin-fido2-hmac
+          age-plugin-openpgp-card
+          gopass
+        ];
       programs.password-store = {
         enable = true;
         package = pkgs.pass-wayland.withExtensions (
@@ -33,6 +41,7 @@ in
     dots.shared.persist.user = mkIf isPersistEnabled {
       directories = [
         ".local/share/password-store"
+        ".config/gopass"
       ];
     };
   };
