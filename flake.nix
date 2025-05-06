@@ -67,9 +67,12 @@
           extraOverlays ? [ ],
         }:
         let
-          overlays = [
-            inputs.nur.overlays.default
-          ] ++ (builtins.attrValues self.overlays) ++ extraOverlays;
+          overlays =
+            [
+              inputs.nur.overlays.default
+            ]
+            ++ (builtins.attrValues self.overlays)
+            ++ extraOverlays;
 
           pkgs = import nixpkgs {
             inherit system overlays;

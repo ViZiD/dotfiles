@@ -17,7 +17,7 @@ in
         pdm
         poetry
         uv
-        (python312.withPackages (ps: [ virtualenv ]))
+        (python312.withPackages (ps: [ ps.virtualenv ]))
       ];
     };
   };
