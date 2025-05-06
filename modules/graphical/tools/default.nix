@@ -43,6 +43,8 @@ let
     "image/x-wmf" = "imv.desktop";
     "image/x-xbitmap" = "imv.desktop";
     "image/xpm" = "imv.desktop";
+
+    "application/x-bittorrent" = "qbittorrent.desktop";
   };
 in
 {
@@ -50,8 +52,9 @@ in
 
   config = mkIf cfg.enable {
     dots.shared.persist.user = mkIf (user.enable && isPersistEnabled) {
-      directories = [
-      ];
+      directories =
+        [
+        ];
     };
     home-manager.users.${user.username} = mkIf user.enable {
       stylix.targets = mkIf isStylesEnabled {
@@ -86,6 +89,7 @@ in
         xdg-terminal-exec
         file-roller
         imv
+        qbittorrent
       ];
 
       dconf.settings = {
