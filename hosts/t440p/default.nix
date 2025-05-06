@@ -122,6 +122,7 @@
       zapret.enable = true;
       vpn.enable = true;
       doh.enable = true;
+      diff.enable = true;
       persist = {
         enable = true;
         user = {

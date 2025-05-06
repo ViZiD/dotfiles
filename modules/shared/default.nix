@@ -12,5 +12,6 @@
     ./zapret.nix
     ./vpn.nix
     ./doh.nix
+    ./diff.nix
   ];
 }
