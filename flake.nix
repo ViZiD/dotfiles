@@ -44,6 +44,7 @@
     impermanence.url = "github:nix-community/impermanence";
 
     nur.url = "github:nix-community/NUR";
+    pre-commit-hooks.url = "github:cachix/git-hooks.nix";
   };
 
   outputs =
@@ -66,12 +67,9 @@
           extraOverlays ? [ ],
         }:
         let
-          overlays =
-            [
-              inputs.nur.overlays.default
-            ]
-            ++ (builtins.attrValues self.overlays)
-            ++ extraOverlays;
+          overlays = [
+            inputs.nur.overlays.default
+          ] ++ (builtins.attrValues self.overlays) ++ extraOverlays;
 
           pkgs = import nixpkgs {
             inherit system overlays;
@@ -136,15 +134,23 @@
         };
       in
       {
+        checks.pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
+          src = ./.;
+          hooks = {
+            nixfmt-rfc-style.enable = true;
+            deadnix.enable = true;
+          };
+        };
         packages = import ./pkgs { inherit pkgs; };
         devShells.default = pkgs.mkShell {
+          inherit (self.checks.${system}.pre-commit-check) shellHook;
+          buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
           packages = with pkgs; [
             rage
             openpgp-card-tools
             nur.repos.vizqq.age-plugin-openpgp-card
           ];
         };
-        formatter = pkgs.nixfmt-rfc-style;
       }
     );
 }
