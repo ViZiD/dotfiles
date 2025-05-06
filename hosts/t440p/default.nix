@@ -49,6 +49,9 @@
         frida-tools
 
         ncftp
+
+        # smartcard tool
+        openpgp-card-tools
       ];
       systemPackages = with pkgs; [
         # compression
