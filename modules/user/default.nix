@@ -77,18 +77,23 @@ in
       description = "Packages to be installed on the systems";
     };
     rootPasswordFile = mkOption {
-      default = config.age.secrets.rootPass.path;
+      default = config.vaultix.secrets.rootPass.path;
       description = "Age file to include to use as root password";
     };
     userPasswordFile = mkOption {
-      default = config.age.secrets.userPass.path;
+      default = config.vaultix.secrets.userPass.path;
       description = "Age file to include to use as user password";
     };
-    setEmptyPassword = lib.mkEnableOption "If disabled, it will set a user password which requires agenix set up.";
+    setEmptyPassword = lib.mkEnableOption "If disabled, it will set a user password which requires vautlix set up.";
     setEmptyRootPassword = lib.mkEnableOption "If disabled, it will set a root password which requires agenix set up.";
   };
 
   config = {
+    services.userborn.enable = true;
+    # FIXME: Remove after update
+    # https://github.com/NixOS/nixpkgs/issues/383179
+    systemd.services.userborn.before = [ "systemd-oomd.socket" ];
+
     users.mutableUsers = false;
 
     users.users.${cfg.username} = mkIf cfg.enable {

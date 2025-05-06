@@ -1,58 +1,50 @@
 {
-  self,
   config,
-  pkgs,
-  lib,
   ...
 }:
 let
   username = config.dots.user.username;
-  persist = config.dots.shared.persist;
-  basePath = if persist.enable then "${persist.persistRoot}/etc/ssh" else "/etc/ssh";
+  root = {
+    owner = "root";
+    group = "users";
+  };
+  user = {
+    owner = username;
+    group = "users";
+  };
 in
 {
-  age = {
-    identityPaths = [
-      "${basePath}/id_rsa"
-      "${basePath}/id_ed25519"
-    ];
-    rekey = {
-      masterIdentities = [
-        {
-          identity = "${self}/secrets/identities/master.pub";
-          pubkey = "age1aft8jxhvmv4cunzc7gxywpd7j0wf90gk79qmha9lmg3v9zc4ypmssxhn8x";
-        }
-      ];
-      storageMode = "local";
-      localStorageDir = "${self}/secrets/rekeyed/${config.networking.hostName}";
-      agePlugins = with pkgs.nur.repos.vizqq; [
-        age-plugin-openpgp-card
-      ];
-
-    };
+  vaultix = {
     secrets = {
-      rootPass.rekeyFile = ./common/root.age;
-      userPass = {
-        rekeyFile = ./common/user.age;
-        owner = username;
-      };
+      rootPass = {
+        file = ./common/root.age;
+      } // root;
       wireless = {
-        rekeyFile = ./common/wireless.age;
-      };
-      vpn_tcp.rekeyFile = ./vpn/nl4t.age;
-      vpn_udp.rekeyFile = ./vpn/nl4u.age;
+        file = ./common/wireless.age;
+      } // root;
+      vpn_tcp = {
+        file = ./vpn/nl4t.age;
+      } // root;
+      vpn_udp = {
+        file = ./vpn/nl4u.age;
+      } // root;
+
+      userPass = {
+        file = ./common/user.age;
+      } // user;
       email_vizqq = {
-        rekeyFile = ./email/privatemail.age;
-        owner = username;
-      };
+        file = ./email/privatemail.age;
+      } // user;
       email_vizid1337 = {
-        rekeyFile = ./email/vizid1337.age;
-        owner = username;
-      };
+        file = ./email/vizid1337.age;
+      } // user;
       email_userjs = {
-        rekeyFile = ./email/userjs.age;
-        owner = username;
-      };
+        file = ./email/userjs.age;
+      } // user;
     };
+    beforeUserborn = [
+      "rootPass"
+      "userPass"
+    ];
   };
 }

@@ -16,7 +16,7 @@ in
     networking.wireless = {
       enable = true;
       fallbackToWPA2 = false;
-      secretsFile = config.age.secrets.wireless.path;
+      secretsFile = config.vaultix.secrets.wireless.path;
       networks = {
         "HUAWEI-scKJ" = {
           pskRaw = "ext:home_pass";

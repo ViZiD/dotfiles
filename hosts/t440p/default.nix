@@ -119,7 +119,7 @@
       android.enable = true;
       bluetooth.enable = true;
       printing.enable = true;
-      zapret.enable = false;
+      zapret.enable = true;
       vpn.enable = true;
       doh.enable = true;
       persist = {
@@ -138,9 +138,7 @@
     package = pkgs.wireshark;
   };
 
-  age = {
-    rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEwesrYvUtKCt1asJgfk+4wTbg6Q//qz8caHPd/GywNK";
-  };
+  vaultix.settings.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEwesrYvUtKCt1asJgfk+4wTbg6Q//qz8caHPd/GywNK";
 
   security.polkit.enable = true;
 

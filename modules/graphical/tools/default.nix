@@ -72,9 +72,12 @@ in
 
       services.mako = {
         enable = true;
-        borderRadius = 12;
-        defaultTimeout = 5000;
-        ignoreTimeout = true;
+        settings = {
+          border-radius = 12;
+          default-timeout = 5000;
+          ignore-timeout = 1;
+          border-size = 1;
+        };
       };
 
       home.packages = with pkgs; [

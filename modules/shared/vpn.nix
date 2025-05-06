@@ -13,13 +13,13 @@ in
     services.openvpn.servers = {
       nl4tcp = {
         config = ''
-          config ${config.age.secrets.vpn_tcp.path}
+          config ${config.vaultix.secrets.vpn_tcp.path}
         '';
         autoStart = false;
       };
       nl4udp = {
         config = ''
-          config ${config.age.secrets.vpn_udp.path}
+          config ${config.vaultix.secrets.vpn_udp.path}
         '';
         autoStart = false;
       };

@@ -80,7 +80,7 @@ in
               port = 587;
               tls.useStartTls = true;
             };
-            passwordCommand = "${pkgs.coreutils}/bin/cat ${config.age.secrets."email_vizqq".path}";
+            passwordCommand = "${pkgs.coreutils}/bin/cat ${config.vaultix.secrets."email_vizqq".path}";
             folders = {
               inbox = "inbox";
               drafts = "Drafts";
@@ -92,7 +92,7 @@ in
             address = "vizid1337@gmail.com";
             flavor = "gmail.com";
             userName = "vizid1337@gmail.com";
-            passwordCommand = "${pkgs.coreutils}/bin/cat ${config.age.secrets."email_vizid1337".path}";
+            passwordCommand = "${pkgs.coreutils}/bin/cat ${config.vaultix.secrets."email_vizid1337".path}";
             folders = {
               inbox = "inbox";
               drafts = "[Gmail]/Drafts";
@@ -104,7 +104,7 @@ in
             address = "userjs@ya.ru";
             flavor = "yandex.com";
             userName = "userjs@ya.ru";
-            passwordCommand = "${pkgs.coreutils}/bin/cat ${config.age.secrets."email_userjs".path}";
+            passwordCommand = "${pkgs.coreutils}/bin/cat ${config.vaultix.secrets."email_userjs".path}";
             folders = {
               inbox = "Inbox";
               drafts = "Drafts";

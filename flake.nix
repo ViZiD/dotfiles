@@ -10,14 +10,9 @@
 
     utils.url = "github:numtide/flake-utils";
 
-    agenix.url = "github:yaxitech/ragenix";
-
     nixos-hardware.url = "github:NixOS/nixos-hardware?ref=master";
 
-    agenix-rekey = {
-      url = "github:oddlama/agenix-rekey";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    vaultix.url = "github:milieuim/vaultix";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -56,10 +51,9 @@
       self,
       nixpkgs,
       utils,
-      agenix,
-      agenix-rekey,
       home-manager,
       nixos-hardware,
+      vaultix,
       ...
     }@inputs:
     let
@@ -74,7 +68,6 @@
         let
           overlays =
             [
-              agenix-rekey.overlays.default
               inputs.nur.overlays.default
             ]
             ++ (builtins.attrValues self.overlays)
@@ -91,9 +84,8 @@
             ./hosts/${hostname}
             ./secrets
             self.nixosModules.default
-            agenix.nixosModules.default
-            agenix-rekey.nixosModules.default
             home-manager.nixosModules.home-manager
+            vaultix.nixosModules.default
           ] ++ extraModules;
 
           specialArgs = {
@@ -122,10 +114,15 @@
 
       nixosModules.default = ./modules;
 
-      agenix-rekey = agenix-rekey.configure {
-        userFlake = self;
-        nixosConfigurations = self.nixosConfigurations;
-        agePackage = p: p.age;
+      vaultix = vaultix.configure {
+        nodes = self.nixosConfigurations;
+        identity = self + "/secrets/identities/master.pub";
+        extraRecipients = [
+          "age1elc8znqzhk0tw2u35nm4wxqynkakms7d0jj68xrty2wmparwxvxqhu7xy9"
+          "age1qgksmygv9aj2l907heyxlqtpyhvtecz84j52euxjrlfvtpt2h32sxt6xux"
+        ];
+        defaultSecretDirectory = "./secrets";
+        cache = "./secrets/.cache";
       };
     }
     // utils.lib.eachDefaultSystem (
@@ -134,7 +131,6 @@
         pkgs = import nixpkgs {
           inherit system;
           overlays = [
-            agenix-rekey.overlays.default
             inputs.nur.overlays.default
           ] ++ (builtins.attrValues self.overlays);
         };
@@ -146,7 +142,6 @@
             rage
             openpgp-card-tools
             nur.repos.vizqq.age-plugin-openpgp-card
-            pkgs.agenix-rekey
           ];
         };
         formatter = pkgs.nixfmt-rfc-style;
