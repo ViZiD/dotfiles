@@ -108,6 +108,7 @@ in
     users.users.root = {
       hashedPasswordFile = mkIf (!cfg.setEmptyRootPassword) cfg.rootPasswordFile;
       openssh.authorizedKeys.keys = cfg.authorizedKeys;
+      createHome = true; # fix hm activation
     };
 
     environment.systemPackages = cfg.systemPackages;
