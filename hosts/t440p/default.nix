@@ -52,6 +52,9 @@
 
         # smartcard tool
         openpgp-card-tools
+
+        # games
+        shattered-pixel-dungeon
       ];
       systemPackages = with pkgs; [
         # compression
@@ -129,7 +132,10 @@
       persist = {
         enable = true;
         user = {
-          directories = [ "projects" ];
+          directories = [
+            "projects"
+            ".local/share/.shatteredpixel/shattered-pixel-dungeon"
+          ];
         };
       };
     };
