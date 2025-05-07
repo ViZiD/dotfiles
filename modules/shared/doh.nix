@@ -15,7 +15,12 @@ in
         "127.0.0.1"
         "::1"
       ];
-      dhcpcd.extraConfig = "nohook resolv.conf";
+      dhcpcd = {
+        enable = false;
+        extraConfig = "nohook resolv.conf";
+      };
+
+      wireless.iwd.settings.Network.NameResolvingService = "none";
     };
     services.dnscrypt-proxy2 = {
       enable = true;

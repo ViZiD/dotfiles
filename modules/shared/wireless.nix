@@ -7,37 +7,43 @@
 with lib;
 let
   cfg = config.dots.shared.wireless;
-  isDesktop = config.dots.graphical.enable;
-  user = config.dots.user;
+  persist = config.dots.shared.persist;
 in
 {
   options.dots.shared.wireless.enable = mkEnableOption "Enable wireless";
   config = mkIf cfg.enable {
-    networking.wireless = {
-      enable = true;
-      fallbackToWPA2 = false;
-      secretsFile = config.vaultix.secrets.wireless.path;
-      networks = {
-        "HUAWEI-scKJ" = {
-          pskRaw = "ext:home_pass";
-        };
+    dots.shared.persist = mkIf persist.enable {
+      system = {
+        directories = [
+          {
+            directory = "/var/lib/iwd";
+            mode = "0700";
+          }
+        ];
       };
-      allowAuxiliaryImperativeNetworks = true;
-      userControlled = {
-        enable = true;
-        group = "network";
-      };
-      extraConfig = ''
-        update_config=1
-      '';
     };
 
-    users.groups.network = { };
+    networking.wireless.iwd = {
+      enable = true;
+      settings = {
+        General = {
+          EnableNetworkConfiguration = true;
+        };
+        Network = {
+          EnableIPv6 = false;
+        };
+        Scan = {
+          DisablePeriodicScan = true;
+        };
+        Settings = {
+          AutoConnect = true;
+        };
+      };
+    };
 
-    systemd.services.wpa_supplicant.preStart = "touch /etc/wpa_supplicant.conf";
-
-    home-manager.users.${user.username}.home.packages = mkIf (isDesktop && user.enable) [
-      pkgs.wpa_supplicant_gui
+    environment.systemPackages = with pkgs; [
+      iwgtk
+      impala
     ];
   };
 }

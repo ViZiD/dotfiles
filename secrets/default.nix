@@ -19,9 +19,6 @@ in
       rootPass = {
         file = ./common/root.age;
       } // root;
-      wireless = {
-        file = ./common/wireless.age;
-      } // root;
       vpn_tcp = {
         file = ./vpn/nl4t.age;
       } // root;
