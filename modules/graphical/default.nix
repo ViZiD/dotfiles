@@ -30,11 +30,13 @@ in
 
     stylix.targets = mkIf isStylesEnabled {
       gtk.enable = true;
+      qt.enable = true;
     };
 
     home-manager.users.${user.username} = mkIf user.enable {
       xdg.mimeApps.enable = true;
       stylix.targets.gtk.enable = mkIf isStylesEnabled true;
+      stylix.targets.qt.enable = mkIf isStylesEnabled true;
     };
 
     dots.shared.persist.user = mkIf (user.enable && isPersistEnabled) {
