@@ -35,14 +35,6 @@ in
     home-manager.users.${user.username} = mkIf user.enable {
       xdg.mimeApps.enable = true;
       stylix.targets.gtk.enable = mkIf isStylesEnabled true;
-      # fix
-      # https://github.com/nix-community/home-manager/issues/2064
-      systemd.user.targets.tray = {
-        Unit = {
-          Description = "Home Manager System Tray";
-          Requires = [ "graphical-session-pre.target" ];
-        };
-      };
     };
 
     dots.shared.persist.user = mkIf (user.enable && isPersistEnabled) {
