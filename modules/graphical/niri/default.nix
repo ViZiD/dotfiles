@@ -175,6 +175,7 @@ in
                   { app-id = "^org\.gnupg\.pinentry-qt$"; }
                   { app-id = "^wpa_gui$"; }
                   { app-id = "^org\.pulseaudio\.pavucontrol$"; }
+                  { app-id = "^org\.twosheds\.iwgtk$"; }
                 ];
                 inherit (floating-config) default-column-width default-window-height;
                 open-floating = true;
