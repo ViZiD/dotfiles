@@ -6,13 +6,13 @@
 }:
 with lib;
 let
-  cfg = config.dots.graphical.telegram;
+  cfg = config.dots.graphical.messaging;
   user = config.dots.user;
 
   isPersistEnabled = config.dots.shared.persist.enable;
 in
 {
-  options.dots.graphical.telegram.enable = mkEnableOption "Enable telegram messenger";
+  options.dots.graphical.messaging.enable = mkEnableOption "Enable messaging config";
 
   config = mkIf cfg.enable {
     home-manager.users.${user.username} = mkIf user.enable {

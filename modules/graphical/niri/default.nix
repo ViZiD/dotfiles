@@ -92,7 +92,7 @@ in
               QT_QPA_PLATFORM = "wayland";
               QT_QPA_PLATFORMTHEME = "gtk3";
 
-              TDESKTOP_I_KNOW_ABOUT_GTK_INCOMPATIBILITY = mkIf config.dots.graphical.telegram.enable "1";
+              TDESKTOP_I_KNOW_ABOUT_GTK_INCOMPATIBILITY = mkIf config.dots.graphical.messaging.enable "1";
 
               XDG_CURRENT_DESKTOP = "niri";
               XDG_SESSION_DESKTOP = "niri";

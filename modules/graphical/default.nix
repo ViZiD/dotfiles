@@ -16,7 +16,7 @@ in
     ./vscode
     ./browsers
     ./niri
-    ./telegram
+    ./messaging
     ./spotify
     ./discord
     ./mpv
@@ -54,7 +54,7 @@ in
       graphical.vscode.enable = true;
       graphical.browser.enable = true;
       graphical.niri.enable = true;
-      graphical.telegram.enable = true;
+      graphical.messaging.enable = true;
       graphical.spotify.enable = true;
       graphical.discord.enable = true;
       graphical.mpv.enable = true;
