@@ -48,6 +48,7 @@ in
           enabledExtensions = with spicePkgs.extensions; [
             autoSkipVideo
             shuffle
+            history
           ];
           spotifyLaunchFlags = "--enable-features=WaylandWindowDecorations";
         };
