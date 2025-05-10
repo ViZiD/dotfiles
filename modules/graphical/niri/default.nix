@@ -188,6 +188,7 @@ in
                   { app-id = "^wpa_gui$"; }
                   { app-id = "^org\.pulseaudio\.pavucontrol$"; }
                   { app-id = "^org\.twosheds\.iwgtk$"; }
+                  { app-id = "^GoldenDict-ng$"; }
                 ];
                 inherit (floating-config) default-column-width default-window-height;
                 open-floating = true;

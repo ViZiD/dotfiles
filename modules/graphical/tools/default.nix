@@ -52,9 +52,9 @@ in
 
   config = mkIf cfg.enable {
     dots.shared.persist.user = mkIf (user.enable && isPersistEnabled) {
-      directories =
-        [
-        ];
+      directories = [
+        ".config/goldendict"
+      ];
     };
     home-manager.users.${user.username} = mkIf user.enable {
       stylix.targets = mkIf isStylesEnabled {
@@ -90,6 +90,7 @@ in
         file-roller
         imv
         qbittorrent
+        goldendict-ng
       ];
 
       dconf.settings = {
