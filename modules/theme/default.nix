@@ -25,7 +25,7 @@ in
       enable = true;
       autoEnable = false;
       image = ./bgg.jpg;
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/standardized-dark.yaml";
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
       polarity = "dark";
       cursor = {
         package = pkgs.simp1e-cursors;
