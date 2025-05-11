@@ -31,6 +31,7 @@
     "snd_hda_codec_hdmi"
     "snd_hda_intel.power_save=1"
   ];
+  boot.extraModprobeConfig = "options iwlwifi bt_coex_active=N"; # try fix headphones
 
   boot.initrd.postDeviceCommands = pkgs.lib.mkBefore ''
     mkdir -p /mnt
