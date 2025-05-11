@@ -19,16 +19,32 @@ in
       programs.helix = {
         enable = true;
         defaultEditor = true;
-        extraPackages = with pkgs; [
-          clang-tools
-          nixfmt-rfc-style
-          nodePackages.typescript-language-server
-          nodePackages.vscode-langservers-extracted
-          python312Packages.python-lsp-server
-          emmet-language-server
-          nixd
-          elixir-ls
-        ];
+        extraPackages =
+          with pkgs;
+          with nodePackages;
+          [
+            bash-language-server
+
+            # toml
+            taplo
+            taplo-lsp
+
+            # toml
+            yaml-language-server
+
+            terraform-ls
+
+            prettier
+            typescript-language-server
+            vscode-langservers-extracted
+
+            python312Packages.python-lsp-server
+
+            emmet-language-server
+
+            nixfmt-rfc-style
+            nixd
+          ];
         settings = {
           theme = mkIf (!isStylesEnabled) "monokai";
           editor = {
@@ -88,13 +104,11 @@ in
             nixd = {
               command = "nixd";
             };
+            yaml-language-server.config.yaml.schemas = {
+              kubernetes = "k8s/*.yaml";
+            };
           };
           language = [
-            {
-              name = "elixir";
-              auto-format = true;
-              language-servers = [ "elixir-ls" ];
-            }
             {
               name = "html";
               roots = [ ".git" ];
@@ -128,6 +142,18 @@ in
             }
             {
               name = "python";
+              auto-format = true;
+            }
+            {
+              name = "yaml";
+              language-servers = [ "yaml-language-server" ];
+              formatter = {
+                command = "prettier";
+                args = [
+                  "--stdin-filepath"
+                  "file.yaml"
+                ];
+              };
               auto-format = true;
             }
           ];
