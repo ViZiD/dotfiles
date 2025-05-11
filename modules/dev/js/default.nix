@@ -8,13 +8,6 @@ with lib;
 let
   cfg = config.dots.dev;
   user = config.dots.user;
-
-  nixPkgs = with pkgs.nodePackages; [
-    eslint_d
-    prettier
-    typescript
-    typescript-language-server
-  ];
 in
 {
   options.dots.dev.js.enable = mkEnableOption "Enable js dev packages";
@@ -28,8 +21,7 @@ in
           yarn
           pnpm
           webcrack
-        ]
-        ++ nixPkgs;
+        ];
     };
   };
 }
