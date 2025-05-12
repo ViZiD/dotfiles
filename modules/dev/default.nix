@@ -11,7 +11,6 @@ in
   imports = [
     ./python
     ./js
-    ./elixir
     ./ops.nix
   ];
   options.dots.dev.enable = mkEnableOption "Enable dev stuff";
@@ -19,7 +18,6 @@ in
     dots.dev = {
       js.enable = true;
       python.enable = true;
-      elixir.enable = true;
       ops.enable = true;
     };
   };
