@@ -267,7 +267,6 @@ in
               name = "markdown";
               language-servers = [
                 "marksman"
-                "gpt"
               ];
               formatter = {
                 command = "prettier";
@@ -276,6 +275,13 @@ in
                   "file.md"
                 ];
               };
+              comment-tokens = [
+                "-"
+                "+"
+                "*"
+                "- [ ]"
+                ">"
+              ];
               auto-format = true;
             }
             {
