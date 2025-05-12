@@ -25,6 +25,9 @@ in
           [
             bash-language-server
 
+            # markdown
+            marksman
+
             # toml
             taplo
             taplo-lsp
@@ -34,14 +37,23 @@ in
 
             terraform-ls
 
+            # web
             prettier
             typescript-language-server
             vscode-langservers-extracted
-
-            python312Packages.python-lsp-server
-
             emmet-language-server
 
+            # python
+            ruff
+            (python3.withPackages (
+              p:
+              (with p; [
+                python-lsp-ruff
+                python-lsp-server
+              ])
+            ))
+
+            # nix
             nixfmt-rfc-style
             nixd
           ];
@@ -112,36 +124,39 @@ in
             {
               name = "html";
               roots = [ ".git" ];
-              language-servers = [ "emmet-lsp" ];
-            }
-            {
-              name = "json";
+              language-servers = [
+                "emmet-lsp"
+                "vscode-html-language-server"
+              ];
+              formatter = {
+                command = "prettier";
+                args = [
+                  "--stdin-filepath"
+                  "file.html"
+                ];
+              };
               auto-format = true;
             }
             {
               name = "css";
+              language-servers = [
+                "emmet-lsp"
+                "vscode-css-language-server"
+              ];
               auto-format = true;
             }
             {
-              name = "html";
+              name = "json";
+              language-servers = [
+                "vscode-css-language-server"
+              ];
               auto-format = true;
             }
             {
-              name = "typescript";
-              auto-format = true;
-            }
-            {
-              name = "javascript";
-              auto-format = true;
-            }
-            {
-              name = "nix";
-              language-servers = [ "nixd" ];
-              formatter.command = "nixfmt";
-              auto-format = true;
-            }
-            {
-              name = "python";
+              name = "jsonc";
+              language-servers = [
+                "vscode-css-language-server"
+              ];
               auto-format = true;
             }
             {
@@ -154,6 +169,63 @@ in
                   "file.yaml"
                 ];
               };
+              auto-format = true;
+            }
+            {
+              name = "toml";
+              language-servers = [ "taplo" ];
+              formatter = {
+                command = "taplo";
+                args = [
+                  "fmt"
+                  "-o"
+                  "column_width=120"
+                  "-"
+                ];
+              };
+              auto-format = true;
+            }
+            {
+              name = "markdown";
+              language-servers = [
+                "marksman"
+                "gpt"
+              ];
+              formatter = {
+                command = "prettier";
+                args = [
+                  "--stdin-filepath"
+                  "file.md"
+                ];
+              };
+              auto-format = true;
+            }
+            {
+              name = "nix";
+              language-servers = [ "nixd" ];
+              formatter.command = "nixfmt";
+              auto-format = true;
+            }
+            {
+              name = "python";
+              language-servers = [
+                "pylsp"
+              ];
+              formatter = {
+                command = "sh";
+                args = [
+                  "-c"
+                  "ruff check --select I --fix - | ruff format --line-length 88 -"
+                ];
+              };
+              auto-format = true;
+            }
+            {
+              name = "typescript";
+              auto-format = true;
+            }
+            {
+              name = "javascript";
               auto-format = true;
             }
           ];
