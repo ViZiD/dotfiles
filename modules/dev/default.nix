@@ -12,6 +12,7 @@ in
     ./python
     ./js
     ./elixir
+    ./ops.nix
   ];
   options.dots.dev.enable = mkEnableOption "Enable dev stuff";
   config = mkIf cfg.enable {
@@ -19,6 +20,7 @@ in
       js.enable = true;
       python.enable = true;
       elixir.enable = true;
+      ops.enable = true;
     };
   };
 }
