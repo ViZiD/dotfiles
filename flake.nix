@@ -39,6 +39,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixcord.url = "github:kaylorben/nixcord";
+
     stylix.url = "github:danth/stylix";
 
     impermanence.url = "github:nix-community/impermanence";
@@ -67,12 +69,9 @@
           extraOverlays ? [ ],
         }:
         let
-          overlays =
-            [
-              inputs.nur.overlays.default
-            ]
-            ++ (builtins.attrValues self.overlays)
-            ++ extraOverlays;
+          overlays = [
+            inputs.nur.overlays.default
+          ] ++ (builtins.attrValues self.overlays) ++ extraOverlays;
 
           pkgs = import nixpkgs {
             inherit system overlays;
