@@ -54,6 +54,7 @@ in
             { id = "mmioliijnhnoblpgimnlajmefafdfilb"; } # Shazam
             { id = "hfjbmagddngcpeloejdejnfgbamkjaeg"; } # Vimium
             { id = "abpdnfjocnmdomablahdcfnoggeeiedb"; } # Save All Resources
+            { id = "dhdgffkkebhmkfjojejmpbldmpobfkfo"; } # Tampermonkey
           ];
           commandLineArgs = [
             "--disable-features=WebRtcAllowInputVolumeAdjustment"
