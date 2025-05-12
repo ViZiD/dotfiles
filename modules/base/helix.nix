@@ -192,6 +192,30 @@ in
               auto-format = true;
             }
             {
+              name = "tfvars";
+              language-servers = [ "terraform-ls" ];
+              formatter = {
+                command = lib.getExe pkgs.terraform;
+                args = [
+                  "fmt"
+                  "-"
+                ];
+              };
+              auto-format = true;
+            }
+            {
+              name = "hcl";
+              language-servers = [ "terraform-ls" ];
+              formatter = {
+                command = lib.getExe pkgs.terraform;
+                args = [
+                  "fmt"
+                  "-"
+                ];
+              };
+              auto-format = true;
+            }
+            {
               name = "css";
               language-servers = [
                 "emmet-lsp"
