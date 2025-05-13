@@ -37,6 +37,7 @@ in
         minikube
         kubernetes-helm
         docker-compose
+        opentofu
       ];
     };
   };
