@@ -195,7 +195,7 @@ in
               name = "tfvars";
               language-servers = [ "terraform-ls" ];
               formatter = {
-                command = lib.getExe pkgs.terraform;
+                command = lib.getExe pkgs.opentofu;
                 args = [
                   "fmt"
                   "-"
@@ -207,7 +207,7 @@ in
               name = "hcl";
               language-servers = [ "terraform-ls" ];
               formatter = {
-                command = lib.getExe pkgs.terraform;
+                command = lib.getExe pkgs.opentofu;
                 args = [
                   "fmt"
                   "-"
