@@ -151,6 +151,7 @@ in
                   { app-id = "^vesktop$"; }
                   { app-id = "^mpv$"; }
                   { app-id = "^org.qbittorrent.qBittorrent$"; }
+                  { app-id = "^org.qutebrowser.qutebrowser$"; }
                   { title = "(?i)Visual\\s+Studio\\s+Code"; }
                 ];
                 open-maximized = true;
