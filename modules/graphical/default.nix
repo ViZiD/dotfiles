@@ -23,6 +23,7 @@ in
     ./youtube
     ./reading
     ./tools
+    ./games
   ];
   options.dots.graphical.enable = mkEnableOption "Enable graphical settings";
 
@@ -61,6 +62,7 @@ in
       graphical.youtube.enable = true;
       graphical.reading.enable = true;
       graphical.tools.enable = true;
+      graphical.games.enable = true;
     };
   };
 }
