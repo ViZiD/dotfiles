@@ -11,6 +11,9 @@ let
   isPersistEnabled = config.dots.shared.persist.enable;
   # isStylesEnabled = config.dots.styles.enable;
   hmConfig = config.home-manager.users.${user.username};
+  quteTheme = import ./theme.nix {
+    inherit config;
+  };
 
   browser = [ "org.qutebrowser.qutebrowser.desktop" ];
   associations = {
@@ -65,6 +68,7 @@ in
         qutebrowser = {
           enable = true;
           settings = {
+            inherit (quteTheme) colors fonts;
             auto_save.session = true;
             url = {
               start_pages = [ "https://google.com" ];
