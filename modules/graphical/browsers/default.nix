@@ -118,6 +118,7 @@ in
             "th" = "twitch.tv";
             "cg" = "codeberg.org";
             "gl" = "gmail.com";
+            "ra" = "rezka.fi";
           };
           searchEngines = {
             "DEFAULT" = "https://google.com/search?hl=en&q={}";
