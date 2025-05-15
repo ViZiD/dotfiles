@@ -28,13 +28,16 @@ in
             position = "top";
             margin-top = 0;
             margin-bottom = 0;
-            height = 28;
+            height = 25;
 
             modules-left = [
               # "niri/workspaces"
+              "memory"
+              "disk"
             ];
             modules-right = [
               "network"
+              "keyboard-state"
               "niri/language"
               "pulseaudio"
               "backlight"
@@ -46,6 +49,25 @@ in
               format-icons = {
                 default = "";
                 active = "";
+              };
+            };
+            "memory" = {
+              interval = 30;
+              "format" = " {used:0.1f}G/{total:0.1f}G";
+            };
+            disk = {
+              interval = 30;
+              format = " {specific_used:0.1f}G/{specific_total:0.1f}G";
+              unit = "GB";
+            };
+            "keyboard-state" = {
+              capslock = true;
+              format = {
+                capslock = "{icon}";
+              };
+              format-icons = {
+                locked = "󰌎";
+                unlocked = "";
               };
             };
             "niri/language" = {
@@ -68,19 +90,25 @@ in
               tooltip-format-disconnected = "Disconnected :(";
             };
             pulseaudio = {
-              format = "{icon} {volume}%";
+              format = "{format_source} {icon} {volume}%";
+              format-source = " {volume}%";
+              format-source-muted = "";
+              format-bluetooth = "{icon} 󰂯 {volume}%";
               format-muted = "󰝟";
               format-icons = {
+                headphone = "";
+                headset = "";
                 default = [
                   "󰕿"
                   "󰖀"
                   "󰕾"
                 ];
-                max-volume = 100;
-                on-scroll-up = "${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +1%";
-                on-scroll-down = "${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -1%";
-                tooltip = false;
               };
+              max-volume = 100;
+              on-scroll-up = "${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ --limit 1";
+              on-scroll-down = "${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-";
+              on-click = lib.getExe pkgs.pavucontrol;
+              tooltip = false;
             };
             backlight = {
               device = "intel_backlight";
@@ -106,8 +134,8 @@ in
               format-plugged = " {capacity}%";
             };
             clock = {
-              format = " {:%I:%M %p}";
-              format-alt = "󱛡 {:%Y-%m-%d  %I:%M %p}";
+              format = "󱛡 {:%B %d %A  %I:%M %p}";
+              # format-alt = "󱛡 {:%Y-%m-%d  %I:%M %p}";
               tooltip = false;
             };
           }
