@@ -32,6 +32,8 @@
       "set-volume"
       "@DEFAULT_AUDIO_SINK@"
       "0.1+"
+      "--limit"
+      "1"
     ];
   };
   "XF86AudioLowerVolume" = {
