@@ -12,7 +12,7 @@ let
   # isStylesEnabled = config.dots.styles.enable;
   hmConfig = config.home-manager.users.${user.username};
 
-  browser = [ "chromium.desktop" ];
+  browser = [ "org.qutebrowser.qutebrowser.desktop" ];
   associations = {
     "text/html" = browser;
     "x-scheme-handler/http" = browser;
@@ -131,6 +131,17 @@ in
             "mn" = "https://mynixos.com/search?q={}";
             "nw" = "https://nixos.wiki/index.php?search={}";
             "aw" = "https://wiki.archlinux.org/?search={}";
+          };
+          keyBindings = {
+            normal = {
+              # open clipboard item shortcuts
+              "p" = "open -- {clipboard}";
+              "P" = "open -t -- {clipboard}";
+            };
+          };
+          greasemonkey = import ./scripts {
+            inherit pkgs;
+            colors = config.lib.stylix.colors.withHashtag;
           };
         };
         chromium = {
