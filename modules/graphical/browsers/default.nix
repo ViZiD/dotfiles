@@ -123,6 +123,9 @@ in
             "cg" = "codeberg.org";
             "gl" = "gmail.com";
             "ra" = "rezka.fi";
+            "dl" = "deepl.com/en/translator";
+            "tgk" = "web.telegram.org/k";
+            "tga" = "web.telegram.org/a";
           };
           searchEngines = {
             "DEFAULT" = "https://google.com/search?hl=en&q={}";
