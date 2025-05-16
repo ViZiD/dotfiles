@@ -59,7 +59,7 @@ in
     home-manager.users.${user.username} = mkIf user.enable {
       stylix.targets = mkIf isStylesEnabled {
         fuzzel.enable = true;
-        mako.enable = true;
+        # mako.enable = true;
       };
 
       programs.fuzzel = {
@@ -73,15 +73,39 @@ in
         };
       };
 
-      services.mako = {
-        enable = true;
-        settings = {
-          border-radius = 12;
-          default-timeout = 5000;
-          ignore-timeout = 1;
-          border-size = 1;
+      # FIXME: criteria deprecated
+      # wait stylix fix
+      services.mako =
+        let
+          makoOpacity = lib.toHexString (((builtins.ceil (config.stylix.opacity.popups * 100)) * 255) / 100);
+          inherit (config.stylix) fonts;
+        in
+        with config.lib.stylix.colors.withHashtag;
+        {
+          enable = true;
+          settings = {
+            background-color = base00 + makoOpacity;
+            border-color = base0D;
+            text-color = base05;
+            progress-color = "over ${base02}";
+            font = "${fonts.sansSerif.name} ${toString fonts.sizes.popups}";
+            "urgency=low" = {
+              background-color = "${base00}${makoOpacity}";
+              border-color = base0D;
+              text-color = base0A;
+            };
+            "urgency=high" = {
+              background-color = "${base00}${makoOpacity}";
+              border-color = base0D;
+              text-color = base08;
+            };
+
+            border-radius = 12;
+            default-timeout = 5000;
+            ignore-timeout = 1;
+            border-size = 1;
+          };
         };
-      };
 
       home.packages = with pkgs; [
         (nemo-with-extensions.override { extensions = [ nemo-fileroller ]; })

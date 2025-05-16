@@ -32,7 +32,7 @@
         tcpdump
         nettools
         csvlens
-        ventoy-full
+        # ventoy-full # FIXME: insecure
         parted
 
         # media
