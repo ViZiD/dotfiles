@@ -40,6 +40,7 @@ in
     dots.shared.persist.user = mkIf (user.enable && isPersistEnabled) {
       directories = [
         ".config/chromium"
+        ".local/share/qutebrowser"
       ];
     };
     home-manager.users.${user.username} = mkIf user.enable {
