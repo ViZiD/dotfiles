@@ -122,6 +122,7 @@ in
             "yt" = "youtube.com";
             "th" = "twitch.tv";
             "cg" = "codeberg.org";
+            "sh" = "sr.ht";
             "gl" = "gmail.com";
             "ra" = "rezka.fi";
             "dl" = "deepl.com/en/translator";
