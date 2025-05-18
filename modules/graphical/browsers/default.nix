@@ -124,6 +124,7 @@ in
             "cg" = "codeberg.org";
             "sh" = "sr.ht";
             "gl" = "gmail.com";
+            "pm" = "privateemail.com";
             "ra" = "rezka.fi";
             "dl" = "deepl.com/en/translator";
             "tgk" = "web.telegram.org/k";
