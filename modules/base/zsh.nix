@@ -20,6 +20,8 @@ let
     shellAliases = {
       "cat" = "${pkgs.bat}/bin/bat";
       "ls" = "${pkgs.eza}/bin/eza -alhH --icons=always --git";
+      "nclear" =
+        "sudo nix-collect-garbage --delete-old --quiet && " + "nix-collect-garbage --delete-old --quiet";
     };
   };
 in
