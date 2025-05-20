@@ -111,6 +111,18 @@ in
               "hx"
               "{}"
             ];
+            fileselect = rec {
+              handler = "external";
+              single_file.command = [
+                "${pkgs.kitty}/bin/kitty"
+                "--class"
+                "qute-filepicker"
+                "-e"
+                "${pkgs.yazi}/bin/yazi"
+                "--chooser-file={}"
+              ];
+              multiple_files.command = single_file.command;
+            };
             tabs = {
               show = "multiple";
               last_close = "startpage";
