@@ -116,6 +116,7 @@
       direnv.enable = true;
       nix-index.enable = true;
       pass.enable = true;
+      yazi.enable = false;
     };
     shared = {
       quietboot.enable = true;
