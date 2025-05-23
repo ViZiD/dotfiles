@@ -11,22 +11,28 @@ let
   user = config.dots.user;
   defaultKeyBind = import ./defaultKeyBind.nix;
   isStylesEnabled = config.dots.styles.enable;
+  isPersistEnabled = config.dots.shared.persist.enable;
 in
 {
   imports = [
     inputs.niri.nixosModules.niri
-    ./waybar
   ];
 
   options.dots.graphical.niri.enable = mkEnableOption "Enable niri wm settings";
 
   config = mkIf cfg.enable {
 
-    environment.systemPackages = [ pkgs.kdePackages.qtwayland ];
-
-    dots.graphical = {
-      waybar.enable = true;
+    dots.shared.persist.user = mkIf (user.enable && isPersistEnabled) {
+      directories = [
+        # gnome
+        {
+          directory = ".local/share/keyrings";
+          mode = "0700";
+        }
+      ];
     };
+
+    environment.systemPackages = [ pkgs.kdePackages.qtwayland ];
 
     programs.niri = {
       enable = true;
@@ -66,10 +72,6 @@ in
     };
 
     home-manager.users.${user.username} = mkIf user.enable {
-      home.packages = with pkgs; [
-        wev
-        wl-clipboard
-      ];
       stylix.targets = mkIf isStylesEnabled { niri.enable = true; };
       dconf = {
         enable = true;

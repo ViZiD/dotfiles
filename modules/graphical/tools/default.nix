@@ -58,12 +58,12 @@ in
     };
     home-manager.users.${user.username} = mkIf user.enable {
       stylix.targets = mkIf isStylesEnabled {
-        fuzzel.enable = true;
+        fuzzel.enable = config.dots.graphical.wayland.enable;
         # mako.enable = true;
       };
 
       programs.fuzzel = {
-        enable = true;
+        enable = config.dots.graphical.wayland.enable;
         settings = {
           main = {
             terminal = "${pkgs.kitty}/bin/kitty";

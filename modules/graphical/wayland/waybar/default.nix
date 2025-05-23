@@ -35,15 +35,18 @@ in
               "memory"
               "disk"
             ];
-            modules-right = [
-              "network"
-              "keyboard-state"
-              "niri/language"
-              "pulseaudio"
-              "backlight"
-              "battery"
-              "clock"
-            ];
+            modules-right =
+              [
+                "network"
+                "keyboard-state"
+              ]
+              ++ lib.optional config.dots.graphical.niri.enable "niri/language"
+              ++ [
+                "pulseaudio"
+                "backlight"
+                "battery"
+                "clock"
+              ];
             "niri/workspaces" = {
               format = "{icon}";
               format-icons = {
@@ -70,7 +73,7 @@ in
                 unlocked = "";
               };
             };
-            "niri/language" = {
+            "niri/language" = mkIf config.dots.graphical.niri.enable {
               format = "{shortDescription}";
               on-click = "${niri} msg action switch-layout next";
             };

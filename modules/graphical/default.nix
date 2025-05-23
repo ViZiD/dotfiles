@@ -8,14 +8,13 @@ let
   cfg = config.dots.graphical;
   user = config.dots.user;
   isStylesEnabled = config.dots.styles.enable;
-  isPersistEnabled = config.dots.shared.persist.enable;
 in
 {
   imports = [
     ./terminal
     ./vscode
     ./browsers
-    ./niri
+    ./wayland
     ./messaging
     ./spotify
     ./discord
@@ -41,21 +40,11 @@ in
       stylix.targets.qt.enable = mkIf isStylesEnabled true;
     };
 
-    dots.shared.persist.user = mkIf (user.enable && isPersistEnabled) {
-      directories = [
-        # gnome
-        {
-          directory = ".local/share/keyrings";
-          mode = "0700";
-        }
-      ];
-    };
-
     dots = {
       graphical.terminal.enable = true;
       graphical.vscode.enable = false;
       graphical.browser.enable = true;
-      graphical.niri.enable = true;
+      graphical.wayland.enable = true;
       graphical.messaging.enable = true;
       graphical.spotify.enable = true;
       graphical.discord.enable = true;

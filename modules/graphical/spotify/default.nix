@@ -50,7 +50,7 @@ in
             shuffle
             history
           ];
-          spotifyLaunchFlags = "--enable-features=WaylandWindowDecorations";
+          spotifyLaunchFlags = mkIf config.dots.graphical.wayland.enable "--enable-features=WaylandWindowDecorations";
         };
       };
       stylix.targets = mkIf isStylesEnabled {
