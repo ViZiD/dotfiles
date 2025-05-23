@@ -115,6 +115,7 @@ in
         imv
         qbittorrent
         goldendict-ng
+        anki
       ];
 
       dconf.settings = {

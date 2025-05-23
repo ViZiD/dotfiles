@@ -194,6 +194,7 @@ in
                   { app-id = "^org\.twosheds\.iwgtk$"; }
                   { app-id = "^qute-filepicker$"; }
                   { app-id = "^GoldenDict-ng$"; }
+                  { app-id = "^anki$"; }
                 ];
                 inherit (floating-config) default-column-width default-window-height;
                 open-floating = true;
