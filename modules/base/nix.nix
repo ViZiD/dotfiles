@@ -34,15 +34,19 @@ in
 
         auto-optimise-store = true;
 
+        max-substitution-jobs = 32;
+
         substituters = [
-          "https://nix-community.cachix.org"
+          "https://nix-community.cachix.org?priority=5"
 
           # my nur repos
-          "https://vizqq.cachix.org"
-          "https://picokeys-nix.cachix.org"
+          "https://vizqq.cachix.org?priority=3"
+          "https://picokeys-nix.cachix.org?priority=4"
 
           # proxy
-          "https://ncproxy.vizqq.cc"
+          "https://ncproxy.vizqq.cc?priority=2"
+
+          "https://cache.nixos.org?priority=1"
         ];
 
         trusted-substituters = [
