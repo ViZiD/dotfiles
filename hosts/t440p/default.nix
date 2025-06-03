@@ -100,7 +100,6 @@
       };
     };
     base.nix = {
-      package = pkgs.lix;
       autoGC = true;
     };
     dev.enable = true;
@@ -126,7 +125,7 @@
       android.enable = true;
       bluetooth.enable = true;
       printing.enable = true;
-      zapret.enable = false;
+      zapret.enable = true;
       vpn.enable = true;
       doh.enable = true;
       diff.enable = true;
