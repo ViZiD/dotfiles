@@ -11,7 +11,6 @@ let
   user = config.dots.user;
   defaultKeyBind = import ./defaultKeyBind.nix;
   isStylesEnabled = config.dots.styles.enable;
-  isPersistEnabled = config.dots.shared.persist.enable;
 in
 {
   imports = [
@@ -21,17 +20,6 @@ in
   options.dots.graphical.niri.enable = mkEnableOption "Enable niri wm settings";
 
   config = mkIf cfg.enable {
-
-    dots.shared.persist.user = mkIf (user.enable && isPersistEnabled) {
-      directories = [
-        # gnome
-        {
-          directory = ".local/share/keyrings";
-          mode = "0700";
-        }
-      ];
-    };
-
     environment.systemPackages = [ pkgs.kdePackages.qtwayland ];
 
     programs.niri = {
@@ -60,27 +48,9 @@ in
 
     niri-flake.cache.enable = false;
 
-    services.greetd = {
-      enable = true;
-      settings = rec {
-        initial_session = {
-          command = "${lib.getExe pkgs.greetd.tuigreet} --remember --asterisks --time --cmd niri-session";
-          user = "greeter";
-        };
-        default_session = initial_session;
-      };
-    };
-
     home-manager.users.${user.username} = mkIf user.enable {
       stylix.targets = mkIf isStylesEnabled { niri.enable = true; };
-      dconf = {
-        enable = true;
-        settings = {
-          "org/gnome/desktop/interface" = {
-            color-scheme = "prefer-dark";
-          };
-        };
-      };
+
       programs.niri = {
         settings =
           let

@@ -36,8 +36,11 @@ in
 
     home-manager.users.${user.username} = mkIf user.enable {
       xdg.mimeApps.enable = true;
-      stylix.targets.gtk.enable = mkIf isStylesEnabled true;
-      stylix.targets.qt.enable = mkIf isStylesEnabled true;
+      stylix.targets = mkIf isStylesEnabled {
+        gtk.enable = true;
+        qt.enable = true;
+        gnome.enable = true;
+      };
     };
 
     dots = {

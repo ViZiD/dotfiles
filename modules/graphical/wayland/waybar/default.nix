@@ -10,6 +10,7 @@ let
   user = config.dots.user;
   isStylesEnabled = config.dots.styles.enable;
   niri = getExe config.home-manager.users.${user.username}.programs.niri.package;
+  sway = config.home-manager.users.${user.username}.wayland.windowManager.sway.package;
 in
 {
   options.dots.graphical.waybar.enable = mkEnableOption "Enable waybar";
@@ -31,7 +32,6 @@ in
             height = 25;
 
             modules-left = [
-              # "niri/workspaces"
               "memory"
               "disk"
             ];
@@ -41,6 +41,7 @@ in
                 "keyboard-state"
               ]
               ++ lib.optional config.dots.graphical.niri.enable "niri/language"
+              ++ lib.optional config.dots.graphical.sway.enable "sway/language"
               ++ [
                 "pulseaudio"
                 "backlight"
@@ -73,7 +74,11 @@ in
                 unlocked = "";
               };
             };
-            "niri/language" = mkIf config.dots.graphical.niri.enable {
+            "sway/language" = {
+              format = "{shortDescription}";
+              on-click = "${sway}/bin/swaymsg input type:keyboard xkb_switch_layout next";
+            };
+            "niri/language" = {
               format = "{shortDescription}";
               on-click = "${niri} msg action switch-layout next";
             };
