@@ -132,7 +132,7 @@ in
               }
               {
                 command = [
-                  (getExe pkgs.kitty)
+                  (config.dots.graphical.terminal.terminalPath)
                 ];
               }
             ];
@@ -148,6 +148,7 @@ in
                 matches = [
                   { app-id = "^chromium-browser$"; }
                   { app-id = "^kitty$"; }
+                  { app-id = "^alacritty$"; }
                   { app-id = "^Spotify$"; }
                   { app-id = "^org\.telegram\.desktop$"; }
                   { app-id = "^vesktop$"; }

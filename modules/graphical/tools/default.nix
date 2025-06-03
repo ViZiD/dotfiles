@@ -66,7 +66,7 @@ in
         enable = config.dots.graphical.wayland.enable;
         settings = {
           main = {
-            terminal = "${pkgs.kitty}/bin/kitty";
+            terminal = "${config.dots.graphical.terminal.terminalPath}";
             width = 50;
             layer = "overlay";
           };

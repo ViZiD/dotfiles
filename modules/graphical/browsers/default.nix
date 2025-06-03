@@ -104,7 +104,7 @@ in
               "en-US"
             ];
             editor.command = [
-              "${pkgs.kitty}/bin/kitty"
+              "${config.dots.graphical.terminal.terminalPath}"
               "--class"
               "qute-editor"
               "-e"
@@ -114,7 +114,7 @@ in
             fileselect = rec {
               handler = "external";
               single_file.command = [
-                "${pkgs.kitty}/bin/kitty"
+                "${config.dots.graphical.terminal.terminalPath}"
                 "--class"
                 "qute-filepicker"
                 "-e"
