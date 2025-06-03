@@ -15,7 +15,7 @@ in
     enable = mkEnableOption "Enable graphical terminal settings";
     terminalPackage = mkOption {
       type = types.package;
-      default = pkgs.alacritty;
+      default = pkgs.kitty;
       description = "Terminal package to use";
     };
     terminalPath = mkOption {
