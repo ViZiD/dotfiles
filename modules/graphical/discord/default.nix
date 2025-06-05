@@ -23,17 +23,19 @@ in
 
       programs.nixcord = {
         enable = true;
-        # discord = {
-        #   enable = true;
-        #   openASAR.enable = true;
-        # };
-        discord.enable = false; # FIXME: hm crash if true...
-        vesktop.enable = true;
+        discord = {
+          enable = true;
+          openASAR.enable = true;
+        };
+        # vesktop.enable = true;
         config = {
           plugins = {
             alwaysAnimate.enable = false;
             alwaysTrust.enable = true;
-            anonymiseFileNames.enable = true;
+            anonymiseFileNames = {
+              enable = true;
+              anonymiseByDefault = true;
+            };
             betterSettings.enable = true;
             betterUploadButton.enable = true;
             clearURLs.enable = true;
@@ -52,7 +54,6 @@ in
             noOnboardingDelay.enable = true;
             noTypingAnimation.enable = true;
             noUnblockToJump.enable = true;
-            nsfwGateBypass.enable = true;
             openInApp.enable = true;
             permissionFreeWill.enable = true;
             permissionsViewer.enable = true;
@@ -68,6 +69,15 @@ in
             volumeBooster.enable = true;
             youtubeAdblock.enable = true;
             webScreenShareFixes.enable = true;
+            fixImagesQuality.enable = true;
+            forceOwnerCrown.enable = true;
+            gameActivityToggle.enable = true;
+            newGuildSettings.enable = true;
+            notificationVolume = {
+              enable = true;
+              notificationVolume = 100.0;
+            };
+            translate.enable = true;
           };
         };
       };
@@ -75,7 +85,8 @@ in
 
     dots.shared.persist.user = mkIf isPersistEnabled {
       directories = [
-        ".config/vesktop"
+        # ".config/vesktop"
+        ".config/discord"
       ];
     };
   };

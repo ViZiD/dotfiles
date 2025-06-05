@@ -121,7 +121,8 @@ in
                   { app-id = "^Alacritty$"; }
                   { app-id = "^Spotify$"; }
                   { app-id = "^org\.telegram\.desktop$"; }
-                  { app-id = "^vesktop$"; }
+                  # { app-id = "^vesktop$"; }
+                  { app-id = "^discord$"; }
                   { app-id = "^mpv$"; }
                   { app-id = "^org.qbittorrent.qBittorrent$"; }
                   { app-id = "^org.qutebrowser.qutebrowser$"; }
