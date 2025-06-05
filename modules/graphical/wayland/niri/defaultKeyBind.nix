@@ -217,18 +217,32 @@
   # Switches focus between the current and the previous workspace.
   # Mod+Tab { focus-workspace-previous; }
 
+  # The following binds move the focused window in and out of a column.
+  # If the window is alone, they will consume it into the nearby column to the side.
+  # If the window is already in a column, they will expel it out.
+  "Mod+BracketLeft".action.consume-or-expel-window-left = { };
+  "Mod+BracketRight".action.consume-or-expel-window-right = { };
+
+  # Consume one window from the right to the bottom of the focused column.
   "Mod+Comma".action.consume-window-into-column = { };
+  # Expel the bottom window from the focused column to the right.
   "Mod+Period".action.expel-window-from-column = { };
 
-  # There are also commands that consume or expel a single window to the side.
-  # Mod+BracketLeft  { consume-or-expel-window-left; }
-  # Mod+BracketRight { consume-or-expel-window-right; }
-
   "Mod+R".action.switch-preset-column-width = { };
-  "Mod+Shift+R".action.reset-window-height = { };
+  "Mod+Shift+R".action.switch-preset-window-height = { };
+  "Mod+Ctrl+R".action.reset-window-height = { };
   "Mod+F".action.maximize-column = { };
   "Mod+Shift+F".action.fullscreen-window = { };
+  "Mod+Ctrl+Shift+F".action.toggle-windowed-fullscreen = { };
+
+  # Expand the focused column to space not taken up by other fully visible columns.
+  # Makes the column "fill the rest of the space".
+  "Mod+Ctrl+F".action.expand-column-to-available-width = { };
+
   "Mod+C".action.center-column = { };
+
+  # Center all fully visible columns on screen.
+  "Mod+Ctrl+C".action.center-visible-columns = { };
 
   # Finer width adjustments.
   # This command can also:
@@ -245,26 +259,44 @@
   "Mod+Shift+Minus".action.set-window-height = "-10%";
   "Mod+Shift+Equal".action.set-window-height = "+10%";
 
+  # Move the focused window between the floating and the tiling layout.
+  "Mod+V".action.toggle-window-floating = { };
+  "Mod+Shift+V".action.switch-focus-between-floating-and-tiling = { };
+
+  # Toggle tabbed column display mode.
+  # Windows in this column will appear as vertical tabs,
+  # rather than stacked on top of each other.
+  "Mod+W".action.toggle-column-tabbed-display = { };
+
   # Actions to switch layouts.
   # Note: if you uncomment these, make sure you do NOT have
   # a matching layout switch hotkey configured in xkb options above.
   # Having both at once on the same hotkey will break the switching,
   # since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
-  # Mod+Space       { switch-layout "next"; }
-  # Mod+Shift+Space { switch-layout "prev"; }
+  # Mod+Space       { switch-layout "next" }
+  # Mod+Shift+Space { switch-layout "prev" }
 
   "Print".action.screenshot = { };
   "Ctrl+Print".action.screenshot-screen = { };
   "Alt+Print".action.screenshot-window = { };
 
+  # Applications such as remote-desktop clients and software KVM switches may
+  # request that niri stops processing the keyboard shortcuts defined here
+  # so they may, for example, forward the key presses as-is to a remote machine.
+  # It's a good idea to bind an escape hatch to toggle the inhibitor,
+  # so a buggy application can't hold your session hostage.
+  # The allow-inhibiting=false property can be applied to other binds as well,
+  # which ensures niri always processes them, even when an inhibitor is active.
+  "Mod+Escape" = {
+    allow-inhibiting = false;
+    action.toggle-keyboard-shortcuts-inhibit = { };
+  };
+
   # The quit action will show a confirmation dialog to avoid accidental exits.
   "Mod+Shift+E".action.quit = { };
+  "Ctrl+Alt+Delete".action.quit = { };
 
   # Powers off the monitors. To turn them back on, do any input like
   # moving the mouse or pressing any other key.
   "Mod+Shift+P".action.power-off-monitors = { };
-
-  # Move the focused window between the floating and the tiling layout.
-  "Mod+V".action.toggle-window-floating = { };
-  "Mod+Shift+V".action.switch-focus-between-floating-and-tiling = { };
 }
