@@ -220,6 +220,13 @@ in
                 dwt = true;
                 tap = false;
               };
+              trackpoint = {
+                natural-scroll = true;
+                accel-profile = "flat";
+              };
+              mouse = {
+                accel-profile = "flat";
+              };
             };
             layout = {
               gaps = 0;
