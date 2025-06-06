@@ -42,6 +42,9 @@ in
         ".config/chromium"
         ".local/share/qutebrowser"
       ];
+      files = [
+        ".config/qutebrowser/bookmarks/urls"
+      ];
     };
     home-manager.users.${user.username} = mkIf user.enable {
       systemd.user.services.qutebrowser-setup = {
