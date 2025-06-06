@@ -127,7 +127,6 @@ in
                   { app-id = "^org.qbittorrent.qBittorrent$"; }
                   { app-id = "^org.qutebrowser.qutebrowser$"; }
                   { app-id = "^org.prismlauncher.PrismLauncher$"; }
-                  { app-id = "^Minecraft\\*.*$"; }
                   { app-id = "^dev.zed.Zed$"; }
                   { title = "(?i)Visual\\s+Studio\\s+Code"; }
                 ];
@@ -145,6 +144,7 @@ in
                 matches = [
                   { app-id = "^org.pwmt.zathura$"; }
                   { app-id = "^Shattered.Pixel.Dungeon$"; }
+                  { app-id = "^Minecraft\\*.*$"; }
                 ];
                 open-fullscreen = true;
                 border.enable = false;
