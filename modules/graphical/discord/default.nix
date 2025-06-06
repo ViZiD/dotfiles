@@ -78,6 +78,14 @@ in
               notificationVolume = 100.0;
             };
             translate.enable = true;
+            streamerModeOnStream.enable = true;
+            validUser.enable = true;
+            validReply.enable = true;
+            silentMessageToggle.enable = true;
+            serverInfo.enable = true;
+            quickMention.enable = true;
+            noMosaic.enable = true;
+            memberCount.enable = true;
           };
         };
       };
