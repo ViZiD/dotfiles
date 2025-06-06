@@ -144,6 +144,7 @@ in
               {
                 matches = [
                   { app-id = "^org.pwmt.zathura$"; }
+                  { app-id = "^Shattered.Pixel.Dungeon$"; }
                 ];
                 open-fullscreen = true;
                 border.enable = false;
