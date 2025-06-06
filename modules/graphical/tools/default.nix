@@ -54,6 +54,7 @@ in
     dots.shared.persist.user = mkIf (user.enable && isPersistEnabled) {
       directories = [
         ".config/goldendict"
+        ".config/obs-studio"
       ];
     };
     home-manager.users.${user.username} = mkIf user.enable {
@@ -62,17 +63,26 @@ in
         # mako.enable = true;
       };
 
-      programs.fuzzel = {
-        enable = config.dots.graphical.wayland.enable;
-        settings = {
-          main = {
-            terminal = "${config.dots.graphical.terminal.terminalPath}";
-            width = 50;
-            layer = "overlay";
+      programs = {
+        obs-studio = {
+          enable = true;
+          plugins = with pkgs.obs-studio-plugins; [
+            obs-composite-blur
+            obs-gradient-source
+            obs-retro-effects
+          ];
+        };
+        fuzzel = {
+          enable = config.dots.graphical.wayland.enable;
+          settings = {
+            main = {
+              terminal = "${config.dots.graphical.terminal.terminalPath}";
+              width = 50;
+              layer = "overlay";
+            };
           };
         };
       };
-
       # FIXME: criteria deprecated
       # wait stylix fix
       services.mako =
