@@ -162,6 +162,9 @@ in
               # open clipboard item shortcuts
               "p" = "open -- {clipboard}";
               "P" = "open -t -- {clipboard}";
+
+              # unbind save quickmarks
+              "m" = "nop";
             };
           };
           greasemonkey = import ./scripts {
