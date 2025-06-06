@@ -70,6 +70,8 @@ in
               DISPLAY = ":0";
               NIXOS_OZONE_WL = "1";
 
+              ELECTRON_OZONE_PLATFORM_HINT = "auto";
+
               _JAVA_AWT_WM_NONREPARENTING = "1";
 
               QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
@@ -119,7 +121,7 @@ in
                   { app-id = "^chromium-browser$"; }
                   { app-id = "^kitty$"; }
                   { app-id = "^Alacritty$"; }
-                  { app-id = "^Spotify$"; }
+                  { app-id = "^spotify$"; }
                   { app-id = "^org\.telegram\.desktop$"; }
                   # { app-id = "^vesktop$"; }
                   { app-id = "^discord$"; }

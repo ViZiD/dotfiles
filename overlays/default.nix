@@ -1,5 +1,7 @@
 {
+  # deadnix: skip
   outputs,
+  # deadnix: skip
   inputs,
 }:
 let
@@ -46,21 +48,6 @@ in
       # https://github.com/tadfisher/pass-otp/pull/173
       pass-otp = addPatches prev.passExtensions.pass-otp [ ./patches/pass-otp-fix-completion.patch ];
     };
-
-    # force spotify use xwayland
-    # remove ugly CSD
-    spotify = prev.spotify.overrideAttrs (oldAttrs: {
-      postInstall =
-        oldAttrs.postInstall or ""
-        + ''
-          wrapProgram $out/bin/spotify \
-            --add-flags "--ozone-platform=x11"
-        '';
-      postFixup = ''
-        substituteInPlace $out/share/applications/spotify.desktop \
-          --replace "Exec=spotify %U" "Exec=env NIXOS_OZONE_WL= spotify %U --ozone-platform=x11"
-      '';
-    });
   };
 
   nix-vscode-extensions = final: prev: {
