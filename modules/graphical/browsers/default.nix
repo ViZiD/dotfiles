@@ -138,7 +138,7 @@ in
             "th" = "twitch.tv";
             "cg" = "codeberg.org";
             "sh" = "sr.ht";
-            "gl" = "gmail.com";
+            "gl" = "mail.google.com";
             "pm" = "privateemail.com";
             "ra" = "rezka.fi";
             "dl" = "deepl.com/en/translator";
