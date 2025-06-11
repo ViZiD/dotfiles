@@ -15,7 +15,7 @@ let
     inherit config;
   };
 
-  browser = [ "org.qutebrowser.qutebrowser.desktop" ];
+  browser = [ "chromium.desktop" ];
   associations = {
     "text/html" = browser;
     "x-scheme-handler/http" = browser;
