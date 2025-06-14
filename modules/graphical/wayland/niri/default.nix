@@ -208,6 +208,7 @@ in
             ];
             prefer-no-csd = true;
             input = {
+              warp-mouse-to-focus = true;
               keyboard = {
                 xkb = {
                   layout = "us,ru";
@@ -224,11 +225,11 @@ in
                 tap = false;
               };
               trackpoint = {
-                natural-scroll = true;
-                accel-profile = "flat";
-              };
-              mouse = {
-                accel-profile = "flat";
+                natural-scroll = false;
+                accel-speed = 0.3;
+                scroll-method = "on-button-down";
+                scroll-button = 2;
+                middle-emulation = false;
               };
             };
             layout = {
