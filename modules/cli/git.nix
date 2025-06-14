@@ -77,6 +77,8 @@ in
         };
 
         remote.pushdefault = "origin";
+
+        sequence.editor = "${pkgs.git-interactive-rebase-tool}/bin/interactive-rebase-tool";
       };
       signing = {
         signByDefault = true;
