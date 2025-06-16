@@ -48,6 +48,7 @@ in
       user = mkIf user.enable {
         directories = [
           ".cache"
+          ".config/sops" # for sops keys
         ];
       };
     };
