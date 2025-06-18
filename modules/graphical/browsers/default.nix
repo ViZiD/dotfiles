@@ -10,7 +10,7 @@ let
   user = config.dots.user;
   isPersistEnabled = config.dots.shared.persist.enable;
   # isStylesEnabled = config.dots.styles.enable;
-  hmConfig = config.home-manager.users.${user.username};
+  # hmConfig = config.home-manager.users.${user.username};
   quteTheme = import ./theme.nix {
     inherit config;
   };
@@ -40,37 +40,37 @@ in
     dots.shared.persist.user = mkIf (user.enable && isPersistEnabled) {
       directories = [
         ".config/chromium"
-        ".local/share/qutebrowser"
+        # ".local/share/qutebrowser"
       ];
       files = [
-        ".config/qutebrowser/bookmarks/urls"
+        # ".config/qutebrowser/bookmarks/urls"
       ];
     };
     home-manager.users.${user.username} = mkIf user.enable {
-      systemd.user.services.qutebrowser-setup = {
-        Unit = {
-          Description = "Fetch qutebrowser dicts for my languages";
-          After = [ "network-online.target" ];
-          Wants = [ "network-online.target" ];
-        };
-        Service = {
-          Type = "oneshot";
-          ExecStart = pkgs.writeShellScript "qute-dict-install" (
-            builtins.concatStringsSep "\n" (
-              builtins.map (
-                n: "${hmConfig.programs.qutebrowser.package}/share/qutebrowser/scripts/dictcli.py install ${n}"
-              ) hmConfig.programs.qutebrowser.settings.spellcheck.languages
-            )
+      # systemd.user.services.qutebrowser-setup = {
+      #   Unit = {
+      #     Description = "Fetch qutebrowser dicts for my languages";
+      #     After = [ "network-online.target" ];
+      #     Wants = [ "network-online.target" ];
+      #   };
+      #   Service = {
+      #     Type = "oneshot";
+      #     ExecStart = pkgs.writeShellScript "qute-dict-install" (
+      #       builtins.concatStringsSep "\n" (
+      #         builtins.map (
+      #           n: "${hmConfig.programs.qutebrowser.package}/share/qutebrowser/scripts/dictcli.py install ${n}"
+      #         ) hmConfig.programs.qutebrowser.settings.spellcheck.languages
+      #       )
 
-          );
-        };
-        Install = {
-          WantedBy = [ "default.target" ];
-        };
-      };
+      #     );
+      #   };
+      #   Install = {
+      #     WantedBy = [ "default.target" ];
+      #   };
+      # };
       programs = {
         qutebrowser = {
-          enable = true;
+          enable = false;
           settings = {
             inherit (quteTheme) colors fonts;
             auto_save.session = true;
