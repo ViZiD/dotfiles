@@ -125,8 +125,9 @@
       android.enable = true;
       bluetooth.enable = true;
       printing.enable = true;
-      zapret.enable = true;
-      vpn.enable = true;
+      zapret.enable = false;
+      vpn.enable = false;
+      wireguard.enable = true;
       doh.enable = true;
       diff.enable = true;
       persist = {

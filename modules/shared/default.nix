@@ -13,5 +13,6 @@
     ./vpn.nix
     ./doh.nix
     ./diff.nix
+    ./wireguard.nix
   ];
 }

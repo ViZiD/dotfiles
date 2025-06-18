@@ -25,6 +25,9 @@ in
       vpn_udp = {
         file = ./vpn/nl4u.age;
       } // root;
+      wg_key = {
+        file = ./vpn/wg_key.age;
+      } // root;
 
       userPass = {
         file = ./common/user.age;

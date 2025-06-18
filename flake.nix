@@ -123,6 +123,7 @@
         ];
         defaultSecretDirectory = "./secrets";
         cache = "./secrets/.cache";
+        extraPackages = [ self.packages.x86_64-linux.age-plugin-openpgp-card ];
       };
     }
     // utils.lib.eachDefaultSystem (
@@ -143,7 +144,8 @@
             deadnix.enable = true;
           };
         };
-        packages = import ./pkgs { inherit pkgs; };
+        packages = import ./pkgs { inherit pkgs; } // pkgs.nur.repos.vizqq;
+
         devShells.default = pkgs.mkShell {
           inherit (self.checks.${system}.pre-commit-check) shellHook;
           buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
@@ -151,6 +153,8 @@
             rage
             openpgp-card-tools
             nur.repos.vizqq.age-plugin-openpgp-card
+            self.vaultix.app.${system}.edit
+            self.vaultix.app.${system}.renc
           ];
         };
       }
