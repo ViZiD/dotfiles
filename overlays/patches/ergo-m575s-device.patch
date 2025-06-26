@@ -1,0 +1,17 @@
+diff --git a/data/devices/logitech-ergo-m575s.device b/data/devices/logitech-ergo-m575s.device
+new file mode 100644
+index 0000000..c0b5a4c
+--- /dev/null
++++ b/data/devices/logitech-ergo-m575s.device
+@@ -0,0 +1,8 @@
++[Device]
++Name=Logitech ERGO M575S
++DeviceMatch=bluetooth:046d:b041
++Driver=hidpp20
++DeviceType=mouse
++
++[Driver/hidpp20]
++DeviceIndex=1
+diff --git a/ergo-m575s-device.patch b/ergo-m575s-device.patch
+new file mode 100644
+index 0000000..e69de29

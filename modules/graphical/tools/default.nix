@@ -57,6 +57,11 @@ in
         ".config/obs-studio"
       ];
     };
+
+    environment.systemPackages = [ pkgs.piper ];
+
+    services.ratbagd.enable = true;
+
     home-manager.users.${user.username} = mkIf user.enable {
       stylix.targets = mkIf isStylesEnabled {
         fuzzel.enable = config.dots.graphical.wayland.enable;

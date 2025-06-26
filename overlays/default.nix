@@ -48,6 +48,7 @@ in
       # https://github.com/tadfisher/pass-otp/pull/173
       pass-otp = addPatches prev.passExtensions.pass-otp [ ./patches/pass-otp-fix-completion.patch ];
     };
+    libratbag = addPatches prev.libratbag [ ./patches/ergo-m575s-device.patch ];
   };
 
   nix-vscode-extensions = final: prev: {
