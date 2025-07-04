@@ -22,14 +22,16 @@ in
         };
         associations.added = defaultApplications;
       };
-      home.packages = [
-        pkgs.telegram-desktop
+      home.packages = with pkgs; [
+        telegram-desktop
+        master.fluffychat
       ];
     };
 
     dots.shared.persist.user = mkIf isPersistEnabled {
       directories = [
         ".local/share/TelegramDesktop/tdata"
+        ".local/share/chat.fluffy.fluffychat"
       ];
     };
   };

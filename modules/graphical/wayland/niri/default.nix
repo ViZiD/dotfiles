@@ -130,6 +130,7 @@ in
                   { app-id = "^org.qutebrowser.qutebrowser$"; }
                   { app-id = "^org.prismlauncher.PrismLauncher$"; }
                   { app-id = "^dev.zed.Zed$"; }
+                  { app-id = "^fluffychat$"; }
                   { title = "(?i)Visual\\s+Studio\\s+Code"; }
                 ];
                 open-maximized = true;
