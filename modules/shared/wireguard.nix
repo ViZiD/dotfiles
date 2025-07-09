@@ -13,6 +13,7 @@ in
     networking.wg-quick.interfaces = {
       wg0 = {
         type = "amneziawg";
+        autostart = false;
         address = [
           "10.0.0.3/32"
         ];
@@ -34,8 +35,7 @@ in
           {
             publicKey = "NzVCWTgGNTb6IwJRu62+iScLfviFRn8toj8r156d8GA=";
             allowedIPs = [
-              "0.0.0.0/0"
-              "::/0"
+              "10.0.0.0/24"
             ];
             endpoint = "light.vizqq.cc:62048";
           }

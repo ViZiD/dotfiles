@@ -127,7 +127,7 @@
       printing.enable = true;
       zapret.enable = false;
       vpn.enable = false;
-      wireguard.enable = false;
+      wireguard.enable = true;
       doh.enable = false;
       diff.enable = true;
       persist = {
