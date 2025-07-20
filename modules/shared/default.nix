@@ -14,5 +14,6 @@
     ./doh.nix
     ./diff.nix
     ./wireguard.nix
+    ./kdeconnect.nix
   ];
 }

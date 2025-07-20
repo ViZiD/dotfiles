@@ -130,6 +130,7 @@
       wireguard.enable = true;
       doh.enable = false;
       diff.enable = true;
+      kdeconnect.enable = true;
       persist = {
         enable = true;
         user = {
