@@ -138,6 +138,13 @@ in
               }
               {
                 matches = [
+                  { app-id = "^gamescope$"; }
+                ];
+                open-fullscreen = true;
+                border.enable = false;
+              }
+              {
+                matches = [
                   { app-id = "^org\.gnupg\.pinentry-qt$"; }
                   { app-id = "^org\.telegram\.desktop$"; }
                 ];
