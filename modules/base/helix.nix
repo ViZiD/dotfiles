@@ -39,8 +39,6 @@ in
             # toml
             yaml-language-server
 
-            terraform-ls
-
             # web
             prettier
             typescript-language-server
@@ -120,9 +118,6 @@ in
             nixd = {
               command = "nixd";
             };
-            yaml-language-server.config.yaml.schemas = {
-              kubernetes = "k8s/*.yaml";
-            };
           };
           language = [
             {
@@ -187,30 +182,6 @@ in
                 args = [
                   "--stdin-filepath"
                   "file.html"
-                ];
-              };
-              auto-format = true;
-            }
-            {
-              name = "tfvars";
-              language-servers = [ "terraform-ls" ];
-              formatter = {
-                command = lib.getExe pkgs.opentofu;
-                args = [
-                  "fmt"
-                  "-"
-                ];
-              };
-              auto-format = true;
-            }
-            {
-              name = "hcl";
-              language-servers = [ "terraform-ls" ];
-              formatter = {
-                command = lib.getExe pkgs.opentofu;
-                args = [
-                  "fmt"
-                  "-"
                 ];
               };
               auto-format = true;
