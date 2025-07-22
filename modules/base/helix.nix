@@ -118,6 +118,7 @@ in
             nixd = {
               command = "nixd";
             };
+            uwu-colors.command = "${pkgs.uwu-colors}/bin/uwu_colors";
           };
           language = [
             {
@@ -176,6 +177,7 @@ in
               language-servers = [
                 "emmet-lsp"
                 "vscode-html-language-server"
+                "uwu-colors"
               ];
               formatter = {
                 command = "prettier";
@@ -191,6 +193,7 @@ in
               language-servers = [
                 "emmet-lsp"
                 "vscode-css-language-server"
+                "uwu-colors"
               ];
               auto-format = true;
             }
@@ -238,6 +241,7 @@ in
               name = "markdown";
               language-servers = [
                 "marksman"
+                "uwu-colors"
               ];
               formatter = {
                 command = "prettier";
