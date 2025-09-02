@@ -66,6 +66,7 @@ in
             };
           in
           {
+            screenshot-path = "~/pictures/screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
             environment = {
               DISPLAY = ":0";
               NIXOS_OZONE_WL = "1";

@@ -30,7 +30,7 @@ in
       enable = true;
       settings = rec {
         initial_session = {
-          command = ''${lib.getExe pkgs.greetd.tuigreet} --remember --asterisks --time --cmd ${
+          command = ''${lib.getExe pkgs.tuigreet} --remember --asterisks --time --cmd ${
             if config.dots.graphical.niri.enable then "niri-session" else "'dbus-run-session sway'" # not work xdg mime
           }'';
           user = "greeter";

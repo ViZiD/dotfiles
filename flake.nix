@@ -6,7 +6,7 @@
 
     nixpkgs-master.url = "github:nixos/nixpkgs?ref=master";
 
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
 
     utils.url = "github:numtide/flake-utils";
 
@@ -71,7 +71,9 @@
         let
           overlays = [
             inputs.nur.overlays.default
-          ] ++ (builtins.attrValues self.overlays) ++ extraOverlays;
+          ]
+          ++ (builtins.attrValues self.overlays)
+          ++ extraOverlays;
 
           pkgs = import nixpkgs {
             inherit system overlays;
@@ -86,7 +88,8 @@
             self.nixosModules.default
             home-manager.nixosModules.home-manager
             vaultix.nixosModules.default
-          ] ++ extraModules;
+          ]
+          ++ extraModules;
 
           specialArgs = {
             inherit
@@ -94,7 +97,8 @@
               inputs
               hostname
               ;
-          } // extraArgs;
+          }
+          // extraArgs;
         };
     in
     {
@@ -133,7 +137,8 @@
           inherit system;
           overlays = [
             inputs.nur.overlays.default
-          ] ++ (builtins.attrValues self.overlays);
+          ]
+          ++ (builtins.attrValues self.overlays);
         };
       in
       {

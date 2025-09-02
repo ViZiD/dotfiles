@@ -43,11 +43,12 @@ in
         type = "ed25519";
       }
     ];
-    home-manager.users.${user.username} = mkIf user.enable {
-      programs.ssh = {
-        enable = true;
-        addKeysToAgent = "yes";
-      };
-    };
+    # REMOVED:
+    # home-manager.users.${user.username} = mkIf user.enable {
+    #   programs.ssh = {
+    #     enable = true;
+    #     addKeysToAgent = "yes";
+    #   };
+    # };
   };
 }

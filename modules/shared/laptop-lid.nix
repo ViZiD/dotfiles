@@ -13,8 +13,7 @@ in
     services = {
       upower.enable = true;
       logind = {
-        lidSwitch = "suspend";
-        extraConfig = "HandlePowerKey=hibernate";
+        settings.Login.HandleLidSwitch = "suspend";
       };
     };
   };

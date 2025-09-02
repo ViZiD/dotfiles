@@ -8,6 +8,7 @@ with lib;
 let
   cfg = config.dots.base.zsh;
   user = config.dots.user;
+  hmConfig = config.home-manager.users.${user.username};
   isPersistEnabled = config.dots.shared.persist.enable;
 
   base = {
@@ -38,7 +39,8 @@ in
     programs.zsh = {
       enable = true;
       autosuggestions.enable = true;
-    } // base;
+    }
+    // base;
 
     users.users.${user.username} = mkIf user.enable { shell = pkgs.zsh; };
 
@@ -56,7 +58,7 @@ in
             };
           }
         ];
-        dotDir = ".config/zsh";
+        dotDir = "${hmConfig.xdg.configHome}/zsh";
 
         autosuggestion.enable = true;
 
@@ -85,7 +87,7 @@ in
           zstyle ':prompt:shrink_path' short yes
           zstyle ':prompt:shrink_path' nameddirs no
 
-          function _prompt_generator() { 
+          function _prompt_generator() {
             prompt='%F{green}%n%f@%F{magenta}%m%f:$(shrink_path) >'
 
             if [[ ! -z $vcs_info_msg_0_ && -z $SSH_TTY ]]; then
@@ -112,7 +114,8 @@ in
             cat
           }
         '';
-      } // base;
+      }
+      // base;
     };
   };
 }
