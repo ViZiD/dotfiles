@@ -47,7 +47,7 @@ in
             fixSpotifyEmbeds.enable = true;
             fixYoutubeEmbeds.enable = true;
             friendInvites.enable = true;
-            hideAttachments.enable = true;
+            # hideAttachments.enable = true;
             imageZoom.enable = true;
             implicitRelationships.enable = true;
             noF1.enable = true;

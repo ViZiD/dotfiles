@@ -23,7 +23,6 @@ in
     ./reading
     ./tools
     ./games
-    ./zed
   ];
   options.dots.graphical.enable = mkEnableOption "Enable graphical settings";
 
@@ -56,7 +55,6 @@ in
       graphical.reading.enable = true;
       graphical.tools.enable = true;
       graphical.games.enable = true;
-      graphical.zed.enable = true;
     };
   };
 }
