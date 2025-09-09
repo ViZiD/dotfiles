@@ -34,10 +34,6 @@ in
     stable = inputs.nixpkgs-stable.legacyPackages.${final.system};
   };
 
-  nixpkgs-24-11 = final: _: {
-    nixpkgs-24-11 = inputs.nixpkgs-24-11.legacyPackages.${final.system};
-  };
-
   # Adds my custom packages
   # deadnix: skip
   additions = final: prev: import ../pkgs { pkgs = final; } // { };

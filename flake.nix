@@ -8,8 +8,6 @@
 
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
 
-    nixpkgs-24-11.url = "github:nixos/nixpkgs?ref=release-24.11";
-
     utils.url = "github:numtide/flake-utils";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware?ref=master";
