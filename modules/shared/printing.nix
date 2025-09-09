@@ -8,7 +8,7 @@
 with lib;
 let
   cfg = config.dots.shared.printing;
-  captdriver = pkgs.nixpkgs-24-05.callPackage ./captdriver.nix { };
+  captdriver = pkgs.nixpkgs-24-11.callPackage ./captdriver.nix { };
 in
 {
   options.dots.shared.printing.enable = mkEnableOption "Enable printer stuff";
@@ -23,14 +23,14 @@ in
       (
         m:
         lib.modules.importApply m {
-          pkgs = pkgs.nixpkgs-24-05;
+          pkgs = pkgs.nixpkgs-24-11;
           inherit lib config;
         }
       )
       [
-        "${inputs.nixpkgs-24-05}/nixos/modules/services/printing/cupsd.nix"
-        "${inputs.nixpkgs-24-05}/nixos/modules/services/printing/ipp-usb.nix"
-        "${inputs.nixpkgs-24-05}/nixos/modules/services/printing/cups-pdf.nix"
+        "${inputs.nixpkgs-24-11}/nixos/modules/services/printing/cupsd.nix"
+        "${inputs.nixpkgs-24-11}/nixos/modules/services/printing/ipp-usb.nix"
+        "${inputs.nixpkgs-24-11}/nixos/modules/services/printing/cups-pdf.nix"
       ];
 
   config = mkIf cfg.enable {
