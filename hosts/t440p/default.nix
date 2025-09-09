@@ -81,7 +81,7 @@
         "input"
         "scanner"
         "lp"
-
+        "lpadmin"
         # access to the serial and USB ports
         "dialout"
 

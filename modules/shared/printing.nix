@@ -2,43 +2,58 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 with lib;
 let
   cfg = config.dots.shared.printing;
-  isPersistEnable = config.dots.shared.persist.enable;
+  captdriver = pkgs.nixpkgs-24-05.callPackage ./captdriver.nix { };
 in
 {
   options.dots.shared.printing.enable = mkEnableOption "Enable printer stuff";
+  disabledModules = [
+    "services/printing/cupsd.nix"
+    "services/printing/ipp-usb.nix"
+    "services/printing/cups-pdf.nix"
+  ];
+
+  imports =
+    map
+      (
+        m:
+        lib.modules.importApply m {
+          pkgs = pkgs.nixpkgs-24-05;
+          inherit lib config;
+        }
+      )
+      [
+        "${inputs.nixpkgs-24-05}/nixos/modules/services/printing/cupsd.nix"
+        "${inputs.nixpkgs-24-05}/nixos/modules/services/printing/ipp-usb.nix"
+        "${inputs.nixpkgs-24-05}/nixos/modules/services/printing/cups-pdf.nix"
+      ];
+
   config = mkIf cfg.enable {
-
-    dots.shared.persist.user = mkIf (config.dots.graphical.enable && isPersistEnable) {
-      files = [
-        ".config/skanliterc"
-      ];
-    };
-
-    dots.user.userPackages = mkIf config.dots.graphical.enable [
-      pkgs.kdePackages.skanlite
+    hardware.printers.ensurePrinters = [
+      {
+        name = "L11121E";
+        location = "Home";
+        deviceUri = "usb://Canon/LBP2900?serial=0000A27773TO";
+        model = "canon/CanonLBP-2900-3000.ppd";
+        ppdOptions = {
+          PageSize = "A4";
+          captTonerSave = "False";
+          captManualDuplex = "True";
+        };
+      }
     ];
-
-    hardware.sane = {
-      enable = true;
-      extraBackends = with pkgs; [
-        sane-airscan
-        hplipWithPlugin
-      ];
-      netConf = "172.16.1.2";
-    };
     services = {
       printing = {
         enable = true;
-        drivers = with pkgs; [ hplipWithPlugin ];
-      };
-      avahi = {
-        enable = true;
-        nssmdns4 = true;
+        logLevel = "debug";
+        drivers = [
+          captdriver
+        ];
       };
     };
   };
