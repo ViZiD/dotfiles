@@ -131,6 +131,12 @@ in
         qbittorrent
         goldendict-ng
         anki
+        (pkgs.stable.kicad.override {
+          addons = with pkgs.stable.kicadAddons; [
+            kikit
+            kikit-library
+          ];
+        })
       ];
 
       dconf.settings = {
