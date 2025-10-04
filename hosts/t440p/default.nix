@@ -131,6 +131,7 @@
       doh.enable = false;
       diff.enable = true;
       kdeconnect.enable = true;
+      virt.enable = true;
       persist = {
         enable = true;
         user = {

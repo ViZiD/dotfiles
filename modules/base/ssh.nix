@@ -43,12 +43,38 @@ in
         type = "ed25519";
       }
     ];
-    # REMOVED:
-    # home-manager.users.${user.username} = mkIf user.enable {
-    #   programs.ssh = {
-    #     enable = true;
-    #     addKeysToAgent = "yes";
-    #   };
-    # };
+    home-manager.users.${user.username} = mkIf user.enable {
+      programs.ssh = {
+        enable = true;
+        enableDefaultConfig = false;
+        matchBlocks = {
+          "debian-vm" = {
+            hostname = "localhost";
+            user = "radik";
+            port = 22220;
+          };
+          "git-hosts" = {
+            host = "github.com gitlab.com codeberg.org";
+            user = "git";
+          };
+          "light-vps" = {
+            hostname = "light.vizqq.cc";
+            user = "radik";
+          };
+          "*" = {
+            forwardAgent = false;
+            addKeysToAgent = "no";
+            compression = false;
+            serverAliveInterval = 0;
+            serverAliveCountMax = 3;
+            hashKnownHosts = false;
+            userKnownHostsFile = "~/.ssh/known_hosts";
+            controlMaster = "no";
+            controlPath = "~/.ssh/master-%r@%n:%p";
+            controlPersist = "no";
+          };
+        };
+      };
+    };
   };
 }
