@@ -55,6 +55,8 @@
 
         # games
         shattered-pixel-dungeon
+
+        ventoy-full
       ];
       systemPackages = with pkgs; [
         # compression
