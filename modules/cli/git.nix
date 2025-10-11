@@ -24,6 +24,8 @@ in
       ignores = [
         "result"
         ".direnv"
+        ".envrc"
+        ".env"
       ];
       aliases = {
         p = "pull --ff-only";
