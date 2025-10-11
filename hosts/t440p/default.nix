@@ -114,6 +114,7 @@
       };
       git.enable = true;
       gitui.enable = true;
+      lazygit.enable = true;
       direnv.enable = true;
       nix-index.enable = true;
       pass.enable = true;

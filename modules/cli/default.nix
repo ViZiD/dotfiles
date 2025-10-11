@@ -4,6 +4,7 @@
     ./gpg.nix
     ./git.nix
     ./gitui.nix
+    ./lazygit.nix
     ./direnv.nix
     ./nix-index.nix
     ./pass.nix
