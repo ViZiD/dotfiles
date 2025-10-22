@@ -47,6 +47,8 @@ in
         url = {
           "git@github.com:".pushInsteadOf = "https://github.com/";
           "git@gist.github.com:".pushInsteadOf = "https://gist.github.com/";
+          "git.debian.org:/git/".insteadOf = "https://anonscm.debian.org/git/";
+          "git@salsa.debian.org:".insteadOf = "https://salsa.debian.org/";
         };
 
         http.postBuffer = 524288000;
