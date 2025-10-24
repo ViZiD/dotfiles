@@ -41,6 +41,7 @@ in
       services.gpg-agent = {
         enable = true;
         enableSshSupport = mkIf cfg.cli.gpg.sshSupport true;
+        enableExtraSocket = true;
         pinentry.package = cfg.cli.gpg.pinentryPackage;
         sshKeys = mkIf (cfg.cli.gpg.sshSupport) (
           [ user.signingKey ] ++ (if cfg.cli.gpg.sshKeys != null then cfg.cli.gpg.sshKeys else [ ])

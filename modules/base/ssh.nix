@@ -9,6 +9,20 @@ let
   user = config.dots.user;
   persist = config.dots.shared.persist;
   basePath = if persist.enable then "${persist.persistRoot}/etc/ssh" else "/etc/ssh";
+  socketDir = "/run/user/%i/gnupg";
+  forwardGpg = {
+    forwardAgent = true;
+    remoteForwards = [
+      {
+        bind.address = "${socketDir}/S.gpg-agent";
+        host.address = "${socketDir}/S.gpg-agent.extra";
+      }
+      {
+        bind.address = "${socketDir}/S.gpg-agent.ssh";
+        host.address = "${socketDir}/S.gpg-agent.ssh";
+      }
+    ];
+  };
 in
 {
   options.dots.base.ssh.enable = mkEnableOption "Enable ssh config";
@@ -52,7 +66,8 @@ in
             hostname = "localhost";
             user = "radik";
             port = 22220;
-          };
+          }
+          // forwardGpg;
           "git-hosts" = {
             host = "github.com gitlab.com codeberg.org";
             user = "git";
@@ -62,8 +77,6 @@ in
             user = "radik";
           };
           "*" = {
-            forwardAgent = false;
-            addKeysToAgent = "no";
             compression = false;
             serverAliveInterval = 0;
             serverAliveCountMax = 3;
