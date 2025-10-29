@@ -11,16 +11,16 @@ in
   imports = [
     ./python
     ./js
-    ./schroot
-    # ./ops.nix
+    # ./schroot
+    ./ops.nix
   ];
   options.dots.dev.enable = mkEnableOption "Enable dev stuff";
   config = mkIf cfg.enable {
     dots.dev = {
       js.enable = true;
       python.enable = true;
-      schroot.enable = true;
-      # ops.enable = true;
+      # schroot.enable = true;
+      ops.enable = true;
     };
   };
 }
