@@ -45,7 +45,7 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
-    nur.url = "github:nix-community/NUR";
+    nur.url = "github:nix-community/NUR?ref=be0eeff066e10bc7f98c9e72bd656d330cd19f31";
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
   };
 
@@ -80,7 +80,7 @@
             config = {
               allowUnfree = true;
               permittedInsecurePackages = [
-                "ventoy-1.1.05"
+                "ventoy-1.1.07"
               ];
             };
           };

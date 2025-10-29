@@ -19,29 +19,33 @@ in
 
     home-manager.users.${user.username}.programs.git = mkIf user.enable {
       enable = true;
-      userEmail = "${user.email}";
-      userName = "${user.realName}";
       ignores = [
         "result"
         ".direnv"
         ".envrc"
         ".env"
       ];
-      aliases = {
-        p = "pull --ff-only";
-        ff = "merge --ff-only";
-        graph = "log --decorate --oneline --graph";
-        pushall = "!git remote | xargs -L1 git push --all";
-        cb = "switch -c";
-        au = "remote add -f upstream";
-      };
-      # some hacks for large repos
-      # https://www.git-scm.com/docs/partial-clone
-      aliases.au-promisor = "!git remote add upstream \"$@\" && shift \"$#\" && git fetch --filter=blob:none upstream";
-      aliases.clone-promisor = "clone --filter=blob:none --no-checkout";
-      extraConfig.clone.filterSubmodules = true;
+      settings = {
+        user = {
+          email = "${user.email}";
+          name = "${user.realName}";
+        };
 
-      extraConfig = {
+        alias = {
+          p = "pull --ff-only";
+          ff = "merge --ff-only";
+          graph = "log --decorate --oneline --graph";
+          pushall = "!git remote | xargs -L1 git push --all";
+          cb = "switch -c";
+          au = "remote add -f upstream";
+
+          # some hacks for large repos
+          # https://www.git-scm.com/docs/partial-clone
+          au-promisor = "!git remote add upstream \"$@\" && shift \"$#\" && git fetch --filter=blob:none upstream";
+          clone-promisor = "clone --filter=blob:none --no-checkout";
+        };
+        clone.filterSubmodules = true;
+
         init.defaultBranch = "master";
 
         url = {

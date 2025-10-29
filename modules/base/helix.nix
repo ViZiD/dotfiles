@@ -24,7 +24,7 @@ in
           with nodePackages;
           [
             # docker
-            dockerfile-language-server-nodejs
+            dockerfile-language-server
             docker-compose-language-service
 
             bash-language-server
