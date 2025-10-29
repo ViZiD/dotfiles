@@ -63,9 +63,8 @@ in
         enableDefaultConfig = false;
         matchBlocks = {
           "debian-vm" = {
-            hostname = "localhost";
+            hostname = "192.168.122.144";
             user = "radik";
-            port = 22220;
           }
           // forwardGpg;
           "git-hosts" = {

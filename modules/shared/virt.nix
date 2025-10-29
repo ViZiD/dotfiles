@@ -8,11 +8,17 @@ with lib;
 let
   cfg = config.dots.shared.virt;
   user = config.dots.user;
-
+  isPersistEnabled = config.dots.shared.persist.enable;
 in
 {
   options.dots.shared.virt.enable = mkEnableOption "Enable virtualization stuff";
   config = mkIf cfg.enable {
+    dots.shared.persist.system = mkIf isPersistEnabled {
+      directories = [
+        "/var/lib/libvirt"
+      ];
+    };
+
     users.users.${user.username}.extraGroups = [
       "libvirtd"
       "kvm"
@@ -32,11 +38,9 @@ in
     virtualisation = {
       libvirtd = {
         enable = true;
-
         qemu = {
           swtpm.enable = true;
-          ovmf.enable = true;
-          ovmf.packages = [ pkgs.OVMFFull.fd ];
+          vhostUserPackages = with pkgs; [ virtiofsd ];
         };
       };
 
@@ -44,9 +48,21 @@ in
     };
 
     services.spice-vdagentd.enable = true;
-    networking.firewall.allowedTCPPorts = [
-      22220
-      5930
-    ];
+    networking.firewall = {
+      allowedTCPPorts = [
+        22220
+        5930
+      ];
+      extraCommands = ''
+        # Port forwarding для SSH
+        iptables -t nat -A PREROUTING -i enp0s25 -p tcp --dport 22220 -j DNAT --to-destination 192.168.122.144:22
+        iptables -A FORWARD -d 192.168.122.144/32 -p tcp --dport 22 -j ACCEPT
+      '';
+
+      extraStopCommands = ''
+        iptables -t nat -D PREROUTING -i enp0s25 -p tcp --dport 22220 -j DNAT --to-destination 192.168.122.144:22 2>/dev/null || true
+        iptables -D FORWARD -d 192.168.122.144/32 -p tcp --dport 22 -j ACCEPT 2>/dev/null || true
+      '';
+    };
   };
 }
