@@ -37,28 +37,25 @@ in
         max-substitution-jobs = 32;
 
         substituters = [
-          "https://nix-community.cachix.org?priority=5"
+          "https://nix-community.cachix.org?priority=4"
 
           # my nur repos
           "https://vizqq.cachix.org?priority=3"
-          "https://picokeys-nix.cachix.org?priority=4"
 
           # proxy
-          "https://ncproxy.vizqq.cc?priority=2"
+          "https://ncproxy.vizqq.cc?priority=1"
 
-          "https://cache.nixos.org?priority=1"
+          # "https://cache.nixos.org?priority=1"
         ];
 
         trusted-substituters = [
           "https://numtide.cachix.org"
           "https://vizqq.cachix.org"
-          "https://picokeys-nix.cachix.org"
         ];
 
         trusted-public-keys = [
           "vizqq.cachix.org-1:5BPw8jRDFrVEuN3mTiG7mdC6Cezeid4n5KTj5xiLX/s="
           "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-          "picokeys-nix.cachix.org-1:mJT1GjmwrXB+eiBDAsXYc3vHrwz0Wj/Vh6Do5YDvS+o="
         ];
         flake-registry = "";
       };
