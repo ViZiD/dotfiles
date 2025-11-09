@@ -8,7 +8,7 @@ with lib;
 let
   cfg = config.dots.graphical.vscode;
   user = config.dots.user;
-  isStylesEnabled = config.dots.styles.enable;
+  # isStylesEnabled = config.dots.styles.enable;
   isPersistEnabled = config.dots.shared.persist.enable;
 
   extensions = pkgs.nix-vscode-extensions;
@@ -26,12 +26,12 @@ in
 
     home-manager.users.${user.username} = mkIf user.enable {
 
-      stylix.targets = mkIf isStylesEnabled {
-        vscode = {
-          enable = true;
-          profileNames = [ "default" ];
-        };
-      };
+      # stylix.targets = mkIf isStylesEnabled {
+      #   vscode = {
+      #     enable = true;
+      #     profileNames = [ "default" ];
+      #   };
+      # };
 
       programs.vscode = {
         enable = true;
@@ -104,6 +104,7 @@ in
               "terminal.integrated.fontSize" = mkForce 16;
               "terminal.integrated.fontWeightBold" = "normal";
               "workbench.iconTheme" = "material-icon-theme";
+              "workbench.colorTheme" = "Monokai";
               "security.workspace.trust.untrustedFiles" = "open";
               "[jsonc]" = {
                 "editor.formatOnSave" = true;
@@ -132,9 +133,9 @@ in
                 "editor.formatOnSave" = true;
               };
               "redhat.telemetry.enabled" = false;
-              "[dockerfile]" = {
-                "editor.defaultFormatter" = "ms-azuretools.vscode-docker";
-              };
+              # "[dockerfile]" = {
+              #   "editor.defaultFormatter" = "ms-azuretools.vscode-docker";
+              # };
               "files.exclude" = {
                 # "**/.classpath" = true;
                 # "**/.project" = true;

@@ -44,7 +44,7 @@ in
 
     dots = {
       graphical.terminal.enable = true;
-      graphical.vscode.enable = false;
+      graphical.vscode.enable = true;
       graphical.browser.enable = true;
       graphical.wayland.enable = true;
       graphical.messaging.enable = true;
