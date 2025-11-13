@@ -46,12 +46,14 @@ in
             emmet-language-server
 
             # python
+            basedpyright
             ruff
             (python3.withPackages (
               p:
               (with p; [
                 python-lsp-ruff
                 python-lsp-server
+                pylsp-mypy
               ])
             ))
 
@@ -119,6 +121,19 @@ in
               command = "nixd";
             };
             uwu-colors.command = "${pkgs.uwu-colors}/bin/uwu_colors";
+            pylsp.config.pylsp.plugins = {
+              pylsp-mypy.enabled = true;
+            };
+            ruff = {
+              command = "ruff";
+              args = [ "server" ];
+            };
+            basedpyright = {
+              command = "basedpyright-langserver";
+              args = [ "--stdio" ];
+              config.reportMissingtypeStubs = false;
+              config.python.analysis.typeCheckingMode = "off";
+            };
           };
           language = [
             {
@@ -268,15 +283,29 @@ in
             {
               name = "python";
               language-servers = [
-                "pylsp"
+                {
+                  name = "ruff";
+                  only-features = [
+                    "format"
+                    "diagnostics"
+                    "code-action"
+                  ];
+                }
+                {
+                  name = "basedpyright";
+                  except-features = [
+                    "format"
+                    "diagnostics"
+                  ];
+                }
+                {
+                  name = "pylsp";
+                  only-features = [
+                    "diagnostics"
+                    "code-action"
+                  ];
+                }
               ];
-              formatter = {
-                command = "sh";
-                args = [
-                  "-c"
-                  "ruff check --select I --fix - | ruff format --line-length 88 -"
-                ];
-              };
               auto-format = true;
             }
             {
