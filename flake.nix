@@ -29,6 +29,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    zedless-editor.url = "github:zedless-editor/zedless";
+
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
