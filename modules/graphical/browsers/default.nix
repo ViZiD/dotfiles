@@ -189,6 +189,7 @@ in
             { id = "hfjbmagddngcpeloejdejnfgbamkjaeg"; } # Vimium
             { id = "abpdnfjocnmdomablahdcfnoggeeiedb"; } # Save All Resources
             { id = "dhdgffkkebhmkfjojejmpbldmpobfkfo"; } # Tampermonkey
+            { id = "nngceckbapebfimnlniiiahkandclblb"; } # Bitwarden
           ];
           commandLineArgs = [
             "--disable-features=WebRtcAllowInputVolumeAdjustment"
