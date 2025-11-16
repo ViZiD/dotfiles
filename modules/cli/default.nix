@@ -9,5 +9,6 @@
     ./nix-index.nix
     ./pass.nix
     ./yazi.nix
+    ./bw.nix
   ];
 }

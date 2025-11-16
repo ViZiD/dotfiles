@@ -119,6 +119,7 @@
       nix-index.enable = true;
       pass.enable = true;
       yazi.enable = true;
+      bw.enable = true;
     };
     shared = {
       quietboot.enable = true;
