@@ -120,6 +120,7 @@
       pass.enable = true;
       yazi.enable = true;
       bw.enable = true;
+      vibecoding.enable = true;
     };
     shared = {
       quietboot.enable = true;

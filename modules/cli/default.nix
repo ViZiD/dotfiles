@@ -10,5 +10,6 @@
     ./pass.nix
     ./yazi.nix
     ./bw.nix
+    ./vibecoding.nix
   ];
 }
