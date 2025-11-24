@@ -53,6 +53,14 @@ in
         file = ./tokens/openrouter.age;
       }
       // user;
+      claude = {
+        file = ./tokens/claude.age;
+      }
+      // user;
+      perplexity = {
+        file = ./tokens/perplexity.age;
+      }
+      // user;
     };
     beforeUserborn = [
       "rootPass"
