@@ -43,6 +43,14 @@ in
                   aliases = [ "sonnet" ];
                   max-input-chars = 200000;
                 };
+                "x-ai/grok-4.1-fast:free" = {
+                  aliases = [ "grokfree" ];
+                  max-input-chars = 2000000;
+                };
+                "x-ai/grok-4.1-fast" = {
+                  aliases = [ "grok" ];
+                  max-input-chars = 2000000;
+                };
               };
             };
             roles = {
