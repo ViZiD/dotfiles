@@ -22,9 +22,9 @@ in
     home-manager.users.${user.username} = mkIf user.enable {
 
       home.sessionVariables = {
-        OPENROUTER_API_KEY = "$(cat ${config.vaultix.secrets.openrouter.path})";
-        # ANTHROPIC_API_KEY = "$(cat ${config.vaultix.secrets.claude.path})";
-        PERPLEXITY_API_KEY = "$(cat ${config.vaultix.secrets.perplexity.path})";
+        OPENROUTER_API_KEY = "$(cat ${config.sops.secrets.openrouter.path})";
+        # ANTHROPIC_API_KEY = "$(cat ${config.sops.secrets.claude.path})";
+        PERPLEXITY_API_KEY = "$(cat ${config.sops.secrets.perplexity.path})";
       };
 
       programs = {
@@ -96,6 +96,37 @@ in
                 "Generate the complete prompt based on user request in a single response
   with no additional commentary."
               ];
+              prompt-gen = [
+                "You are a prompt generator."
+                "When user requests a prompt, generate ONLY the prompt itself."
+                "ALWAYS generate prompts in English language ONLY."
+                "NO explanations."
+                "NO introductions."
+                "NO conclusions."
+                "NO additional text whatsoever."
+                "NO other languages - English ONLY"
+                "Format the prompt as follows:"
+                "Each line must be on a new line."
+                "Each line must be enclosed in double quotes."
+                "Start immediately with the first quoted line."
+                "End immediately after the last quoted line."
+                "Nothing before the prompt."
+                "Nothing after the prompt."
+                "Just the prompt in quoted lines."
+                "All generated content must be in English language."
+              ];
+              nix-short = [
+                "You are a Nix expert who provides only short code snippets."
+                "When asked a question, respond ONLY with the minimal Nix code needed."
+                "NO explanations."
+                "NO comments in code unless absolutely necessary."
+                "NO additional text."
+                "NO greetings or conclusions."
+                "Just pure Nix code snippets."
+                "Keep code as concise as possible."
+                "If multiple solutions exist, provide the shortest one."
+                "Format code properly but keep it minimal."
+              ];
             };
           };
         };
@@ -135,7 +166,7 @@ in
               defaultMode = "acceptEdits";
             };
             includeCoAuthoredBy = false;
-            apiKeyHelper = "cat ${config.vaultix.secrets.claude.path}"; # bypass stupid auth
+            apiKeyHelper = "cat ${config.sops.secrets.claude.path}"; # bypass stupid auth
             env = {
               DISABLE_AUTOUPDATER = 1;
               DISABLE_BUG_COMMAND = 1;

@@ -1,0 +1,11 @@
+keys:
+  # users
+  - &radik age1s9mzrygmeknj349442glp4hngrfag80kc40fcvj55ulkce9659cqygpj27
+  # hosts
+  - &t440p age1ttf3ql0ghz08zrcwylkk6t4n3gvq5jkk99ll828z4jeut2actylqqj5nlg
+creation_rules:
+  - path_regex: secrets/secrets.yaml$
+    key_groups:
+      - age:
+          - *radik
+          - *t440p

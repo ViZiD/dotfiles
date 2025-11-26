@@ -131,7 +131,6 @@
       bluetooth.enable = true;
       printing.enable = true;
       zapret.enable = false;
-      vpn.enable = false;
       wireguard.enable = true;
       doh.enable = false;
       diff.enable = true;
@@ -157,8 +156,6 @@
   };
 
   programs.nix-ld.enable = true;
-
-  vaultix.settings.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEwesrYvUtKCt1asJgfk+4wTbg6Q//qz8caHPd/GywNK";
 
   security.polkit.enable = true;
 

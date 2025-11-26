@@ -75,11 +75,11 @@ in
       description = "Packages to be installed on the systems";
     };
     rootPasswordFile = mkOption {
-      default = config.vaultix.secrets.rootPass.path;
+      default = config.sops.secrets.root.path;
       description = "Age file to include to use as root password";
     };
     userPasswordFile = mkOption {
-      default = config.vaultix.secrets.userPass.path;
+      default = config.sops.secrets.user.path;
       description = "Age file to include to use as user password";
     };
     setEmptyPassword = lib.mkEnableOption "If disabled, it will set a user password which requires vautlix set up.";

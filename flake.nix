@@ -12,7 +12,10 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware?ref=master";
 
-    vaultix.url = "github:milieuim/vaultix";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -58,7 +61,6 @@
       utils,
       home-manager,
       nixos-hardware,
-      vaultix,
       ...
     }@inputs:
     let
@@ -94,7 +96,6 @@
             ./secrets
             self.nixosModules.default
             home-manager.nixosModules.home-manager
-            vaultix.nixosModules.default
           ]
           ++ extraModules;
 
@@ -124,18 +125,6 @@
       };
 
       nixosModules.default = ./modules;
-
-      vaultix = vaultix.configure {
-        nodes = self.nixosConfigurations;
-        identity = self + "/secrets/identities/master.pub";
-        extraRecipients = [
-          "age1elc8znqzhk0tw2u35nm4wxqynkakms7d0jj68xrty2wmparwxvxqhu7xy9"
-          "age1qgksmygv9aj2l907heyxlqtpyhvtecz84j52euxjrlfvtpt2h32sxt6xux"
-        ];
-        defaultSecretDirectory = "./secrets";
-        cache = "./secrets/.cache";
-        extraPackages = [ self.packages.x86_64-linux.age-plugin-openpgp-card ];
-      };
     }
     // utils.lib.eachDefaultSystem (
       system:
@@ -162,11 +151,8 @@
           inherit (self.checks.${system}.pre-commit-check) shellHook;
           buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
           packages = with pkgs; [
-            rage
-            openpgp-card-tools
-            nur.repos.vizqq.age-plugin-openpgp-card
-            self.vaultix.app.${system}.edit
-            self.vaultix.app.${system}.renc
+            sops
+            ssh-to-age
           ];
         };
       }

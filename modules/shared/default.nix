@@ -10,7 +10,6 @@
     ./persist.nix
     ./printing.nix
     ./zapret.nix
-    ./vpn.nix
     ./doh.nix
     ./diff.nix
     ./wireguard.nix

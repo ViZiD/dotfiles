@@ -17,7 +17,7 @@ in
         address = [
           "10.0.0.3/32"
         ];
-        privateKeyFile = config.vaultix.secrets.wg_key.path;
+        privateKeyFile = config.sops.secrets.wg_key.path;
 
         extraOptions = {
           H1 = 256;

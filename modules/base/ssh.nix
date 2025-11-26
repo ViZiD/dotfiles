@@ -46,17 +46,38 @@ in
         ];
       };
     };
-    services.openssh.hostKeys = [
-      {
-        bits = 4096;
-        path = "${basePath}/id_rsa";
-        type = "rsa";
-      }
-      {
-        path = "${basePath}/id_ed25519";
-        type = "ed25519";
-      }
-    ];
+    services.openssh = {
+      enable = true;
+
+      settings.PermitRootLogin = lib.mkForce "no";
+      settings.X11Forwarding = false;
+      settings.KbdInteractiveAuthentication = false;
+      settings.PasswordAuthentication = false;
+      settings.UseDns = false;
+      # unbind gnupg sockets if they exists
+      settings.StreamLocalBindUnlink = true;
+
+      # Use key exchange algorithms recommended by `nixpkgs#ssh-audit`
+      settings.KexAlgorithms = [
+        "curve25519-sha256"
+        "curve25519-sha256@libssh.org"
+        "diffie-hellman-group16-sha512"
+        "diffie-hellman-group18-sha512"
+        "sntrup761x25519-sha512@openssh.com"
+      ];
+
+      hostKeys = [
+        {
+          bits = 4096;
+          path = "${basePath}/id_rsa";
+          type = "rsa";
+        }
+        {
+          path = "${basePath}/id_ed25519";
+          type = "ed25519";
+        }
+      ];
+    };
     home-manager.users.${user.username} = mkIf user.enable {
       programs.ssh = {
         enable = true;
