@@ -1,0 +1,77 @@
+{
+  "$schema": "https://charm.land/crush.json",
+  "lsp": {
+    "nix": {
+      "command": "nix",
+      "args": [
+        "run",
+        "nixpkgs#nixd"
+      ],
+      "filetypes": [
+        "nix"
+      ],
+      "root_markers": [
+        "flake.lock",
+        "flake.nix",
+        "default.nix",
+        "shell.nix"
+      ]
+    }
+  },
+  "permissions": {
+    "allowed_tools": [
+      "view",
+      "glob",
+      "ls",
+      "grep",
+      "sourcegraph",
+      "fetch",
+      "agentic_fetch",
+      "agent",
+      "lsp_diagnostics",
+      "lsp_references",
+      "mcp_*"
+    ]
+  },
+  "mcp": {
+    "perplexity": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@perplexity-ai/mcp-server"
+      ]
+    },
+    "nixos": {
+      "type": "stdio",
+      "command": "nix",
+      "args": [
+        "run",
+        "github:utensils/mcp-nixos",
+        "--"
+      ]
+    },
+    "deepwiki": {
+      "type": "http",
+      "url": "https://mcp.deepwiki.com/mcp"
+    }
+  },
+  "tools": {
+    "ls": {}
+  },
+  "options": {
+    "context_paths": [
+      "CLAUDE.md",
+      "WARP.md",
+      ".cursor/rules/*.md",
+      ".cursorrules",
+      "CRUSH.md"
+    ],
+    "disabled_tools": [],
+    "disable_metrics": true,
+    "attribution": {
+      "generated_with": false,
+      "trailer_style": "none"
+    }
+  }
+}

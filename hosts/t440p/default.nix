@@ -39,14 +39,14 @@
         asciinema
         inkscape
 
-        # android
-        apkleaks
-        apkid
-        apkeep
-        apktool
-        # mitm
-        mitmproxy
-        frida-tools
+        # # android
+        # apkleaks
+        # apkid
+        # apkeep
+        # apktool
+        # # mitm
+        # mitmproxy
+        # frida-tools
 
         ncftp
 
@@ -57,6 +57,8 @@
         shattered-pixel-dungeon
 
         ventoy-full
+
+        glow
       ];
       systemPackages = with pkgs; [
         # compression
@@ -135,7 +137,7 @@
       doh.enable = false;
       diff.enable = true;
       kdeconnect.enable = true;
-      virt.enable = true;
+      # virt.enable = true; # FIXME
       persist = {
         enable = true;
         user = {

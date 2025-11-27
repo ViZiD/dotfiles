@@ -34,9 +34,8 @@ in
 
             # toml
             taplo
-            taplo-lsp
 
-            # toml
+            # yaml
             yaml-language-server
 
             # web
@@ -215,14 +214,14 @@ in
             {
               name = "json";
               language-servers = [
-                "vscode-css-language-server"
+                "vscode-json-language-server"
               ];
               auto-format = true;
             }
             {
               name = "jsonc";
               language-servers = [
-                "vscode-css-language-server"
+                "vscode-json-language-server"
               ];
               auto-format = true;
             }

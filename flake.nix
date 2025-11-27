@@ -138,7 +138,7 @@
         };
       in
       {
-        checks.pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
+        checks.pre-commit-check = inputs.pre-commit-hooks.lib.${pkgs.stdenv.hostPlatform.system}.run {
           src = ./.;
           hooks = {
             nixfmt-rfc-style.enable = true;
@@ -148,8 +148,8 @@
         packages = import ./pkgs { inherit pkgs; } // pkgs.nur.repos.vizqq;
 
         devShells.default = pkgs.mkShell {
-          inherit (self.checks.${system}.pre-commit-check) shellHook;
-          buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
+          inherit (self.checks.${pkgs.stdenv.hostPlatform.system}.pre-commit-check) shellHook;
+          buildInputs = self.checks.${pkgs.stdenv.hostPlatform.system}.pre-commit-check.enabledPackages;
           packages = with pkgs; [
             sops
             ssh-to-age

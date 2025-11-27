@@ -12,7 +12,7 @@ let
   isStylesEnabled = config.dots.styles.enable;
   isPersistEnabled = config.dots.shared.persist.enable;
 
-  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in
 {
   options.dots.graphical.spotify.enable = mkEnableOption "Enable spotify app";

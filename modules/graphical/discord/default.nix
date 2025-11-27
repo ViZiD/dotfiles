@@ -38,9 +38,9 @@ in
             };
             betterSettings.enable = true;
             betterUploadButton.enable = true;
-            clearURLs.enable = true;
+            clearUrLs.enable = true;
             copyFileContents.enable = true;
-            copyUserURLs.enable = true;
+            copyUserUrLs.enable = true;
             disableCallIdle.enable = true;
             dontRoundMyTimestamps.enable = true;
             fakeNitro.enable = true;

@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 with lib;
@@ -16,6 +17,8 @@ in
     dots.shared.persist.user = mkIf isPersistEnabled {
       directories = [
         ".claude"
+        ".crush"
+        ".local/share/crush"
       ];
     };
 
@@ -23,9 +26,15 @@ in
 
       home.sessionVariables = {
         OPENROUTER_API_KEY = "$(cat ${config.sops.secrets.openrouter.path})";
-        # ANTHROPIC_API_KEY = "$(cat ${config.sops.secrets.claude.path})";
+        ANTHROPIC_API_KEY = "$(cat ${config.sops.secrets.claude.path})";
         PERPLEXITY_API_KEY = "$(cat ${config.sops.secrets.perplexity.path})";
       };
+
+      home.packages = [
+        pkgs.crush
+      ];
+
+      xdg.configFile."crush/crush.json".source = ./crush.json;
 
       programs = {
         mods = {
@@ -126,6 +135,32 @@ in
                 "Keep code as concise as possible."
                 "If multiple solutions exist, provide the shortest one."
                 "Format code properly but keep it minimal."
+              ];
+              linux-based = [
+                "You are a Linux expert with deep knowledge of Linux systems, distributions,
+  and administration."
+                "You have extensive experience with:"
+                "- System
+  administration and configuration"
+                "- Shell scripting (Bash, sh, zsh)"
+                "- Package management (apt, yum, dnf, pacman, zypper)"
+                "- File systems and storage management"
+                "- Networking and security"
+                "- Process management and system monitoring"
+                "- Kernel parameters and system tuning"
+                "- User and permission management"
+                "- Service management (systemd, init.d)"
+                "- Log analysis and troubleshooting"
+                "- Container technologies (Docker, Podman)"
+                "- Automation tools (Ansible, Puppet, Chef)"
+                "- Performance optimization"
+                "- Backup and recovery strategies"
+                "You provide clear, accurate, and practical solutions to Linux-related problems."
+                "You explain commands and their options in detail when needed."
+                "You follow best practices and security principles."
+                "You can work with all major Linux distributions including Debian, Ubuntu, RHEL, CentOS, Fedora, Arch, and others."
+                "You provide step-by-step instructions when appropriate."
+                "You warn users about potentially dangerous commands and suggest safer alternatives."
               ];
             };
           };

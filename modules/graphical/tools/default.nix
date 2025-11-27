@@ -54,7 +54,7 @@ in
     dots.shared.persist.user = mkIf (user.enable && isPersistEnabled) {
       directories = [
         ".config/goldendict"
-        ".config/obs-studio"
+        # ".config/obs-studio"
       ];
     };
 
@@ -69,14 +69,14 @@ in
       };
 
       programs = {
-        obs-studio = {
-          enable = true;
-          plugins = with pkgs.obs-studio-plugins; [
-            obs-composite-blur
-            obs-gradient-source
-            obs-retro-effects
-          ];
-        };
+        #   obs-studio = {
+        #     enable = true;
+        #     plugins = with pkgs.obs-studio-plugins; [
+        #       obs-composite-blur
+        #       obs-gradient-source
+        #       obs-retro-effects
+        #     ];
+        #   };
         fuzzel = {
           enable = config.dots.graphical.wayland.enable;
           settings = {
@@ -130,13 +130,13 @@ in
         imv
         qbittorrent
         goldendict-ng
-        anki
-        (pkgs.stable.kicad.override {
-          addons = with pkgs.stable.kicadAddons; [
-            kikit
-            kikit-library
-          ];
-        })
+        # anki
+        # (pkgs.stable.kicad.override {
+        #   addons = with pkgs.stable.kicadAddons; [
+        #     kikit
+        #     kikit-library
+        #   ];
+        # })
       ];
 
       dconf.settings = {

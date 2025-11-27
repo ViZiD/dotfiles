@@ -12,7 +12,7 @@ in
     ./python
     ./js
     # ./schroot
-    ./ops.nix
+    # ./ops.nix
   ];
   options.dots.dev.enable = mkEnableOption "Enable dev stuff";
   config = mkIf cfg.enable {
@@ -20,7 +20,7 @@ in
       js.enable = true;
       python.enable = true;
       # schroot.enable = true;
-      ops.enable = true;
+      # ops.enable = true;
     };
   };
 }
