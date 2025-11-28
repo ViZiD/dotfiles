@@ -137,6 +137,7 @@
       doh.enable = false;
       diff.enable = true;
       kdeconnect.enable = true;
+      yggdrasil.enable = true;
       # virt.enable = true; # FIXME
       persist = {
         enable = true;
