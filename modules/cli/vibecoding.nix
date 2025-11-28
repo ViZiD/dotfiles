@@ -30,8 +30,8 @@ in
         PERPLEXITY_API_KEY = "$(cat ${config.sops.secrets.perplexity.path})";
       };
 
-      home.packages = [
-        pkgs.crush
+      home.packages = with pkgs.inputs.nix-ai-tools; [
+        crush
       ];
 
       xdg.configFile."crush/crush.json".source = ./crush.json;
@@ -70,7 +70,7 @@ in
                     max-input-chars = 680000;
                   };
 
-                  "anthropic/claude-sonnet-4.5" = {
+                  "anthropic/claude-sonnet-4.5:floor" = {
                     aliases = [ "sonnet" ];
                     max-input-chars = 680000;
                   };
@@ -78,7 +78,7 @@ in
                     aliases = [ "grokfree" ];
                     max-input-chars = 2000000;
                   };
-                  "x-ai/grok-4.1-fast" = {
+                  "x-ai/grok-4.1-fast:floor" = {
                     aliases = [ "grok" ];
                     max-input-chars = 2000000;
                   };
@@ -168,6 +168,7 @@ in
 
         claude-code = {
           enable = true;
+          package = pkgs.inputs.nix-ai-tools.claude-code;
           agents = {
             based = ./agents/based.md;
           };
@@ -207,6 +208,7 @@ in
               DISABLE_BUG_COMMAND = 1;
               DISABLE_ERROR_REPORTING = 1;
               DISABLE_TELEMETRY = 1;
+              USE_BUILTIN_RIPGREP = 0;
             };
           };
           mcpServers = {
@@ -222,6 +224,29 @@ in
             deepwiki = {
               type = "http";
               url = "https://mcp.deepwiki.com/mcp";
+            };
+            context7 = {
+              command = "npx";
+              args = [
+                "-y"
+                "@upstash/context7-mcp"
+              ];
+              type = "stdio";
+            };
+            time = {
+              command = "uvx";
+              args = [
+                "mcp-server-time"
+              ];
+              type = "stdio";
+            };
+            sequential-thinking = {
+              command = "npx";
+              args = [
+                "-y"
+                "@modelcontextprotocol/server-sequential-thinking"
+              ];
+              type = "stdio";
             };
           };
         };

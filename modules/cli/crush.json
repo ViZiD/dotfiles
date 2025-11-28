@@ -18,6 +18,56 @@
       ]
     }
   },
+  "providers": {
+    "orcustom": {
+      "name": "ORCustom",
+      "id": "orcustom",
+      "api_key": "$OPENROUTER_API_KEY",
+      "base_url": "https://openrouter.ai/api/v1",
+      "type": "openrouter",
+      "models": [
+        {
+          "id": "anthropic/claude-haiku-4.5",
+          "name": "Anthropic: Claude Haiku 4.5",
+          "cost_per_1m_in": 1,
+          "cost_per_1m_out": 5,
+          "cost_per_1m_in_cached": 1.25,
+          "cost_per_1m_out_cached": 0.09999999999999999,
+          "context_window": 200000,
+          "default_max_tokens": 32000,
+          "can_reason": false,
+          "supports_attachments": true,
+          "options": {}
+        },
+        {
+          "id": "anthropic/claude-opus-4.5:floor",
+          "name": "Anthropic: Claude Opus 4.5",
+          "cost_per_1m_in": 5,
+          "cost_per_1m_out": 25,
+          "cost_per_1m_in_cached": 6.25,
+          "cost_per_1m_out_cached": 0.5,
+          "context_window": 200000,
+          "default_max_tokens": 16000,
+          "can_reason": false,
+          "supports_attachments": true,
+          "options": {}
+        },
+        {
+          "id": "anthropic/claude-sonnet-4.5:floor",
+          "name": "Anthropic: Claude Sonnet 4.5",
+          "cost_per_1m_in": 3,
+          "cost_per_1m_out": 15,
+          "cost_per_1m_in_cached": 3.75,
+          "cost_per_1m_out_cached": 0.3,
+          "context_window": 1000000,
+          "default_max_tokens": 32000,
+          "can_reason": false,
+          "supports_attachments": true,
+          "options": {}
+        }
+      ]
+    }
+  },
   "permissions": {
     "allowed_tools": [
       "view",
@@ -30,7 +80,9 @@
       "agent",
       "lsp_diagnostics",
       "lsp_references",
-      "mcp_*"
+      "mcp_*",
+      "edit",
+      "multiedit"
     ]
   },
   "mcp": {
@@ -54,6 +106,29 @@
     "deepwiki": {
       "type": "http",
       "url": "https://mcp.deepwiki.com/mcp"
+    },
+    "context7": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ]
+    },
+    "time": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": [
+        "mcp-server-time"
+      ]
+    },
+    "sequential-thinking": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ]
     }
   },
   "tools": {
@@ -72,6 +147,7 @@
     "attribution": {
       "generated_with": false,
       "trailer_style": "none"
-    }
+    },
+    "disable_auto_summarize": false
   }
 }

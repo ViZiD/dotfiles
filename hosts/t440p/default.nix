@@ -59,6 +59,7 @@
         ventoy-full
 
         glow
+        ripgrep
       ];
       systemPackages = with pkgs; [
         # compression
