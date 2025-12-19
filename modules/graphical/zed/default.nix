@@ -18,6 +18,7 @@ in
 
     dots.shared.persist.user = mkIf isPersistEnabled {
       directories = [
+        ".local/share/zed"
       ];
     };
 
@@ -41,12 +42,28 @@ in
           "pylsp"
         ];
         extraPackages = with pkgs; [
+          claude-code-acp
           nixd
           nixfmt-rfc-style
           mypy
           python313Packages.python-lsp-server
           python313Packages.python-lsp-ruff
           python313Packages.pylsp-mypy
+        ];
+
+        mutableUserDebug = false;
+        mutableUserKeymaps = false;
+        mutableUserSettings = false;
+        mutableUserTasks = false;
+        userKeymaps = [
+          {
+            bindings = {
+              ctrl-alt-f = [
+                "agent::NewExternalAgentThread"
+                { "agent" = "claude_code"; }
+              ];
+            };
+          }
         ];
         userSettings = rec {
           auto_update = false;
@@ -98,15 +115,15 @@ in
             };
             pylsp = {
               settings = {
-                plugins = {
-                  pycodestyle = {
-                    enabled = false;
-                  };
-                  mypy = {
-                    enabled = true;
-                  };
-                  ruff = {
-                    enabled = true;
+                pylsp = {
+                  plugins = {
+                    pylsp_mypy = {
+                      enabled = true;
+                      live_mode = true;
+                    };
+                    pycodestyle.enabled = false;
+                    pyflakes.enabled = false;
+                    pylint.enabled = false;
                   };
                 };
               };

@@ -26,7 +26,7 @@ in
 
       home.sessionVariables = {
         OPENROUTER_API_KEY = "$(cat ${config.sops.secrets.openrouter.path})";
-        ANTHROPIC_API_KEY = "$(cat ${config.sops.secrets.claude.path})";
+        # ANTHROPIC_API_KEY = "$(cat ${config.sops.secrets.claude.path})";
         PERPLEXITY_API_KEY = "$(cat ${config.sops.secrets.perplexity.path})";
       };
 
@@ -187,6 +187,8 @@ in
               allow = [
                 "Bash(git diff:*)"
                 "Edit"
+                "WebSearch"
+                "WebFetch(domain:docs.letta.com)"
               ];
               ask = [
                 "Bash(git push:*)"
@@ -202,7 +204,7 @@ in
               defaultMode = "acceptEdits";
             };
             includeCoAuthoredBy = false;
-            apiKeyHelper = "cat ${config.sops.secrets.claude.path}"; # bypass stupid auth
+            # apiKeyHelper = "cat ${config.sops.secrets.claude.path}"; # bypass stupid auth
             env = {
               DISABLE_AUTOUPDATER = 1;
               DISABLE_BUG_COMMAND = 1;
@@ -221,18 +223,18 @@ in
               command = "nix";
               type = "stdio";
             };
-            deepwiki = {
-              type = "http";
-              url = "https://mcp.deepwiki.com/mcp";
-            };
-            context7 = {
-              command = "npx";
-              args = [
-                "-y"
-                "@upstash/context7-mcp"
-              ];
-              type = "stdio";
-            };
+            # deepwiki = {
+            #   type = "http";
+            #   url = "https://mcp.deepwiki.com/mcp";
+            # };
+            # context7 = {
+            #   command = "npx";
+            #   args = [
+            #     "-y"
+            #     "@upstash/context7-mcp"
+            #   ];
+            #   type = "stdio";
+            # };
             time = {
               command = "uvx";
               args = [
@@ -240,14 +242,14 @@ in
               ];
               type = "stdio";
             };
-            sequential-thinking = {
-              command = "npx";
-              args = [
-                "-y"
-                "@modelcontextprotocol/server-sequential-thinking"
-              ];
-              type = "stdio";
-            };
+            # sequential-thinking = {
+            #   command = "npx";
+            #   args = [
+            #     "-y"
+            #     "@modelcontextprotocol/server-sequential-thinking"
+            #   ];
+            #   type = "stdio";
+            # };
           };
         };
       };

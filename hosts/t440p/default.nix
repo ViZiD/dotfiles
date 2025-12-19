@@ -12,7 +12,7 @@
   ];
 
   dots = {
-    stateVersion = "25.05";
+    stateVersion = "25.11";
     user = {
       enable = true;
       xdg.enable = true;
@@ -77,6 +77,7 @@
         nmap
 
         ntfs3g
+        gparted
       ];
       extraGroups = [
         "video"

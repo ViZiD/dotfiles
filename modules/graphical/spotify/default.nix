@@ -49,12 +49,14 @@ in
             autoSkipVideo
             shuffle
             history
+            keyboardShortcut
           ];
           spotifyLaunchFlags = mkIf config.dots.graphical.wayland.enable "--enable-features=WaylandWindowDecorations";
+          theme = spicePkgs.themes.text;
         };
       };
       stylix.targets = mkIf isStylesEnabled {
-        spicetify.enable = true;
+        # spicetify.enable = true;
         spotify-player.enable = true;
       };
     };
