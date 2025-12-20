@@ -186,7 +186,6 @@ in
               disableBypassPermissionsMode = "disable";
               allow = [
                 "Bash(git diff:*)"
-                "Edit"
                 "WebSearch"
                 "WebFetch(domain:docs.letta.com)"
               ];
@@ -201,7 +200,7 @@ in
                 "Read(./config/credentials.json)"
                 "Read(./build)"
               ];
-              defaultMode = "acceptEdits";
+              # defaultMode = "acceptEdits";
             };
             includeCoAuthoredBy = false;
             # apiKeyHelper = "cat ${config.sops.secrets.claude.path}"; # bypass stupid auth
