@@ -45,10 +45,16 @@ in
           claude-code-acp
           nixd
           nixfmt-rfc-style
-          mypy
-          python313Packages.python-lsp-server
-          python313Packages.python-lsp-ruff
-          python313Packages.pylsp-mypy
+          # basedpyright
+          ruff
+          (python312.withPackages (
+            p:
+            (with p; [
+              python-lsp-ruff
+              python-lsp-server
+              pylsp-mypy
+            ])
+          ))
         ];
 
         mutableUserDebug = false;
@@ -96,8 +102,8 @@ in
             Python = {
               language_servers = [
                 "!basedpyright"
-                "ruff"
                 "pylsp"
+                "ruff"
               ];
               format_on_save = "on";
               formatter = [
@@ -120,10 +126,8 @@ in
                     pylsp_mypy = {
                       enabled = true;
                       live_mode = true;
+                      dmypy = false;
                     };
-                    pycodestyle.enabled = false;
-                    pyflakes.enabled = false;
-                    pylint.enabled = false;
                   };
                 };
               };
