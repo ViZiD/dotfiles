@@ -53,7 +53,7 @@
     nur.url = "github:nix-community/NUR?ref=be0eeff066e10bc7f98c9e72bd656d330cd19f31";
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
 
-    nix-ai-tools.url = "github:numtide/nix-ai-tools";
+    llm-agents-nix.url = "github:numtide/llm-agents.nix";
   };
 
   outputs =

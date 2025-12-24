@@ -30,8 +30,9 @@ in
         PERPLEXITY_API_KEY = "$(cat ${config.sops.secrets.perplexity.path})";
       };
 
-      home.packages = with pkgs.inputs.nix-ai-tools; [
+      home.packages = with pkgs.inputs.llm-agents-nix; [
         crush
+        letta-code
       ];
 
       xdg.configFile."crush/crush.json".source = ./crush.json;
@@ -168,7 +169,7 @@ in
 
         claude-code = {
           enable = true;
-          package = pkgs.inputs.nix-ai-tools.claude-code;
+          package = pkgs.inputs.llm-agents-nix.claude-code;
           agents = {
             based = ./agents/based.md;
           };
