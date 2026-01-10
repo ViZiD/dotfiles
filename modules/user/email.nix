@@ -13,14 +13,6 @@ let
 
   isPersistEnabled = config.dots.shared.persist.enable;
 
-  signature = {
-    showSignature = "append";
-    text = ''
-      ${cfg.realName}
-      https://vizqq.cc
-    '';
-  };
-
   common = {
     inherit (cfg) realName;
     msmtp.enable = true;
@@ -29,8 +21,16 @@ let
       create = "maildir";
       expunge = "both";
     };
-    himalaya.enable = true;
+    aerc = {
+      enable = true;
+      extraAccounts = {
+        check-mail-cmd = "${mbsync} -a";
+        check-mail = "2m";
+        check-mail-timeout = "2m";
+      };
+    };
   };
+
 in
 {
   options.dots.user.mail = {
@@ -50,45 +50,160 @@ in
     };
 
     home-manager.users.${cfg.username} = mkIf cfg.enable {
+      home.packages = [
+        pkgs.w3m
+        pkgs.urlscan
+      ];
+
       programs = {
         msmtp.enable = true;
         mbsync.enable = true;
-        himalaya = {
+        aerc = {
           enable = true;
-          package = pkgs.himalaya;
-          settings = {
-            downloads-dir = "${hm.xdg.userDirs.download}";
+          package = pkgs.symlinkJoin {
+            name = "aerc-utc";
+            paths = [ pkgs.aerc ];
+            buildInputs = [ pkgs.makeWrapper ];
+            postBuild = ''
+              wrapProgram $out/bin/aerc --set TZ UTC
+            '';
+          };
+          templates = {
+            quoted_reply = ''
+
+              {{.OriginalText | trimSignature | quote}}
+            '';
+          };
+          extraConfig = {
+            general = {
+              unsafe-accounts-conf = true;
+              pgp-provider = "gpg";
+            };
+
+            ui = {
+              index-columns = "date<20,name<20,flags>4,subject<*";
+              timestamp-format = "2006-01-02 15:04";
+              sidebar-width = 25;
+              mouse-enabled = true;
+              fuzzy-complete = true;
+            };
+
+            compose = {
+              header-layout = "To|From,Subject";
+              reply-to-self = false;
+              no-attachment-warning = "^[^>]*attach";
+            };
+
+            viewer = {
+              alternatives = "text/html,text/plain";
+              header-layout = "From|To,Cc,Date,Subject";
+            };
+
+            filters = {
+              "text/html" = "html";
+              "text/plain" = "colorize";
+              "text/calendar" = "calendar";
+            };
+          };
+
+          extraBinds = {
+            global = {
+              "<C-p>" = ":prev-tab<Enter>";
+              "<C-n>" = ":next-tab<Enter>";
+              "?" = ":help keys<Enter>";
+            };
+
+            messages = {
+              q = ":quit<Enter>";
+              j = ":next<Enter>";
+              k = ":prev<Enter>";
+              J = ":next-folder<Enter>";
+              K = ":prev-folder<Enter>";
+              "<Enter>" = ":view<Enter>";
+              d = ":delete<Enter>";
+              c = ":compose<Enter>";
+              r = ":reply -q<Enter>";
+              R = ":reply -aq<Enter>";
+              "/" = ":search<Enter>";
+              gi = ":cf Inbox<Enter>";
+              gs = ":cf \"Sent Items\"<Enter>";
+            };
+
+            view = {
+              q = ":close<Enter>";
+              S = ":save<space>";
+              f = ":forward<Enter>";
+              r = ":reply -q<Enter>";
+              R = ":reply -aq<Enter>";
+              V = ":pipe -m cat<Enter>";
+              u = ":pipe -m urlscan<Enter>";
+            };
+
+            compose = {
+              "<C-k>" = ":prev-field<Enter>";
+              "<C-j>" = ":next-field<Enter>";
+              "<Tab>" = ":next-field<Enter>";
+            };
+
+            "compose::editor" = {
+              "$noinherit" = "true";
+              "$ex" = "<C-x>";
+            };
+
+            "compose::review" = {
+              y = ":send<Enter>";
+              n = ":abort<Enter>";
+              e = ":edit<Enter>";
+              a = ":attach<space>";
+              s = ":sign<Enter>";
+              E = ":encrypt<Enter>";
+            };
           };
         };
       };
       accounts.email = {
         maildirBasePath = cfg.mail.mailDir;
         accounts = {
-          vizqq = {
-            inherit signature;
+          vizqq = common // {
             address = cfg.email;
             primary = true;
             flavor = "plain";
             userName = cfg.email;
+            gpg = {
+              key = cfg.signingKey;
+              signByDefault = false;
+              encryptByDefault = false;
+            };
             imap = {
-              host = "mail.privateemail.com";
-              port = 143;
-              tls.useStartTls = true;
+              host = "mail.vizqq.cc";
+              port = 993;
+              tls.enable = true;
             };
             smtp = {
-              host = "mail.privateemail.com";
-              port = 587;
-              tls.useStartTls = true;
+              host = "mail.vizqq.cc";
+              port = 465;
+              tls.enable = true;
             };
             passwordCommand = "${pkgs.coreutils}/bin/cat ${config.sops.secrets."email_vizqq".path}";
             folders = {
-              inbox = "inbox";
+              inbox = "Inbox";
               drafts = "Drafts";
-              sent = "Sent";
-              trash = "Trash";
+              sent = "Sent Items";
+              trash = "Deleted Items";
             };
-          }
-          // common;
+            mbsync = {
+              enable = true;
+              create = "maildir";
+              expunge = "both";
+              patterns = [
+                "INBOX"
+                "Drafts"
+                "Sent Items"
+                "Deleted Items"
+                "Junk Mail"
+              ];
+            };
+          };
           vizid1337 = {
             address = "vizid1337@gmail.com";
             flavor = "gmail.com";
@@ -112,6 +227,32 @@ in
               drafts = "Drafts";
               sent = "Sent";
               trash = "Trash";
+            };
+          }
+          // common;
+          placvoljher = {
+            address = "placvoljher@gmail.com";
+            flavor = "gmail.com";
+            userName = "placvoljher@gmail.com";
+            passwordCommand = "${pkgs.coreutils}/bin/cat ${config.sops.secrets."email_placvoljher".path}";
+            folders = {
+              inbox = "inbox";
+              drafts = "[Gmail]/Drafts";
+              sent = "[Gmail]/Sent Mail";
+              trash = "[Gmail]/Trash";
+            };
+          }
+          // common;
+          vizidd = {
+            address = "vizidd@gmail.com";
+            flavor = "gmail.com";
+            userName = "vizidd@gmail.com";
+            passwordCommand = "${pkgs.coreutils}/bin/cat ${config.sops.secrets."email_vizidd".path}";
+            folders = {
+              inbox = "inbox";
+              drafts = "[Gmail]/Drafts";
+              sent = "[Gmail]/Sent Mail";
+              trash = "[Gmail]/Trash";
             };
           }
           // common;

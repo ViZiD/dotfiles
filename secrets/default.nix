@@ -33,6 +33,8 @@ in
       email_vizqq = user;
       email_userjs = user;
       email_vizid1337 = user;
+      email_vizidd = user;
+      email_placvoljher = user;
       perplexity = user;
       claude = user;
       openrouter = user;
