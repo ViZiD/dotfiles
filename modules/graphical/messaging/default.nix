@@ -25,6 +25,7 @@ in
       home.packages = with pkgs; [
         telegram-desktop
         master.fluffychat
+        deltachat-desktop
       ];
     };
 
