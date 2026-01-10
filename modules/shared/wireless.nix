@@ -30,7 +30,7 @@ in
           EnableNetworkConfiguration = true;
         };
         Network = {
-          EnableIPv6 = false;
+          EnableIPv6 = true;
         };
         Scan = {
           DisablePeriodicScan = true;
