@@ -13,6 +13,7 @@ in
 {
   imports = [
     ./email.nix
+    ./dav.nix
     ./xdg.nix
   ];
 

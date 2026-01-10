@@ -17,6 +17,7 @@
       enable = true;
       xdg.enable = true;
       mail.enable = true;
+      dav.enable = true;
       trustedKey = ./pgp.asc;
       userPackages = with pkgs; [
         # nix
