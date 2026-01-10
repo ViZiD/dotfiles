@@ -33,6 +33,7 @@ in
       home.packages = with pkgs.inputs.llm-agents-nix; [
         crush
         letta-code
+        gemini-cli
       ];
 
       xdg.configFile."crush/crush.json".source = ./crush.json;
