@@ -60,24 +60,40 @@ in
         mbsync.enable = true;
         aerc = {
           enable = true;
-          package = pkgs.symlinkJoin {
-            name = "aerc-utc";
-            paths = [ pkgs.aerc ];
-            buildInputs = [ pkgs.makeWrapper ];
-            postBuild = ''
-              wrapProgram $out/bin/aerc --set TZ UTC
-            '';
-          };
           templates = {
-            quoted_reply = ''
+            forward_as_body = ''
+              X-Mailer: aerc {{version}}
 
-              {{.OriginalText | trimSignature | quote}}
+              {{- with .Signature }}
+              {{.}}
+              {{- end }}
+
+              ---------- Forwarded message ---------
+              From: {{.OriginalFrom | persons | join ", "}}
+              Date: {{dateFormat .OriginalDate "Mon Jan 2, 2006 at 3:04 PM"}}
+
+              {{.OriginalText}}
+            '';
+            quoted_reply = ''
+              X-Mailer: aerc {{version}}
+
+              {{- with .Signature }}
+              {{.}}
+              {{- end }}
+
+              On {{dateFormat (.OriginalDate | toLocal) "Mon Jan 2, 2006 at 3:04 PM MST"}}, {{.OriginalFrom | names | join ", "}} wrote:
+              {{ if eq .OriginalMIMEType "text/html" -}}
+              {{- exec `html` .OriginalText | trimSignature | quote -}}
+              {{- else -}}
+              {{- trimSignature .OriginalText | quote -}}
+              {{- end}}
             '';
           };
           extraConfig = {
             general = {
               unsafe-accounts-conf = true;
               pgp-provider = "gpg";
+              enable-osc8 = true;
             };
 
             ui = {
@@ -87,23 +103,30 @@ in
               mouse-enabled = true;
               fuzzy-complete = true;
             };
-
             compose = {
-              header-layout = "To|From,Subject";
               reply-to-self = false;
-              no-attachment-warning = "^[^>]*attach";
+              # edit-headers = true;
+              address-book-cmd = "${pkgs.khard}/bin/khard email --parsable --remove-first-line --search-in-source-files '%s'";
+              file-picker-cmd = "${pkgs.yazi}/bin/yazi --chooser-file %f";
             };
 
             viewer = {
-              alternatives = "text/html,text/plain";
-              header-layout = "From|To,Cc,Date,Subject";
+              alternatives = "text/plain,text/html";
+              header-layout = "From|To,Cc|Bcc,Date,Subject,DKIM+|SPF+|DMARC+";
             };
 
-            filters = {
-              "text/html" = "html";
-              "text/plain" = "colorize";
-              "text/calendar" = "calendar";
-            };
+            filters = ''
+              .headers = ${pkgs.aerc}/libexec/aerc/filters/colorize
+              text/calendar = ${pkgs.gawk}/bin/awk -f ${pkgs.aerc}/libexec/aerc/filters/calendar
+              text/html = ${pkgs.aerc}/libexec/aerc/filters/html -o display_link_number=true | ${pkgs.aerc}/libexec/aerc/filters/colorize
+              text/plain = ${pkgs.aerc}/libexec/aerc/filters/colorize
+              text/* = ${pkgs.bat}/bin/bat -fP --file-name="$AERC_FILENAME "
+              message/delivery-status = ${pkgs.aerc}/libexec/aerc/filters/colorize
+              message/rfc822 = ${pkgs.aerc}/libexec/aerc/filters/colorize
+              application/pdf = ${pkgs.zathura}/bin/zathura -
+              application/x-sh = ${pkgs.bat}/bin/bat -fP -l sh
+              audio/* = ${pkgs.mpv}/bin/mpv -
+            '';
           };
 
           extraBinds = {
