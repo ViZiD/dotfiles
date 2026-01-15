@@ -43,6 +43,9 @@ in
             typescript-language-server
             vscode-langservers-extracted
             emmet-language-server
+            tailwindcss-language-server
+            svelte-language-server
+            uwu-colors
 
             # python
             basedpyright
@@ -116,10 +119,18 @@ in
               command = "emmet-language-server";
               args = [ "--stdio" ];
             };
+            tailwindcss-ls = {
+              command = "tailwindcss-language-server";
+              args = [ "--stdio" ];
+            };
+            svelteserver = {
+              command = "svelteserver";
+              args = [ "--stdio" ];
+            };
+            uwu-colors.command = "uwu_colors";
             nixd = {
               command = "nixd";
             };
-            uwu-colors.command = "${pkgs.uwu-colors}/bin/uwu_colors";
             pylsp.config.pylsp.plugins = {
               pylsp-mypy.enabled = true;
             };
@@ -186,11 +197,21 @@ in
               };
             }
             {
+              name = "svelte";
+              auto-format = true;
+              language-servers = [
+                "svelteserver"
+                "tailwindcss-language-server"
+                "uwu-colors"
+              ];
+            }
+            {
               name = "html";
               roots = [ ".git" ];
               language-servers = [
                 "emmet-lsp"
                 "vscode-html-language-server"
+                "tailwindcss-ls"
                 "uwu-colors"
               ];
               formatter = {
@@ -207,6 +228,7 @@ in
               language-servers = [
                 "emmet-lsp"
                 "vscode-css-language-server"
+                "tailwindcss-ls"
                 "uwu-colors"
               ];
               auto-format = true;
