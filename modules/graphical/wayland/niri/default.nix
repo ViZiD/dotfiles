@@ -84,6 +84,7 @@ in
               XDG_CURRENT_DESKTOP = "niri";
               XDG_SESSION_DESKTOP = "niri";
               XDG_SESSION_TYPE = "wayland";
+              GSETTINGS_SCHEMA_DIR = "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}/glib-2.0/schemas";
             };
             spawn-at-startup = [
               {
