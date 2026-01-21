@@ -61,6 +61,10 @@
 
         glow
         ripgrep
+
+        gerbv
+
+        pkgs.nur.repos.vizqq.sfp-master
       ];
       systemPackages = with pkgs; [
         # compression
@@ -165,6 +169,10 @@
 
   security.polkit.enable = true;
 
+  services.udev.packages = [
+    pkgs.nur.repos.vizqq.sfp-master
+  ];
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -179,10 +187,14 @@
             address = "192.168.88.2";
             prefixLength = 24;
           }
-          # {
-          #   address = "192.168.1.2";
-          #   prefixLength = 24;
-          # }
+          {
+            address = "192.168.1.2";
+            prefixLength = 24;
+          }
+          {
+            address = "192.168.2.2";
+            prefixLength = 24;
+          }
         ];
       };
     };

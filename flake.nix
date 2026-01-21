@@ -50,7 +50,7 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
-    nur.url = "github:nix-community/NUR?ref=be0eeff066e10bc7f98c9e72bd656d330cd19f31";
+    nur.url = "github:nix-community/NUR";
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
 
     llm-agents-nix.url = "github:numtide/llm-agents.nix";
