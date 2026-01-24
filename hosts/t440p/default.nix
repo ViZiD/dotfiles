@@ -62,8 +62,6 @@
         glow
         ripgrep
 
-        gerbv
-
         pkgs.nur.repos.vizqq.sfp-master
       ];
       systemPackages = with pkgs; [
