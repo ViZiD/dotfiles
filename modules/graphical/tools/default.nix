@@ -131,12 +131,21 @@ in
         qbittorrent
         goldendict-ng
         # anki
-        # (pkgs.stable.kicad.override {
-        #   addons = with pkgs.stable.kicadAddons; [
-        #     kikit
-        #     kikit-library
-        #   ];
-        # })
+        (pkgs.symlinkJoin {
+          name = "kicad-wrapped";
+          paths = [
+            (pkgs.kicad-small.override {
+              addons = with pkgs.kicadAddons; [
+                kikit
+                kikit-library
+              ];
+            })
+          ];
+          buildInputs = [ pkgs.makeWrapper ];
+          postBuild = ''
+            wrapProgram "$out/bin/kicad" --set GDK_BACKEND x11
+          '';
+        })
       ];
 
       dconf.settings = {

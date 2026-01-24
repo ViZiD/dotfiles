@@ -7,7 +7,7 @@
 with lib;
 let
   cfg = config.dots.shared.printing;
-  captdriver = pkgs.stable.callPackage ./captdriver.nix { };
+  captdriver = pkgs.stablePkgs.callPackage ./captdriver.nix { };
 in
 {
   options.dots.shared.printing.enable = mkEnableOption "Enable printer stuff";
@@ -30,7 +30,7 @@ in
       printing = {
         enable = true;
         logLevel = "debug";
-        package = pkgs.stable.cups;
+        package = pkgs.stablePkgs.cups;
         drivers = [
           captdriver
         ];

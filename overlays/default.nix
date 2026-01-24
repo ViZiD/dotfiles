@@ -31,7 +31,7 @@ in
   };
 
   stable = final: _: {
-    stable = inputs.nixpkgs-stable.legacyPackages.${final.stdenv.hostPlatform.system};
+    stablePkgs = inputs.nixpkgs-stable.legacyPackages.${final.stdenv.hostPlatform.system};
   };
 
   # Adds my custom packages
