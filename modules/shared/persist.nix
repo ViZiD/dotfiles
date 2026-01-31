@@ -48,13 +48,14 @@ in
     environment.persistence.${cfg.persistRoot} = {
       directories = [
         "/var/lib/nixos"
-      ] ++ cfg.system.directories;
+      ]
+      ++ cfg.system.directories;
       files = [
         "/etc/machine-id"
-      ] ++ cfg.system.files;
+      ]
+      ++ cfg.system.files;
 
       users.root = {
-        inherit (config.users.users.root) home;
         inherit (cfg.root) directories files;
       };
 

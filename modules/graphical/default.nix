@@ -56,7 +56,7 @@ in
       graphical.reading.enable = true;
       graphical.tools.enable = true;
       graphical.games.enable = true;
-      graphical.zed.enable = true;
+      # graphical.zed.enable = true; # FIXME: python3.12-jaraco-test broken
     };
   };
 }

@@ -33,7 +33,6 @@
         tcpdump
         nettools
         csvlens
-        # ventoy-full # FIXME: insecure
         parted
 
         # media
@@ -56,8 +55,6 @@
 
         # games
         shattered-pixel-dungeon
-
-        ventoy-full
 
         glow
         ripgrep
@@ -134,7 +131,6 @@
       wireless.enable = true;
       sound.enable = true;
       laptopLid.enable = true;
-      android.enable = true;
       bluetooth.enable = true;
       printing.enable = true;
       zapret.enable = false;

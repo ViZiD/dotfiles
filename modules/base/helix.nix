@@ -60,7 +60,7 @@ in
             ))
 
             # nix
-            nixfmt-rfc-style
+            nixfmt
             nixd
           ];
         settings = {

@@ -2,7 +2,6 @@
 {
   imports = [
     ./quietboot.nix
-    ./android.nix
     ./bluetooth.nix
     ./sound.nix
     ./laptop-lid.nix
