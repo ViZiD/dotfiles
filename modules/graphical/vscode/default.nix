@@ -8,7 +8,6 @@ with lib;
 let
   cfg = config.dots.graphical.vscode;
   user = config.dots.user;
-  # isStylesEnabled = config.dots.styles.enable;
   isPersistEnabled = config.dots.shared.persist.enable;
 
   extensions = pkgs.nix-vscode-extensions;
@@ -25,14 +24,6 @@ in
     };
 
     home-manager.users.${user.username} = mkIf user.enable {
-
-      # stylix.targets = mkIf isStylesEnabled {
-      #   vscode = {
-      #     enable = true;
-      #     profileNames = [ "default" ];
-      #   };
-      # };
-
       programs.vscode = {
         enable = true;
         # package = (
@@ -133,14 +124,7 @@ in
                 "editor.formatOnSave" = true;
               };
               "redhat.telemetry.enabled" = false;
-              # "[dockerfile]" = {
-              #   "editor.defaultFormatter" = "ms-azuretools.vscode-docker";
-              # };
               "files.exclude" = {
-                # "**/.classpath" = true;
-                # "**/.project" = true;
-                # "**/.settings" = true;
-                # "**/.factorypath" = true;
                 "**/.mypy_cache" = true;
               };
               "vim.hlsearch" = true;

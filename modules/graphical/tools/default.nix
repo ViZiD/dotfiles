@@ -54,7 +54,6 @@ in
     dots.shared.persist.user = mkIf (user.enable && isPersistEnabled) {
       directories = [
         ".config/goldendict"
-        # ".config/obs-studio"
       ];
     };
 
@@ -65,18 +64,9 @@ in
     home-manager.users.${user.username} = mkIf user.enable {
       stylix.targets = mkIf isStylesEnabled {
         fuzzel.enable = config.dots.graphical.wayland.enable;
-        # mako.enable = true;
       };
 
       programs = {
-        #   obs-studio = {
-        #     enable = true;
-        #     plugins = with pkgs.obs-studio-plugins; [
-        #       obs-composite-blur
-        #       obs-gradient-source
-        #       obs-retro-effects
-        #     ];
-        #   };
         fuzzel = {
           enable = config.dots.graphical.wayland.enable;
           settings = {

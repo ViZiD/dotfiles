@@ -9,7 +9,6 @@ with lib;
 let
   cfg = config.dots.graphical.discord;
   isPersistEnabled = config.dots.shared.persist.enable;
-  # isStylesEnabled = config.dots.styles.enable;
   user = config.dots.user;
 in
 {
@@ -19,15 +18,12 @@ in
     home-manager.users.${user.username} = mkIf user.enable {
       imports = [ inputs.nixcord.homeModules.nixcord ];
 
-      # stylix.targets = mkIf isStylesEnabled { nixcord.enable = true; };
-
       programs.nixcord = {
         enable = true;
         discord = {
           enable = true;
           openASAR.enable = true;
         };
-        # vesktop.enable = true;
         config = {
           plugins = {
             alwaysAnimate.enable = false;
@@ -45,7 +41,6 @@ in
             fixSpotifyEmbeds.enable = true;
             fixYoutubeEmbeds.enable = true;
             friendInvites.enable = true;
-            # hideAttachments.enable = true;
             imageZoom.enable = true;
             implicitRelationships.enable = true;
             noF1.enable = true;
@@ -91,7 +86,6 @@ in
 
     dots.shared.persist.user = mkIf isPersistEnabled {
       directories = [
-        # ".config/vesktop"
         ".config/discord"
       ];
     };
