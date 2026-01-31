@@ -29,7 +29,6 @@ in
 
       programs.zed-editor = {
         enable = true;
-        # package = pkgs.inputs.zedless-editor.zed-editor;
         extensions = [
           "nix"
           "git-firefly"

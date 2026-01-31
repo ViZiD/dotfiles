@@ -136,21 +136,6 @@
         "type": "github"
       }
     },
-    "flake-compat_3": {
-      "locked": {
-        "lastModified": 1747046372,
-        "narHash": "sha256-CIVLLkVgvHYbgI2UpXvIIBJ12HWgX+fjA8Xf8PUmqCY=",
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "rev": "9100a0f413b0c601e0533d1d94ffd501ce2e7885",
-        "type": "github"
-      },
-      "original": {
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "type": "github"
-      }
-    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
@@ -636,22 +621,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_8": {
-      "locked": {
-        "lastModified": 1754214453,
-        "narHash": "sha256-Q/I2xJn/j1wpkGhWkQnm20nShYnG7TI99foDBpXm1SY=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "5b09dc45f24cf32316283e62aec81ffee3c3e376",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nur": {
       "inputs": {
         "flake-parts": "flake-parts_2",
@@ -734,8 +703,7 @@
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
         "utils": "utils",
-        "vscode-ext": "vscode-ext",
-        "zedless-editor": "zedless-editor"
+        "vscode-ext": "vscode-ext"
       }
     },
     "sops-nix": {
@@ -1041,25 +1009,6 @@
       "original": {
         "owner": "Supreeeme",
         "repo": "xwayland-satellite",
-        "type": "github"
-      }
-    },
-    "zedless-editor": {
-      "inputs": {
-        "flake-compat": "flake-compat_3",
-        "nixpkgs": "nixpkgs_8"
-      },
-      "locked": {
-        "lastModified": 1769213788,
-        "narHash": "sha256-jRgVL1DwRhYNZeoWNeXM/OeE/oZHFy2XiNWI363FKLM=",
-        "owner": "zedless-editor",
-        "repo": "zedless",
-        "rev": "101af7661809b5f1286f5a1061d4dc2d3060adbf",
-        "type": "github"
-      },
-      "original": {
-        "owner": "zedless-editor",
-        "repo": "zedless",
         "type": "github"
       }
     }
