@@ -17,241 +17,101 @@ in
     dots.shared.persist.user = mkIf isPersistEnabled {
       directories = [
         ".claude"
-        ".crush"
-        ".local/share/crush"
       ];
     };
 
     home-manager.users.${user.username} = mkIf user.enable {
-
       home.sessionVariables = {
-        OPENROUTER_API_KEY = "$(cat ${config.sops.secrets.openrouter.path})";
-        # ANTHROPIC_API_KEY = "$(cat ${config.sops.secrets.claude.path})";
         PERPLEXITY_API_KEY = "$(cat ${config.sops.secrets.perplexity.path})";
       };
 
       home.packages = with pkgs.inputs.llm-agents-nix; [
-        crush
         letta-code
-        gemini-cli
       ];
 
-      xdg.configFile."crush/crush.json".source = ./crush.json;
-
-      programs = {
-        mods = {
-          enable = true;
-          settings = {
-            default-api = "openrouter";
-            default-model = "sonnet";
-            enableZshIntegration = true;
-            mcp-servers = {
-              perplexity = {
-                command = "npx";
-                args = [
-                  "-y"
-                  "@perplexity-ai/mcp-server"
-                ];
-              };
-              nixos = {
-                command = "nix";
-                args = [
-                  "run"
-                  "github:utensils/mcp-nixos"
-                  "--"
-                ];
-              };
+      programs.claude-code = {
+        enable = true;
+        package = pkgs.inputs.llm-agents-nix.claude-code;
+        agents = {
+          based = ./agents/based.md;
+        };
+        settings = {
+          extraKnownMarketplaces = {
+            perplexity-mcp-server = {
+              source.source = "github";
+              source.repo = "perplexityai/modelcontextprotocol";
             };
-            apis = {
-              openrouter = {
-                base-url = "https://openrouter.ai/api/v1";
-                api-key-env = "OPENROUTER_API_KEY";
-                models = {
-                  "anthropic/claude-haiku-4.5" = {
-                    aliases = [ "haiku" ];
-                    max-input-chars = 680000;
-                  };
-
-                  "anthropic/claude-sonnet-4.5:floor" = {
-                    aliases = [ "sonnet" ];
-                    max-input-chars = 680000;
-                  };
-                  "x-ai/grok-4.1-fast:free" = {
-                    aliases = [ "grokfree" ];
-                    max-input-chars = 2000000;
-                  };
-                  "x-ai/grok-4.1-fast:floor" = {
-                    aliases = [ "grok" ];
-                    max-input-chars = 2000000;
-                  };
-                };
-              };
-            };
-            roles = {
-              code-reviewer = [ "You are a code reviewer. Focus on security, performance, and maintainability." ];
-              shell = [
-                "you are a shell expert"
-                "you do not explain anything"
-                "you simply output one liners to solve the problems you're asked"
-                "you do not provide any explanation whatsoever, ONLY the command"
-              ];
-              claude-prompt-gen = [
-                "You are a prompt generator."
-                "Create prompts in this exact format without asking questions or providing
-  explanations."
-                "Output only the prompt in the specified structure."
-                "Format: '---\nname: <kebab-case-only>\ndescription: <description>\ntools:
-  <Read, Edit, Grep, or other Claude code permissions>\n---\n##
-  Instructions\n\n<detailed instructions>\n\n## Examples\n\n<examples if
-  applicable>'."
-                "Generate the complete prompt based on user request in a single response
-  with no additional commentary."
-              ];
-              prompt-gen = [
-                "You are a prompt generator."
-                "When user requests a prompt, generate ONLY the prompt itself."
-                "ALWAYS generate prompts in English language ONLY."
-                "NO explanations."
-                "NO introductions."
-                "NO conclusions."
-                "NO additional text whatsoever."
-                "NO other languages - English ONLY"
-                "Format the prompt as follows:"
-                "Each line must be on a new line."
-                "Each line must be enclosed in double quotes."
-                "Start immediately with the first quoted line."
-                "End immediately after the last quoted line."
-                "Nothing before the prompt."
-                "Nothing after the prompt."
-                "Just the prompt in quoted lines."
-                "All generated content must be in English language."
-              ];
-              nix-short = [
-                "You are a Nix expert who provides only short code snippets."
-                "When asked a question, respond ONLY with the minimal Nix code needed."
-                "NO explanations."
-                "NO comments in code unless absolutely necessary."
-                "NO additional text."
-                "NO greetings or conclusions."
-                "Just pure Nix code snippets."
-                "Keep code as concise as possible."
-                "If multiple solutions exist, provide the shortest one."
-                "Format code properly but keep it minimal."
-              ];
-              linux-based = [
-                "You are a Linux expert with deep knowledge of Linux systems, distributions,
-  and administration."
-                "You have extensive experience with:"
-                "- System
-  administration and configuration"
-                "- Shell scripting (Bash, sh, zsh)"
-                "- Package management (apt, yum, dnf, pacman, zypper)"
-                "- File systems and storage management"
-                "- Networking and security"
-                "- Process management and system monitoring"
-                "- Kernel parameters and system tuning"
-                "- User and permission management"
-                "- Service management (systemd, init.d)"
-                "- Log analysis and troubleshooting"
-                "- Container technologies (Docker, Podman)"
-                "- Automation tools (Ansible, Puppet, Chef)"
-                "- Performance optimization"
-                "- Backup and recovery strategies"
-                "You provide clear, accurate, and practical solutions to Linux-related problems."
-                "You explain commands and their options in detail when needed."
-                "You follow best practices and security principles."
-                "You can work with all major Linux distributions including Debian, Ubuntu, RHEL, CentOS, Fedora, Arch, and others."
-                "You provide step-by-step instructions when appropriate."
-                "You warn users about potentially dangerous commands and suggest safer alternatives."
-              ];
-            };
+          };
+          enabledPlugins = {
+            "perplexity@perplexity-mcp-server" = true;
+          };
+          permissions = {
+            disableBypassPermissionsMode = "disable";
+            allow = [
+              "Bash(git diff:*)"
+              "WebSearch"
+              "WebFetch(domain:docs.letta.com)"
+            ];
+            ask = [
+              "Bash(git push:*)"
+            ];
+            deny = [
+              "Read(./.env)"
+              "Read(./.env.*)"
+              "Read(./secrets/**)"
+              "Read(./venv/**)"
+              "Read(./config/credentials.json)"
+              "Read(./build)"
+            ];
+            # defaultMode = "acceptEdits";
+          };
+          includeCoAuthoredBy = false;
+          # apiKeyHelper = "cat ${config.sops.secrets.claude.path}"; # bypass stupid auth
+          env = {
+            DISABLE_AUTOUPDATER = 1;
+            DISABLE_BUG_COMMAND = 1;
+            DISABLE_ERROR_REPORTING = 1;
+            DISABLE_TELEMETRY = 1;
+            USE_BUILTIN_RIPGREP = 0;
           };
         };
-
-        claude-code = {
-          enable = true;
-          package = pkgs.inputs.llm-agents-nix.claude-code;
-          agents = {
-            based = ./agents/based.md;
+        mcpServers = {
+          nixos = {
+            args = [
+              "run"
+              "github:utensils/mcp-nixos"
+              "--"
+            ];
+            command = "nix";
+            type = "stdio";
           };
-          settings = {
-            extraKnownMarketplaces = {
-              perplexity-mcp-server = {
-                source.source = "github";
-                source.repo = "perplexityai/modelcontextprotocol";
-              };
-            };
-            enabledPlugins = {
-              "perplexity@perplexity-mcp-server" = true;
-            };
-            permissions = {
-              disableBypassPermissionsMode = "disable";
-              allow = [
-                "Bash(git diff:*)"
-                "WebSearch"
-                "WebFetch(domain:docs.letta.com)"
-              ];
-              ask = [
-                "Bash(git push:*)"
-              ];
-              deny = [
-                "Read(./.env)"
-                "Read(./.env.*)"
-                "Read(./secrets/**)"
-                "Read(./venv/**)"
-                "Read(./config/credentials.json)"
-                "Read(./build)"
-              ];
-              # defaultMode = "acceptEdits";
-            };
-            includeCoAuthoredBy = false;
-            # apiKeyHelper = "cat ${config.sops.secrets.claude.path}"; # bypass stupid auth
-            env = {
-              DISABLE_AUTOUPDATER = 1;
-              DISABLE_BUG_COMMAND = 1;
-              DISABLE_ERROR_REPORTING = 1;
-              DISABLE_TELEMETRY = 1;
-              USE_BUILTIN_RIPGREP = 0;
-            };
+          deepwiki = {
+            type = "http";
+            url = "https://mcp.deepwiki.com/mcp";
           };
-          mcpServers = {
-            nixos = {
-              args = [
-                "run"
-                "github:utensils/mcp-nixos"
-                "--"
-              ];
-              command = "nix";
-              type = "stdio";
-            };
-            # deepwiki = {
-            #   type = "http";
-            #   url = "https://mcp.deepwiki.com/mcp";
-            # };
-            # context7 = {
-            #   command = "npx";
-            #   args = [
-            #     "-y"
-            #     "@upstash/context7-mcp"
-            #   ];
-            #   type = "stdio";
-            # };
-            time = {
-              command = "uvx";
-              args = [
-                "mcp-server-time"
-              ];
-              type = "stdio";
-            };
-            # sequential-thinking = {
-            #   command = "npx";
-            #   args = [
-            #     "-y"
-            #     "@modelcontextprotocol/server-sequential-thinking"
-            #   ];
-            #   type = "stdio";
-            # };
+          # context7 = {
+          #   command = "npx";
+          #   args = [
+          #     "-y"
+          #     "@upstash/context7-mcp"
+          #   ];
+          #   type = "stdio";
+          # };
+          time = {
+            command = "uvx";
+            args = [
+              "mcp-server-time"
+            ];
+            type = "stdio";
           };
+          # sequential-thinking = {
+          #   command = "npx";
+          #   args = [
+          #     "-y"
+          #     "@modelcontextprotocol/server-sequential-thinking"
+          #   ];
+          #   type = "stdio";
+          # };
         };
       };
     };
