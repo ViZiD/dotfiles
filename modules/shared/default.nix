@@ -13,7 +13,6 @@
     ./diff.nix
     ./wireguard.nix
     ./kdeconnect.nix
-    ./virt.nix
     ./yggdrasil.nix
   ];
 }

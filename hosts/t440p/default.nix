@@ -139,7 +139,6 @@
       diff.enable = true;
       kdeconnect.enable = true;
       yggdrasil.enable = false;
-      # virt.enable = true; # FIXME
       persist = {
         enable = true;
         user = {
