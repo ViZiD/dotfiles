@@ -7,11 +7,9 @@ with lib;
 let
   cfg = config.dots.cli.bw;
   user = config.dots.user;
-  # isPersistEnabled = config.dots.shared.persist.enable;
 in
 {
   options.dots.cli.bw.enable = mkEnableOption "Enable bitwarden password manager";
-
   config = mkIf cfg.enable {
     home-manager.users.${user.username} = mkIf user.enable {
       programs.rbw = {
@@ -24,9 +22,5 @@ in
         };
       };
     };
-    # dots.shared.persist.user = mkIf isPersistEnabled {
-    #   directories = [
-    #   ];
-    # };
   };
 }
