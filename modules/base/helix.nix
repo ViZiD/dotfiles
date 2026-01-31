@@ -62,6 +62,8 @@ in
             # nix
             nixfmt
             nixd
+
+            dart
           ];
         settings = {
           theme = mkIf (!isStylesEnabled) "monokai";
