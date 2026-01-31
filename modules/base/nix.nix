@@ -34,7 +34,9 @@ in
 
         auto-optimise-store = true;
 
-        max-substitution-jobs = 32;
+        # fuck rkn
+        connect-timeout = 4;
+        stalled-download-timeout = 4;
 
         substituters = [
           "https://cache.xd0.zip"
