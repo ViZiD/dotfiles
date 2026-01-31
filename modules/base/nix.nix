@@ -37,33 +37,23 @@ in
         max-substitution-jobs = 32;
 
         substituters = [
-
-          # my nur repos
-          "https://vizqq.cachix.org?priority=3"
-
-          # proxy
-          "https://ncproxy.vizqq.cc?priority=2"
-          "https://cache.xd0.zip?priority=1"
-
-          # "https://cache.nixos.org?priority=1"
+          "https://cache.xd0.zip"
+          "https://ncproxy.vizqq.cc"
+          "https://vizqq.cachix.org"
         ];
 
         extra-trusted-substituters = [
-          "https://numtide.cachix.org"
           "https://vizqq.cachix.org"
           "https://nix-community.cachix.org"
         ];
         extra-substituters = [
-          # proxy
           "https://numtide.cache.xd0.zip"
-
           "https://cache.numtide.com"
         ];
 
         extra-trusted-public-keys = [
           "vizqq.cachix.org-1:5BPw8jRDFrVEuN3mTiG7mdC6Cezeid4n5KTj5xiLX/s="
           "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-          "numtide.cachix.org-1:2ps1kLBUWjxIneOy1Ik6cQjb41X0iXVXeHigGmycPPE="
           "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
         ];
         flake-registry = "";
