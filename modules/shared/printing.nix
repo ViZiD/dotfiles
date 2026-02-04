@@ -7,7 +7,6 @@
 with lib;
 let
   cfg = config.dots.shared.printing;
-  captdriver = pkgs.stablePkgs.callPackage ./captdriver.nix { };
 in
 {
   options.dots.shared.printing.enable = mkEnableOption "Enable printer stuff";
@@ -31,8 +30,8 @@ in
         enable = true;
         logLevel = "debug";
         package = pkgs.stablePkgs.cups;
-        drivers = [
-          captdriver
+        drivers = with pkgs; [
+          canon-capt
         ];
       };
     };
