@@ -23,7 +23,7 @@
         # nix
         nix-init
         nix-tree
-        nixfmt-rfc-style
+        nixfmt
         nix-update
 
         # misc

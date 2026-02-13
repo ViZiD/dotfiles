@@ -43,7 +43,7 @@ in
         extraPackages = with pkgs; [
           claude-code-acp
           nixd
-          nixfmt-rfc-style
+          nixfmt
           # basedpyright
           ruff
           (python312.withPackages (
