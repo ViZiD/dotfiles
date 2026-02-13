@@ -11,5 +11,6 @@
     ./yazi.nix
     ./bw.nix
     ./vibecoding.nix
+    ./gh.nix
   ];
 }

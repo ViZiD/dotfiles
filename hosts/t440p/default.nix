@@ -117,6 +117,7 @@
         pinentryPackage = if config.dots.graphical.enable then pkgs.pinentry-qt else pkgs.pinentry-tty;
       };
       git.enable = true;
+      gh.enable = true;
       gitui.enable = true;
       lazygit.enable = true;
       direnv.enable = true;
