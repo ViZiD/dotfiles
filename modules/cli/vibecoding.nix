@@ -25,16 +25,15 @@ in
         PERPLEXITY_API_KEY = "$(cat ${config.sops.secrets.perplexity.path})";
       };
 
-      home.packages = with pkgs.inputs.llm-agents-nix; [
-        letta-code
-      ];
+      # home.packages = with pkgs.inputs.llm-agents-nix; [
+      # ];
 
       programs.claude-code = {
         enable = true;
         package = pkgs.inputs.llm-agents-nix.claude-code;
-        agents = {
-          based = ./agents/based.md;
-        };
+        #
+        # agents = {
+        # };
         settings = {
           extraKnownMarketplaces = {
             perplexity-mcp-server = {
@@ -44,6 +43,9 @@ in
           };
           enabledPlugins = {
             "perplexity@perplexity-mcp-server" = true;
+            # lsp
+            "typescript-lsp@claude-plugins-official" = true;
+            "pyright-lsp@claude-plugins-official" = true;
           };
           permissions = {
             disableBypassPermissionsMode = "disable";
@@ -63,8 +65,10 @@ in
               "Read(./config/credentials.json)"
               "Read(./build)"
             ];
-            # defaultMode = "acceptEdits";
           };
+          language = "russian";
+          spinnerTipsEnabled = false;
+          respectGitignore = true;
           includeCoAuthoredBy = false;
           # apiKeyHelper = "cat ${config.sops.secrets.claude.path}"; # bypass stupid auth
           env = {
@@ -73,6 +77,8 @@ in
             DISABLE_ERROR_REPORTING = 1;
             DISABLE_TELEMETRY = 1;
             USE_BUILTIN_RIPGREP = 0;
+            CLAUDE_CODE_HIDE_ACCOUNT_INFO = 1;
+            FORCE_AUTOUPDATE_PLUGINS = true;
           };
         };
         mcpServers = {
@@ -89,14 +95,6 @@ in
             type = "http";
             url = "https://mcp.deepwiki.com/mcp";
           };
-          # context7 = {
-          #   command = "npx";
-          #   args = [
-          #     "-y"
-          #     "@upstash/context7-mcp"
-          #   ];
-          #   type = "stdio";
-          # };
           time = {
             command = "uvx";
             args = [
@@ -104,14 +102,6 @@ in
             ];
             type = "stdio";
           };
-          # sequential-thinking = {
-          #   command = "npx";
-          #   args = [
-          #     "-y"
-          #     "@modelcontextprotocol/server-sequential-thinking"
-          #   ];
-          #   type = "stdio";
-          # };
         };
       };
     };
