@@ -37,6 +37,7 @@ in
       email_placvoljher = user;
       perplexity = user;
       claude = user;
+      gh_token = user;
     };
   };
 }

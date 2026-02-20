@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 with lib;
@@ -14,7 +15,19 @@ in
   config = mkIf cfg.enable {
     home-manager.users.${user.username} = mkIf user.enable {
       programs = {
-        gh.enable = true;
+        gh = {
+          enable = true;
+          package = pkgs.symlinkJoin {
+            name = "gh";
+            paths = [ pkgs.gh ];
+            buildInputs = [ pkgs.makeWrapper ];
+            postBuild = ''
+              wrapProgram $out/bin/gh \
+                --run 'export GITHUB_TOKEN=$(cat ${config.sops.secrets.gh_token.path})'
+            '';
+            meta.mainProgram = "gh";
+          };
+        };
         gh-dash = {
           enable = true;
           settings = {
