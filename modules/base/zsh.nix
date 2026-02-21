@@ -113,6 +113,10 @@ in
             sed -e 's-^???$-unknown-' |
             cat
           }
+
+          topmem() { ps -eo pid,ppid,user,%mem,rss,comm --sort=-%mem | head -11 | tail -10 | while read pid ppid user mem rss comm; do printf "\n=== %s (PID:%s USER:%s MEM:%s%% RSS:%sMiB) ===\n" "$comm" "$pid" "$user" "$mem" "$((rss/1024))"; echo "  ^ parent:"; ps -p "$ppid" -o pid,user,%mem,comm 2>/dev/null | tail -1 | sed 's/^/    /'; echo "  v children:"; kids=$(ps --ppid "$pid" -o pid,user,%mem,comm 2>/dev/null | tail -n+2); [ -n "$kids" ] && echo "$kids" | sed 's/^/    /' || echo "    none"; done; }
+
+          topcpu() { ps -eo pid,ppid,user,%cpu,rss,comm --sort=-%cpu | head -11 | tail -10 | while read pid ppid user cpu rss comm; do printf "\n=== %s (PID:%s USER:%s CPU:%s%% RSS:%sMiB) ===\n" "$comm" "$pid" "$user" "$cpu" "$((rss/1024))"; echo "  ^ parent:"; ps -p "$ppid" -o pid,user,%cpu,comm 2>/dev/null | tail -1 | sed 's/^/    /'; echo "  v children:"; kids=$(ps --ppid "$pid" -o pid,user,%cpu,comm 2>/dev/null | tail -n+2); [ -n "$kids" ] && echo "$kids" | sed 's/^/    /' || echo "    none"; done; }
         '';
       }
       // base;
