@@ -248,7 +248,7 @@ in
               border.width = 1;
             };
             cursor = {
-              hide-on-key-press = true;
+              hide-when-typing = true;
             };
             binds = defaultKeyBind // {
               "Mod+W".action.close-window = { };
