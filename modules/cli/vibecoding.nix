@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 with lib;
@@ -25,8 +26,9 @@ in
         PERPLEXITY_API_KEY = "$(cat ${config.sops.secrets.perplexity.path})";
       };
 
-      # home.packages = with pkgs.inputs.llm-agents-nix; [
-      # ];
+      home.packages = with pkgs.inputs.llm-agents-nix; [
+        rtk
+      ];
 
       programs.claude-code = {
         enable = true;
@@ -72,37 +74,47 @@ in
           includeCoAuthoredBy = false;
           # apiKeyHelper = "cat ${config.sops.secrets.claude.path}"; # bypass stupid auth
           env = {
-            DISABLE_AUTOUPDATER = 1;
-            DISABLE_BUG_COMMAND = 1;
-            DISABLE_ERROR_REPORTING = 1;
-            DISABLE_TELEMETRY = 1;
-            USE_BUILTIN_RIPGREP = 0;
-            CLAUDE_CODE_HIDE_ACCOUNT_INFO = 1;
-            FORCE_AUTOUPDATE_PLUGINS = true;
+            DISABLE_AUTOUPDATER = "1";
+            DISABLE_BUG_COMMAND = "1";
+            DISABLE_ERROR_REPORTING = "1";
+            DISABLE_TELEMETRY = "1";
+            USE_BUILTIN_RIPGREP = "0";
+            CLAUDE_CODE_HIDE_ACCOUNT_INFO = "1";
+            FORCE_AUTOUPDATE_PLUGINS = "true";
+            ENABLE_TOOL_SEARCH = "true";
+          };
+          hooks = {
+            PreToolUse = [
+              {
+                matcher = "Bash";
+                hooks = [
+                  {
+                    type = "command";
+                    command = with pkgs.inputs.llm-agents-nix; "${rtk}/libexec/rtk/hooks/rtk-rewrite.sh";
+                  }
+                ];
+              }
+            ];
           };
         };
-        mcpServers = {
-          nixos = {
-            args = [
-              "run"
-              "github:utensils/mcp-nixos"
-              "--"
-            ];
-            command = "nix";
-            type = "stdio";
-          };
-          deepwiki = {
-            type = "http";
-            url = "https://mcp.deepwiki.com/mcp";
-          };
-          time = {
-            command = "uvx";
-            args = [
-              "mcp-server-time"
-            ];
-            type = "stdio";
-          };
-        };
+        mcpServers =
+          (inputs.mcp-servers-nix.lib.evalModule pkgs {
+            programs = {
+              # my pc to slow for this... sad
+              # serena = {
+              #   enable = true;
+              #   context = "claude-code";
+              #   enableWebDashboard = false;
+              # };
+              fetch = {
+                enable = true;
+                type = "http";
+                url = "https://mcp.deepwiki.com/mcp";
+              };
+              nixos.enable = true;
+              time.enable = true;
+            };
+          }).config.settings.servers;
       };
     };
   };
