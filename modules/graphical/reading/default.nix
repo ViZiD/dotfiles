@@ -28,6 +28,13 @@ in
         ".local/share/zathura"
       ];
     };
+
+    services.yarr = {
+      address = "[::1]";
+      enable = true;
+      port = 33054;
+    };
+
     home-manager.users.${user.username} = mkIf user.enable {
       stylix.targets = mkIf isStylesEnabled { zathura.enable = true; };
       programs = {
