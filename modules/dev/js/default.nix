@@ -20,6 +20,7 @@ in
           nodejs_latest
           yarn
           pnpm
+          bun
           # webcrack # FIXME: fix build nur
         ];
     };
