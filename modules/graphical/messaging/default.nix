@@ -23,7 +23,7 @@ in
         associations.added = defaultApplications;
       };
       home.packages = with pkgs; [
-        telegram-desktop
+        master.telegram-desktop
         master.fluffychat
         deltachat-desktop
       ];
