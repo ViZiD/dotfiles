@@ -59,6 +59,23 @@ in
 
     environment.systemPackages = [ pkgs.piper ];
 
+    programs.winbox = {
+      enable = true;
+      package = (
+        pkgs.symlinkJoin {
+          name = "winbox-wrapped";
+          paths = [
+            pkgs.winbox4
+          ];
+          buildInputs = [ pkgs.makeWrapper ];
+          postBuild = ''
+            wrapProgram "$out/bin/WinBox" --set QT_QPA_PLATFORM xcb
+          '';
+        }
+      );
+      openFirewall = true;
+    };
+
     services.ratbagd.enable = true;
 
     home-manager.users.${user.username} = mkIf user.enable {
