@@ -27,11 +27,21 @@ in
   };
 
   master = final: _: {
-    master = inputs.nixpkgs-master.legacyPackages.${final.stdenv.hostPlatform.system};
+    master = import inputs.nixpkgs-master {
+      inherit (final.stdenv.hostPlatform) system;
+      config = {
+        inherit (final.config) allowUnfree permittedInsecurePackages;
+      };
+    };
   };
 
   stable = final: _: {
-    stablePkgs = inputs.nixpkgs-stable.legacyPackages.${final.stdenv.hostPlatform.system};
+    stablePkgs = import inputs.nixpkgs-stable {
+      inherit (final.stdenv.hostPlatform) system;
+      config = {
+        inherit (final.config) allowUnfree permittedInsecurePackages;
+      };
+    };
   };
 
   # Adds my custom packages
