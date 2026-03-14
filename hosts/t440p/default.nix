@@ -140,6 +140,7 @@
       diff.enable = true;
       kdeconnect.enable = true;
       yggdrasil.enable = false;
+      virt.enable = true;
       persist = {
         enable = true;
         user = {
