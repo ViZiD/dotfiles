@@ -12,12 +12,11 @@ let
     programs.htop = {
       enable = true;
       settings = {
-        vimMode = true;
         delay = 5;
-        showCpuFrequency = true;
-        showCpuUsage = true;
-        treeView = true;
-        hideUserlandThreads = true;
+        show_cpu_frequency = true;
+        show_cpu_usage = true;
+        tree_view = true;
+        hide_userland_threads = true;
       };
     };
   };
