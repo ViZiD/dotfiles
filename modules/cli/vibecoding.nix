@@ -10,6 +10,18 @@ let
   cfg = config.dots.cli.lazygit;
   user = config.dots.user;
   isPersistEnabled = config.dots.shared.persist.enable;
+  claudePackage = pkgs.inputs.llm-agents-nix.claude-code;
+  lspPluginDir = "/home/${user.username}/.claude/plugins/nix-lsp";
+  claudeWithLsp = pkgs.symlinkJoin {
+    name = "claude-code-with-lsp";
+    paths = [ claudePackage ];
+    nativeBuildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/claude \
+        --set ENABLE_LSP_TOOL 1 \
+        --add-flags "--plugin-dir ${lspPluginDir}"
+    '';
+  };
 in
 {
   options.dots.cli.vibecoding.enable = mkEnableOption "Enable vibecoding utils";
@@ -30,9 +42,34 @@ in
         rtk
       ];
 
+      home.file.".claude/plugins/nix-lsp/.lsp.json".text = builtins.toJSON {
+        nixd = {
+          command = "${pkgs.nixd}/bin/nixd";
+          extensionToLanguage.".nix" = "nix";
+        };
+        typescript = {
+          command = "${pkgs.typescript-language-server}/bin/typescript-language-server";
+          args = [ "--stdio" ];
+          extensionToLanguage = {
+            ".ts" = "typescript";
+            ".tsx" = "typescriptreact";
+            ".js" = "javascript";
+            ".jsx" = "javascriptreact";
+          };
+        };
+        pyright = {
+          command = "${pkgs.pyright}/bin/pyright-langserver";
+          args = [ "--stdio" ];
+          extensionToLanguage = {
+            ".py" = "python";
+            ".pyi" = "python";
+          };
+        };
+      };
+
       programs.claude-code = {
         enable = true;
-        package = pkgs.inputs.llm-agents-nix.claude-code;
+        package = claudeWithLsp;
         #
         # agents = {
         # };
@@ -45,9 +82,6 @@ in
           };
           enabledPlugins = {
             "perplexity@perplexity-mcp-server" = true;
-            # lsp
-            "typescript-lsp@claude-plugins-official" = true;
-            "pyright-lsp@claude-plugins-official" = true;
           };
           permissions = {
             disableBypassPermissionsMode = "disable";
@@ -91,6 +125,17 @@ in
                   {
                     type = "command";
                     command = with pkgs.inputs.llm-agents-nix; "${rtk}/libexec/rtk/hooks/rtk-rewrite.sh";
+                  }
+                ];
+              }
+            ];
+            Notification = [
+              {
+                matcher = "";
+                hooks = [
+                  {
+                    type = "command";
+                    command = "${pkgs.jq}/bin/jq -r .message | ${pkgs.curl}/bin/curl -sL -H 'Title: Claude Code' -H \"Authorization: Bearer $(cat ${config.sops.secrets.ntfy_token_claude.path})\" -d @- https://notify.vizqq.cc/$(cat ${config.sops.secrets.ntfy_claude_path.path})";
                   }
                 ];
               }

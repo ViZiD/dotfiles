@@ -38,6 +38,8 @@ in
       perplexity = user;
       claude = user;
       gh_token = user;
+      ntfy_token_claude = user;
+      ntfy_claude_path = user;
     };
   };
 }
