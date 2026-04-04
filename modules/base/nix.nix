@@ -39,7 +39,6 @@ in
         stalled-download-timeout = 4;
 
         substituters = [
-          "https://cache.xd0.zip"
           "https://ncproxy.vizqq.cc"
           "https://vizqq.cachix.org"
         ];
@@ -49,7 +48,6 @@ in
           "https://nix-community.cachix.org"
         ];
         extra-substituters = [
-          "https://numtide.cache.xd0.zip"
           "https://cache.numtide.com"
         ];
 
