@@ -19,52 +19,49 @@ in
       programs.helix = {
         enable = true;
         defaultEditor = true;
-        extraPackages =
-          with pkgs;
-          with nodePackages;
-          [
-            # docker
-            dockerfile-language-server
-            docker-compose-language-service
+        extraPackages = with pkgs; [
+          # docker
+          dockerfile-language-server
+          docker-compose-language-service
 
-            bash-language-server
+          bash-language-server
 
-            # markdown
-            marksman
+          # markdown
+          marksman
 
-            # toml
-            taplo
+          # toml
+          taplo
 
-            # yaml
-            yaml-language-server
+          # yaml
+          yaml-language-server
 
-            # web
-            prettier
-            typescript-language-server
-            vscode-langservers-extracted
-            emmet-language-server
-            tailwindcss-language-server
-            svelte-language-server
-            uwu-colors
+          # web
+          prettier
+          typescript-language-server
+          vscode-langservers-extracted
+          emmet-language-server
+          tailwindcss-language-server
+          svelte-language-server
+          uwu-colors
 
-            # python
-            basedpyright
-            ruff
-            (python3.withPackages (
-              p:
-              (with p; [
-                python-lsp-ruff
-                python-lsp-server
-                pylsp-mypy
-              ])
-            ))
+          # python
+          basedpyright
+          ruff
+          (python3.withPackages (
+            p:
+            (with p; [
+              python-lsp-ruff
+              python-lsp-server
+              pylsp-mypy
+            ])
+          ))
 
-            # nix
-            nixfmt
-            nixd
+          # nix
+          nixfmt
+          nixd
 
-            dart
-          ];
+          dart
+        ];
         settings = {
           theme = mkIf (!isStylesEnabled) "monokai";
           editor = {
