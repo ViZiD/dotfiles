@@ -55,22 +55,41 @@
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/113b5dbf-7245-48a5-b7c0-342c57d58312";
     fsType = "btrfs";
-    options = [ "subvol=root" ];
+    options = [
+      "subvol=root"
+      "compress=zstd:3"
+      "noatime"
+      "space_cache=v2"
+    ];
   };
 
-  boot.initrd.luks.devices."enc".device = "/dev/disk/by-uuid/e92959ee-6265-4de2-80bb-bdcf87e5f5d2";
+  boot.initrd.luks.devices."enc" = {
+    device = "/dev/disk/by-uuid/e92959ee-6265-4de2-80bb-bdcf87e5f5d2";
+    allowDiscards = true;
+    bypassWorkqueues = true;
+  };
 
   fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/113b5dbf-7245-48a5-b7c0-342c57d58312";
     fsType = "btrfs";
-    options = [ "subvol=nix" ];
+    options = [
+      "subvol=nix"
+      "compress=zstd:3"
+      "noatime"
+      "space_cache=v2"
+    ];
   };
 
   fileSystems."/persist" = {
     device = "/dev/disk/by-uuid/113b5dbf-7245-48a5-b7c0-342c57d58312";
     neededForBoot = true;
     fsType = "btrfs";
-    options = [ "subvol=persist" ];
+    options = [
+      "subvol=persist"
+      "compress=zstd:3"
+      "noatime"
+      "space_cache=v2"
+    ];
   };
 
   fileSystems."/boot" = {
@@ -91,6 +110,11 @@
   services.fwupd.enable = true;
 
   services.fstrim.enable = true;
+
+  services.btrfs.autoScrub = {
+    enable = true;
+    interval = "weekly";
+  };
 
   hardware.enableRedistributableFirmware = true;
 
