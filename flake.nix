@@ -84,7 +84,9 @@
             inherit system overlays;
             config = {
               allowUnfree = true;
-              permittedInsecurePackages = [ ];
+              permittedInsecurePackages = [
+                "ventoy-1.1.10"
+              ];
             };
           };
         in

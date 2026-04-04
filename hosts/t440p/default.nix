@@ -33,6 +33,7 @@
         tcpdump
         nettools
         csvlens
+        ventoy-full
         parted
 
         # media
