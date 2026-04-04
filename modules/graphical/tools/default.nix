@@ -141,12 +141,8 @@ in
         (pkgs.symlinkJoin {
           name = "kicad-wrapped";
           paths = [
-            (pkgs.kicad-small.override {
-              addons = with pkgs.kicadAddons; [
-                kikit
-                kikit-library
-              ];
-            })
+            # kikit addon is broken with KiCad 10 (SetDoNotAllowCopperPour API removed)
+            pkgs.kicad-small
           ];
           buildInputs = [ pkgs.makeWrapper ];
           postBuild = ''
