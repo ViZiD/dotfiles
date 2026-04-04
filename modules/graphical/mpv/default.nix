@@ -49,7 +49,7 @@ in
             mpv' = mpv.override {
               scripts = with mpvScripts; [
                 mpris
-                mpv-cheatsheet
+                mpv-cheatsheet-ng
 
                 autoload
                 convert
