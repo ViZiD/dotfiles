@@ -179,17 +179,13 @@
         useDHCP = true;
         ipv4.addresses = [
           {
-            address = "192.168.88.2";
-            prefixLength = 24;
-          }
-          {
             address = "192.168.1.2";
             prefixLength = 24;
           }
-          {
-            address = "192.168.2.2";
-            prefixLength = 24;
-          }
+          # {
+          #   address = "192.168.2.2";
+          #   prefixLength = 24;
+          # }
         ];
       };
     };
