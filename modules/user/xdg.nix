@@ -41,12 +41,9 @@ in
       templates = "${homeDir}/templates/";
       videos = "${homeDir}/videos/";
       extraConfig = {
-        XDG_TMP_DIR = "${homeDir}/tmp/";
-        XDG_CACHE_HOME = "${homeDir}/.cache";
-        XDG_CONFIG_HOME = "${homeDir}/.config";
-        XDG_DATA_HOME = "${homeDir}/.local/share";
-        XDG_STATE_HOME = "${homeDir}/.local/state";
+        TMP = "${homeDir}/tmp/";
       };
+      setSessionVariables = true;
     };
   };
 }
