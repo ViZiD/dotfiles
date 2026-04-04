@@ -26,7 +26,10 @@ in
             };
           };
         };
-        mergiraf.enable = true;
+        mergiraf = {
+          enable = true;
+          enableGitIntegration = true;
+        };
         git = {
           enable = true;
           ignores = [
