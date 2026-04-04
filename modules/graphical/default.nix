@@ -36,6 +36,7 @@ in
 
     home-manager.users.${user.username} = mkIf user.enable {
       xdg.mimeApps.enable = true;
+      gtk.gtk4.theme = null;
       stylix.targets = mkIf isStylesEnabled {
         gtk.enable = true;
         qt.enable = true;
