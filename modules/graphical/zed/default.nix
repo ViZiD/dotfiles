@@ -91,7 +91,7 @@ in
                 "!nil"
               ];
               formatter.external = {
-                command = "${lib.getExe pkgs.nixfmt-rfc-style}";
+                command = "${lib.getExe pkgs.nixfmt}";
                 arguments = [
                   "--quiet"
                   "--"
