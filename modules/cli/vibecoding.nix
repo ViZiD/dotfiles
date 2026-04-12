@@ -124,7 +124,7 @@ in
                 hooks = [
                   {
                     type = "command";
-                    command = with pkgs.inputs.llm-agents-nix; "${rtk}/libexec/rtk/hooks/rtk-rewrite.sh";
+                    command = with pkgs.inputs.llm-agents-nix; "${rtk}/libexec/rtk/hooks/claude/rtk-rewrite.sh";
                   }
                 ];
               }
