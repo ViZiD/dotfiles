@@ -86,7 +86,44 @@ in
           permissions = {
             disableBypassPermissionsMode = "disable";
             allow = [
+              # Read-only file operations
+              "Bash(ls:*)"
+              "Bash(find:*)"
+              "Bash(cat:*)"
+              "Bash(head:*)"
+              "Bash(tail:*)"
+              "Bash(wc:*)"
+              "Bash(sort:*)"
+              "Bash(pwd)"
+              "Bash(which:*)"
+              "Bash(file:*)"
+              # Search
+              "Bash(grep:*)"
+              "Bash(rg:*)"
+              # Git read-only
               "Bash(git diff:*)"
+              "Bash(git status:*)"
+              "Bash(git log:*)"
+              "Bash(git branch:*)"
+              "Bash(git show:*)"
+              "Bash(git rev-parse:*)"
+              "Bash(git remote:*)"
+              # GitHub CLI read-only
+              "Bash(gh pr view:*)"
+              "Bash(gh pr list:*)"
+              "Bash(gh issue list:*)"
+              "Bash(gh issue view:*)"
+              "Bash(gh run view:*)"
+              "Bash(gh run list:*)"
+              # Nix
+              "Bash(nix eval:*)"
+              "Bash(nix flake show:*)"
+              "Bash(nix flake metadata:*)"
+              # RTK meta
+              "Bash(rtk gain:*)"
+              "Bash(rtk discover:*)"
+              "Bash(rtk --version)"
+              # Web
               "WebSearch"
               "WebFetch(domain:docs.letta.com)"
             ];
