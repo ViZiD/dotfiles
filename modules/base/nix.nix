@@ -41,6 +41,11 @@ in
         substituters = [
           "https://ncproxy.vizqq.cc"
           "https://vizqq.cachix.org"
+          "https://cache.nixos.org"
+          "https://mirror.yandex.ru/nixos"
+          "https://cache.nixos.kz"
+          "https://nixos-cache-proxy.cofob.dev"
+          "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store" # REF: https://github.com/dramforever/mirror-web/blob/d7e263d4fe9a9e3078f819468cec18e1c11cf832/_posts/help/2019-02-17-nix.md
         ];
 
         extra-trusted-substituters = [
